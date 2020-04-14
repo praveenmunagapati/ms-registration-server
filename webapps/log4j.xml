@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- p=priority c=category d=datetime t=thread m=message n=newline -->
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- This file is manually rolled over at server startup in ModuleLoader.
+         Do not rename here without changing the name there too. -->
+    <appender name="ERRORS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkey-errors.log"/>
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="3" />
+        <param name="BufferedIO" value="false"/>
+        <param name="Threshold" value="ERROR"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- p=priority c=category d=datetime t=thread m=message n=newline -->
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- This file is manually rolled over at server shutdown in CoreModule.
+         Do not rename here without changing the name there too. -->
+    <appender name="ACTION_STATS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkey-action-stats.tsv"/>
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="3" />
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="BufferedIO" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <!-- This file is manually rolled over at server shutdown in QueryProfilerThread.
+         Do not rename here without changing the name there too. -->
+    <appender name="QUERY_STATS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkey-query-stats.tsv"/>
+        <param name="Append" value="true" />
+        <param name="MaxBackupIndex" value="3" />
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="BufferedIO" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE_COPY" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${labkey.log.home}/labkey-file-copy.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- p=priority c=category d=datetime t=thread m=message n=newline -->
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="LABKEY" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkey.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="LABKEY_AUDIT" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkey-audit.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+
+    <appender name="EHR_ETL" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/ehr-etl.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="3" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SLA_ETL" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/sla-etl.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="3" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SESSION" class="org.labkey.api.util.SessionAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %-24.24c{1} %d{ISO8601} %24.24t : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="JMX" class="org.labkey.api.util.MXBeanAppender">
+    </appender>
+
+    <appender name="nullAppender" class="org.apache.log4j.varia.NullAppender">
+    </appender>
+
+    <appender name="LABKEYMemory" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/labkeyMemory.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="THREAD_DUMP" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/thread-dump.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="JSP_STRINGS" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${labkey.log.home}/JspStringPrints.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}%m%n"/>
+        </layout>
+    </appender>
+
+    <!-- special logger that just swallows messages -->
+    <logger name="null" additivity="false">
+        <level value="warn"/>
+        <appender-ref ref="nullAppender"/>
+    </logger>
+
+
+    <!-- category for server side script messages -->
+    <logger name="org.labkey.api.script.ScriptService$Console">
+        <level value="INFO"/>
+        <appender-ref ref="SESSION"/>
+    </logger>
+
+
+    <!-- category for Mule messages -->
+    <logger name="org.mule.MuleManager">
+        <level value="info"/>
+    </logger>
+    <!--    <logger name="org.labkey.pipeline.mule.transformers">
+        <level value="debug"/>
+    </logger> -->
+
+    <!-- category for jasper messages -->
+    <logger name="org.apache.jasper">
+        <level value="warn"/>
+    </logger>
+
+    <!-- application classes -->
+    <logger name="org.fhcrc">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.labkey">
+        <level value="info"/>
+    </logger>
+
+    <logger name="mondrian.">
+        <level value="info"/>
+    </logger>
+
+<!--    <logger name="org.labkey.wiki">
+        <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey.api.action.SpringActionController">
+        <level value="debug"/>
+    </logger> -->
+
+    <!-- only show errors from PipelineJob output -->
+    <logger name="org.labkey.api.pipeline.PipelineJob">
+        <level value="error"/>
+    </logger>
+
+    <!-- don't need to log PDFBox errors (e.g., FlateFilter, PDCIDFontType2) -->
+    <logger name="org.apache.pdfbox">
+        <level value="fatal"/>
+    </logger>
+
+    <!-- this is a very verbose logger for security/permissions checking -->
+    <!--
+    <logger name="org.labkey.api.security.SecurityManager">
+        <level value="debug"/>
+    </logger>
+    -->
+
+    <!-- Add specific module packages or classes to get debug information about
+     features you are working on. -->
+
+<!--    <logger name="org.labkey.api.data.Table">
+        <level value="debug"/>
+    </logger> -->
+
+    <logger name="org.labkey.api.data">
+    </logger>
+
+    <logger name="org.labkey.api.dataiterator">
+    </logger>
+
+    <logger name="org.labkey.docker">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.labkey.rstudio">
+        <level value="info"/>
+    </logger>
+
+
+    <!--    <logger name="org.labkey.api.cache">
+            <level value="debug"/>
+        </logger> -->
+
+<!--    <logger name="org.labkey.api.data.TempTableTracker">
+        <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey.query">
+        <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey.pipeline.mule">
+            <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey.search">
+        <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey.search.model.LuceneSearchServiceImpl">
+        <level value="debug"/>
+    </logger> -->
+
+    <logger name="org.labkey.api.util.MemTracker" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="LABKEYMemory"/>
+    </logger>
+
+    <logger name="org.labkey.api.util.DebugInfoDumper">
+        <level value="debug"/>
+        <appender-ref ref="THREAD_DUMP"/>
+    </logger>
+
+    <logger name="org.labkey.api.jsp.LabKeyJspWriter.string" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="JSP_STRINGS"/>
+    </logger>
+
+<!--    <logger name="org.labkey.api.view.ViewServlet" additivity="false">
+        <level value="debug"/>
+    </logger> -->
+
+<!--    <logger name="org.labkey">
+        <level value="debug"/>
+        <appender-ref ref="SESSION"/>
+    </logger> -->
+
+    <logger name="org.labkey.core.admin.ActionsTsvWriter" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="ACTION_STATS"/>
+    </logger>
+
+    <logger name="org.labkey.api.data.queryprofiler.QueryProfiler$QueryProfilerThread" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="QUERY_STATS"/>
+    </logger>
+
+    <logger name="org.labkey.sla.etl" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="SLA_ETL"/>
+        <appender-ref ref="ERRORS"/>
+    </logger>
+
+    <logger name="org.labkey.audit.event">
+        <level value="OFF"/>
+        <appender-ref ref="LABKEY_AUDIT"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!--
+      Other audit event types include, but are not limited to:
+        AppPropsEvent
+        AssayPublishAuditEvent
+        AttachmentAuditEvent
+        AuthenticationProviderConfiguration
+        ClientAPIActions
+        ContainerAuditEvent
+        DatasetAuditEvent
+        DomainAuditEvent
+        ExperimentAuditEvent
+        FileSystem
+        FileSystemBatch
+        GroupAuditEvent
+        ListAuditEvent
+        LoggedQuery
+        MessageAuditEvent
+        pipelineProtocolEvent
+        QueryExportAuditEvent
+        QueryUpdateAuditEvent
+        SampleSetAuditEvent
+        SearchAuditEvent
+        SelectQuery
+     To enable logging of all events, set the level for the org.labkey.audit.event to
+     something other than "OFF".  To enable individual audit event logging, configure the
+     individual stanza like the one shown below, where you prefix the audit event type 
+     with 'org.labkey.audit.event'. Then set the level to INFO and specify the appenders.  
+    -->
+    <logger name="org.labkey.audit.event.UserAuditEvent" additivity="false">
+        <level value="OFF"/>
+        <appender-ref ref="LABKEY_AUDIT"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <root>
+        <level value="error"/>
+        <appender-ref ref="LABKEY"/>
+        <appender-ref ref="ERRORS"/>
+        <appender-ref ref="JMX"/>
+        @@consoleAppender@@
+    </root>
+</log4j:configuration>

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ * Copyright (c) 2005-2017 Fred Hutchinson Cancer Research Center
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<table tableName="Annotations" tableDbType="TABLE">
+		<columns>
+			<column columnName="AnnotId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="AnnotTypeId"/>
+			<column columnName="AnnotVal"/>
+			<column columnName="AnnotIdent"/>
+			<column columnName="SeqId">
+                <columnTitle>Sequence</columnTitle>
+            </column>
+			<column columnName="AnnotSourceId"/>
+			<column columnName="AnnotSourceVersion"/>
+			<column columnName="InsertDate">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="ModDate">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="StartPos"/>
+			<column columnName="EndPos"/>
+			<column columnName="Deleted">
+				<isHidden>true</isHidden>
+			</column>
+		</columns>
+	</table>
+	<table tableName="AnnotationTypes" tableDbType="TABLE">
+		<columns>
+			<column columnName="AnnotTypeId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="Name"/>
+			<column columnName="SourceId"/>
+			<column columnName="Description"/>
+			<column columnName="EntryDate"/>
+			<column columnName="ModDate"/>
+			<column columnName="Deleted"/>
+		</columns>
+	</table>
+	<table tableName="AnnotInsertions" tableDbType="TABLE">
+		<columns>
+			<column columnName="InsertId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="FileName"/>
+			<column columnName="FileType"/>
+			<column columnName="Comment"/>
+			<column columnName="InsertDate"/>
+			<column columnName="ChangeDate"/>
+			<column columnName="Mouthsful"/>
+			<column columnName="RecordsProcessed"/>
+			<column columnName="CompletionDate"/>
+			<column columnName="SequencesAdded"/>
+			<column columnName="AnnotationsAdded"/>
+			<column columnName="IdentifiersAdded"/>
+			<column columnName="OrganismsAdded"/>
+			<column columnName="MRMSize"/>
+			<column columnName="MRMSequencesAdded"/>
+			<column columnName="MRMAnnotationsAdded"/>
+			<column columnName="MRMIdentifiersAdded"/>
+			<column columnName="MRMOrganismsAdded"/>
+			<column columnName="DefaultOrganism"/>
+			<column columnName="OrgShouldBeGuessed"/>
+		</columns>
+	</table>
+	<table tableName="FastaFiles" tableDbType="TABLE">
+		<deleteUrl>ms2/deleteDataBases.view</deleteUrl>
+		<columns>
+			<column columnName="FastaId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="FileName"/>
+			<column columnName="Loaded"/>
+			<column columnName="FileChecksum"/>
+            <column columnName="ScoringAnalysis"/>
+		</columns>
+		<buttonBarOptions includeStandardButtons="true">
+			<item text="Reload FASTA" requiresSelection="true" permission="ADMIN" insertPosition="end">
+				<target method="POST">ms2/reloadFasta.view</target>
+			</item>
+		</buttonBarOptions>
+	</table>
+	<table tableName="FastaSequences" tableDbType="TABLE">
+		<columns>
+			<column columnName="FastaId"/>
+			<column columnName="LookupString"/>
+			<column columnName="SeqId"/>
+		</columns>
+	</table>
+	<table tableName="FastaLoads" tableDbType="TABLE">
+		<columns>
+			<column columnName="FastaId"/>
+			<column columnName="FileName"/>
+			<column columnName="FileChecksum"/>
+			<column columnName="Comment"/>
+			<column columnName="InsertDate"/>
+			<column columnName="DbName"/>
+			<column columnName="DbVersion"/>
+			<column columnName="DbSource"/>
+			<column columnName="DbDate"/>
+			<column columnName="Reference"/>
+			<column columnName="NSequences"/>
+			<column columnName="Sequences"/>
+		</columns>
+	</table>
+	<table tableName="Identifiers" tableDbType="TABLE">
+		<columns>
+			<column columnName="IdentId">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="IdentTypeId">
+				<columnTitle>Identifier Type</columnTitle>
+			</column>
+			<column columnName="Identifier"/>
+			<column columnName="SeqId">
+				<columnTitle>Sequence</columnTitle>
+			</column>
+			<column columnName="SourceId">
+				<columnTitle>Source</columnTitle>
+			</column>
+			<column columnName="EntryDate"/>
+			<column columnName="SourceVersion">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="Deleted">
+				<isHidden>true</isHidden>
+			</column>
+		</columns>
+	</table>
+	<table tableName="IdentTypes" tableDbType="TABLE">
+		<columns>
+			<column columnName="IdentTypeId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="Name"/>
+			<column columnName="CannonicalSourceId">
+				<columnTitle>Canonical Source</columnTitle>
+			</column>
+			<column columnName="EntryDate"/>
+			<column columnName="Description"/>
+			<column columnName="Deleted">
+				<isHidden>true</isHidden>
+			</column>
+		</columns>
+	</table>
+	<table tableName="InfoSources" tableDbType="TABLE">
+		<columns>
+			<column columnName="SourceId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="Name"/>
+			<column columnName="CurrentVersion"/>
+			<column columnName="CurrentVersionDate"/>
+			<column columnName="Url"/>
+			<column columnName="ProcessToObtain"/>
+			<column columnName="LastUpdate"/>
+			<column columnName="InsertDate"/>
+			<column columnName="ModDate"/>
+			<column columnName="Deleted"/>
+		</columns>
+	</table>
+	<table tableName="Organisms" tableDbType="TABLE">
+		<description>Contains a row per organism known to this server installation.</description>
+		<columns>
+			<column columnName="OrgId">
+				<isKeyField>true</isKeyField>
+			</column>
+			<column columnName="CommonName"/>
+			<column columnName="Genus"/>
+			<column columnName="Species"/>
+			<column columnName="Comments"/>
+			<column columnName="IdentId">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="Deleted">
+				<isHidden>true</isHidden>
+			</column>
+		</columns>
+	</table>
+	<table tableName="Sequences" tableDbType="TABLE">
+		<columns>
+			<column columnName="SeqId">
+                <isKeyField>true</isKeyField>
+            </column>
+            <column columnName="ProtSequence">
+                <columnTitle>Sequence</columnTitle>
+            </column>
+            <column columnName="Hash">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="Description"/>
+			<column columnName="SourceId">
+                <columnTitle>Source</columnTitle>
+            </column>
+            <column columnName="SourceVersion">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="InsertDate">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="ChangeDate">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="SourceChangeDate">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="SourceInsertDate">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="OrgId">
+                <columnTitle>Organism</columnTitle>
+            </column>
+			<column columnName="Mass">
+                <formatString>0</formatString>
+            </column>
+            <column columnName="BestName"/>
+			<column columnName="BestGeneName"/>
+			<column columnName="Length"/>
+			<column columnName="Deleted">
+                <isHidden>true</isHidden>
+            </column>
+        </columns>
+        <description>Contains a row per protein known to this server installation.</description>
+	</table>
+	<table tableName="SprotOrgMap" tableDbType="TABLE">
+		<columns>
+			<column columnName="SprotSuffix"/>
+			<column columnName="SuperKingdomCode"/>
+			<column columnName="TaxonId"/>
+			<column columnName="FullName"/>
+			<column columnName="Genus"/>
+			<column columnName="Species"/>
+			<column columnName="CommonName"/>
+			<column columnName="Synonym"/>
+		</columns>
+	</table>
+	<table tableName="FastaAdmin" tableDbType="VIEW">
+		<deleteUrl>ms2/deleteDataBases.view</deleteUrl>
+		<columns>
+			<column columnName="Filename">
+				<columnTitle>FASTA File Name</columnTitle>
+				<inputType>text</inputType>
+				<displayWidth>400</displayWidth>
+				<scale>200</scale>
+				<inputLength>40</inputLength>
+				<isReadOnly>false</isReadOnly>
+				<isUserEditable>false</isUserEditable>
+			</column>
+			<column columnName="FastaId">
+				<datatype>int identity</datatype>
+				<columnTitle>ID</columnTitle>
+				<inputType>text</inputType>
+				<displayWidth>50</displayWidth>
+				<inputLength>10</inputLength>
+				<nullable>false</nullable>
+				<isAutoInc>true</isAutoInc>
+				<isReadOnly>true</isReadOnly>
+				<isKeyField>true</isKeyField>
+			</column>
+			<column columnName="Loaded">
+				<columnTitle>Loaded</columnTitle>
+				<inputType>text</inputType>
+				<formatString>DateTime</formatString>
+				<displayWidth>120</displayWidth>
+				<scale>100</scale>
+				<inputLength>23</inputLength>
+				<isReadOnly>true</isReadOnly>
+			</column>
+			<column columnName="Runs">
+				<columnTitle>Runs</columnTitle>
+				<inputType>text</inputType>
+				<formatString>#,###</formatString>
+				<displayWidth>40</displayWidth>
+				<inputLength>10</inputLength>
+				<nullable>false</nullable>
+				<isReadOnly>true</isReadOnly>
+				<isUserEditable>true</isUserEditable>
+			</column>
+		</columns>
+		<tableTitle>FastaAdmin</tableTitle>
+		<pkColumnName>FastaId</pkColumnName>
+	</table>
+	<table tableName="GoGraphPath" tableDbType="TABLE">
+		<columns>
+			<column columnName="Id">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="Term1Id">
+                <columnTitle>Term 1</columnTitle>
+            </column>
+			<column columnName="Term2Id">
+                <columnTitle>Term 1</columnTitle>
+            </column>
+			<column columnName="Distance"/>
+		</columns>
+	</table>
+	<table tableName="GoTerm" tableDbType="TABLE">
+		<columns>
+			<column columnName="Id">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="Name"/>
+			<column columnName="TermType"/>
+			<column columnName="Acc"/>
+			<column columnName="IsObsolete"/>
+			<column columnName="IsRoot"/>
+		</columns>
+	</table>
+	<table tableName="GoTerm2Term" tableDbType="TABLE">
+		<columns>
+			<column columnName="Id">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="RelationshipTypeId">
+                <columnTitle>Relationship Type</columnTitle>
+            </column>
+			<column columnName="Term1Id">
+                <columnTitle>Term 1</columnTitle>
+            </column>
+			<column columnName="Term2Id">
+                <columnTitle>Term 1</columnTitle>
+            </column>
+			<column columnName="Complete"/>
+		</columns>
+	</table>
+	<table tableName="GoTermDefinition" tableDbType="TABLE">
+		<columns>
+			<column columnName="TermId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="TermDefinition"/>
+			<column columnName="DbXRefId"/>
+			<column columnName="TermComment"/>
+			<column columnName="Reference"/>
+		</columns>
+	</table>
+	<table tableName="GoTermSynonym" tableDbType="TABLE">
+		<columns>
+			<column columnName="TermId">
+                <isHidden>true</isHidden>
+            </column>
+			<column columnName="TermSynonym"/>
+			<column columnName="AccSynonym"/>
+			<column columnName="SynonymTypeId"/>
+		</columns>
+	</table>
+
+    <table tableName="CustomAnnotationSet" tableDbType="TABLE">
+        <columns>
+            <column columnName="CustomAnnotationSetId"/>
+            <column columnName="Container"/>
+            <column columnName="Name"/>
+            <column columnName="CreatedBy">
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkDbSchema>core</fkDbSchema>
+                    <fkTable>Users</fkTable>
+                </fk>
+            </column>
+            <column columnName="Created"/>
+            <column columnName="ModifiedBy">
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkDbSchema>core</fkDbSchema>
+                    <fkTable>Users</fkTable>
+                </fk>
+            </column>
+            <column columnName="Modified"/>
+            <column columnName="CustomAnnotationType"/>
+            <column columnName="Lsid"/>
+        </columns>
+    </table>
+
+    <table tableName="CustomAnnotation" tableDbType="TABLE">
+        <columns>
+            <column columnName="CustomAnnotationId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="ObjectURI">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="CustomAnnotationSetId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="LookupString"/>
+        </columns>
+        <titleColumn>LookupString</titleColumn>
+    </table>
+</tables>

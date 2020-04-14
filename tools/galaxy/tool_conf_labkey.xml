@@ -1,0 +1,3 @@
+  <section name="LabKey" id="labkey_tools">
+    <tool file="labkey/workflow_complete.xml" />
+  </section>

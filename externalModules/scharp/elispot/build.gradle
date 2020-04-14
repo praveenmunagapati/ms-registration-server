@@ -1,0 +1,3 @@
+dependencies {
+    external group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.3'
+}

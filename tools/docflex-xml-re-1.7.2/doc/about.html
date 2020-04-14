@@ -1,0 +1,737 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0014)about:internet -->
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel=stylesheet type="text/css" href="styles.css">
+<title>About DocFlex/XML</title>
+</head>
+
+<body>
+
+<h1>
+  About DocFlex/XML
+</h1>
+
+<!-- TABLE OF CONTENTS -->
+<ol>
+  <li><a href="#overview">Overview</a>
+    <ul>
+      <li><a href="#key_features">Key Features</a></li>
+      <li><a href="#technical_requirements">Technical Requirements</a></li>
+    </ul>
+  </li>
+  <li><a href="#editions">Editions</a>
+    <ul>
+      <li><a href="#docflex-xml-sdk">DocFlex/XML SDK</a></li>
+      <li><a href="#docflex-xml-kit">DocFlex/XML RE</a></li>
+    </ul>
+  </li>
+</ol>
+<!-- END TABLE OF CONTENTS -->
+
+
+<h2>
+  <a name="overview"></a>
+  1.&nbsp; Overview
+</h2>
+
+DocFlex/XML is the most advanced application of
+<a href="http://www.filigris.com/products/docflex/" target="_blank">DocFlex Technology</a>
+(developed on top of the experience accumulated from the previous two:
+<a href="http://www.filigris.com/products/docflex_javadoc/about.php" target="_blank">DocFlex/Javadoc</a> and
+<a href="http://www.filigris.com/products/docflex_together/about.php" target="_blank">DocFlex/Together</a>).
+<p>
+This tool allows you to program the automatic generation of professional quality reports and documentation
+by the data obtained from any kind of XML files. The output documents can be generated in RTF and HTML formats.
+The HTML can be both single-file and multi-framed documentation. The TXT (plain text) output is supported as well,
+which enables you to use this tool also for various XML file transformations. 
+<p>
+Such a generation is programmed using templates, which function a lot the same
+as the full-blown scripting-language programs (such as
+<a href="http://www.w3.org/TR/xslt" target="_blank">XSLT</a> scripts, for instance).
+However, the advantage of the template approach offered by the
+<a target="_blank" href="http://www.filigris.com/products/docflex/">DocFlex Technology</a> is that it requires very few coding of
+anything manually and allows designing your templates in WYSIWYG form in the terms of things you
+would expect to see in your output documents rather than on the level of abstract language operators.
+(See <i class="nowrap"><a href="http://www.filigris.com/products/docflex_xml/tutorials/" target="_blank">Creating a Sample Template</a></i>
+flash tutorial for that matter.)
+<p>
+The templates are visually designed basing on the information obtained from
+<a href="http://www.w3schools.com/dtd/" target="_blank">DTD</a> or
+<a href="http://www.w3.org/XML/Schema" target="_blank">XSD</a> (W3C XML Schema)
+files mostly by using mouse and specifying properties in Template Designer dialogs. The data type
+information (i.e. XML elements and attributes) appears in various treeviews which are used
+to program the data processing in the templates.
+<p>
+The formatting of the generated documents is programmed by specifying formatting properties
+of <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#template_components">template components</a>
+(some of which can be changed simply by dragging mouse in the designer pane).
+Many of such properties are graphically visualized by the
+<a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer">Template Designer</a>.
+<p>
+The output generator can be both launched
+<a href="doc.html#generator">from the command line</a> and invoked directly
+<a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer.invoking_generator">from the Template Designer</a>'s
+main menu which allows you to immediately see the result produced by your templates
+yet during designing them (no compilation or running any stand-alone interpreter are required).
+
+<h3>
+  <a name="key_features"></a>
+  Key Features
+</h3>
+
+<ul>
+<li><b>Template-driven architecture</b>
+  <ul>
+    <li>
+      Actual documentation generators are created in the form of special 
+      <i><a target="_blank" href="http://www.filigris.com/products/docflex_javadoc/about.php#what_are_templates">templates</a></i>,
+      which are designed visually using a high quality graphic
+      <i><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer">Template Designer</a></i>,
+      and then interpreted by a special template interpretor / output <i><a href="doc.html#generator">generator</a></i>.
+    </li>
+    <li>
+      All formatting is specified in templates in some universal way independent of a particular destination output format
+      using <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#component_properties">properties</a> of
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#template_components">template components</a>.
+      During the generation, it is rendered with the suitable features available in the selected output format. 
+    </li>
+    <li>
+      The elaborated support of 
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#template_parameters">template parameters</a>
+      (including multivalued <a href="doc.html#list_params">list parameters</a>).
+      The parameters are defined and
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/data_processing.php#fq_expr">accessed</a> within templates to adjust
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#dynamic_properties">dynamic properties</a>
+      of <a target="_blank" href="http://www.filigris.com/products/docflex/features/templates_designer.php#template_components">template components</a>.
+      Most of options previously used to control an ordinary documentation generator, now simply become template parameters!
+    </li>
+    <li>
+      The possibility to call templates from one another.
+      This feature (along with the template parameters) allows re-using the same templates 
+      for different tasks as well as organizing template libraries.
+    </li>
+    <li>
+      Complex documentation generators are typically made of a number of templates and called <i>template applications</i>.
+      (As an example, see &ldquo;<a href="xsddoc/about.html">XSDDoc</a>&rdquo; template set, which implements 
+      a high quality XML schema documentation generator.)
+    </li>
+  </ul>
+</li>
+
+<li><b>XML file data source model</b>
+  <ul>
+    <li>
+      Generation of reports/documentation by the data obtained from any number of XML files
+      (possibly with different structure).
+    </li>
+    <li>
+      The input XML files can be both specified initially as the
+      <a href="doc.html#generator">generator</a> arguments 
+      and also loaded dynamically by the templates according to the data being processed.
+    </li>
+    <li>
+      All open XML files are represented together in the form of a single tree structure (similar to XML 
+      <a href="http://www.w3.org/DOM/" target="_blank">DOM</a>). That virtual representation,
+      called <i>&ldquo;XML DSM&rdquo;</i> (or <i><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype">XML Data Source Model</a></i>),
+      also consists of <i>DSM elements</i> and <i>DSM attributes</i>. Some of them mirror the real elements and attributes
+      found in the open XML files. Others, called 
+      <i><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype.pseudo_elements">pseudo-elements</a></i>,
+      represent all kinds of other (non-element/attribute) XML <a href="http://www.w3.org/DOM/" target="_blank">DOM</a> nodes
+      (such as TEXT-nodes) as well as individual XML files as a whole.
+    </li>
+    <li>
+      The XML DSM is associated with a certain
+      <i><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype">XML Type</a></i>,
+      which provides the data type information describing any possible input XML files processed 
+      by the given template application. That information is obtained from 
+      <a href="http://www.w3schools.com/dtd/" target="_blank">DTD</a> or
+      <a href="http://www.w3.org/XML/Schema" target="_blank">XSD</a> (W3C XML Schema) files, which define the
+      <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype">XML Type</a>.
+      The designing and processing of all templates of that application is based on it.
+    </li>
+    <li>
+      Full support for XML namespaces.
+    </li>
+    <li>
+      Support of <a href="doc.html#generator_gui.xml_catalogs">OASIS XML Catalogs v1.1</a>.
+      This includes both a possibility to use XML catalogs when processing input XML files
+      (see <code class="nowrap">-<a href="doc.html#generator.xmlcatalog_option">xmlcatalog</a></code> generator option)
+      and in definitions of <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype">XML Types</a> 
+      based on multiple XML schemas (see
+      <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype.xsd.catalogs">xsd.catalogs</a>
+      config property).
+    </li>
+  </ul>
+</li>
+
+<li><b>Data processing</b>
+  <ul>
+    <li>
+      Dynamic resolving of the exact types of all XML elements found in open XML files.
+      That means that given an input XML file fully complies with one of the
+      <a href="http://www.w3schools.com/dtd/" target="_blank">DTD</a>/<a href="http://www.w3.org/XML/Schema" target="_blank">XSD</a>
+      used to define the <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype">XML Type</a></i>
+      (on which the templates are based), for each XML element contained in it a corresponding closest
+      <i>Element Type</i> (linked to a DTD element declaration or XSD element component), will be found and associated with it.
+      This allows filtering XML elements according to their types as well as knowing immediately 
+      the data types of the element values and attributes so as to process them accordingly.
+    </li>
+    <li>
+      Sophisticated capabilities for data 
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/data_processing.php#location_paths">querying</a> and
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/data_processing.php#sorting">sorting</a>
+      based on a conceptual analogue of <a href="http://www.w3.org/TR/xpath" target="_blank">XPath</a>
+      (called <i>&ldquo;DocFlex Location Paths&rdquo;</i>) with some advanced features not found in XPath at all.
+    </li>
+    <li>
+      A possibility to filter and query XML elements by Element Types, which include not only those directly produced 
+      from the element declarations found in <a href="http://www.w3schools.com/dtd/" target="_blank">DTD</a> files
+      or element components (including local ones) found in 
+      <a href="http://www.w3.org/XML/Schema" target="_blank">XSD</a> files, but also 
+      <i><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#xmltype.xsd.includeAbstractTypes">abstract</a></i>
+      Element Types which, in the case of XSD, represent global complex and simple types 
+      (from which some XSD element components are derived).
+    </li>
+    <li>
+      The ability to traverse XML documents with a network structure using <code>IDREF/IDREFS</code>
+      attributes of XML elements.
+    </li>
+    <li>
+      With the use of <i>element maps</i> (which are specially adapted hash-maps), the same is possible
+      when XML elements reference each other qualified names via <code>QName</code> attributes,
+      which is typically the case (for instance in XSD or WSDL files).
+    </li>
+  </ul>
+</li>
+<li><b>Creating hyperlinks</b>
+  <ul>
+    <li>
+      Generation of an extensive network of hyperlinks interconnecting the whole documentation.
+    </li>
+    <li>
+      The hyperlinks can be generated in all output formats that support them (this currently includes HTML and RTF). 
+    </li>
+    <li>
+      The universal way of defining documentation cross-links based on the
+      <a target="_blank" href="http://www.filigris.com/products/docflex/features/data_processing.php#hyperlinks">link/target keys</a>
+      specified in templates.
+    </li>
+    <li>
+      In RTF, the cross-links can be generated in the form of page number references,
+      which effectively makes them usable even in the printed documentation. 
+    </li>
+    <li>
+      In HTML, the possibility of loading several frame windows from a single hyperlink at once.
+    </li>
+  </ul>
+</li>
+<li><b>Universal support of various formatting techniques</b>
+  <ul>
+     <li>text formatting: fonts, colors, borders</li>
+     <li>paragraph formatting: margins, pagination control, borders, colors</li>
+     <li>border formatting: styles (solid, double, dashed, dotted), thickness, colors</li>
+     <li>tables: arbitrary cell layouts, borders, nested tables</li>
+     <li>lists: bulleted, numbered, delimited</li>
+     <li>document fields (RTF): page number, number of pages, TOC, etc.</li>
+     <li>page formatting: size, orientation, margins, headers/footers</li>
+     <li>formatting styles</li>
+     <li>
+       processing of XHTML markup: The XHTML tags can be recognized at specific locations of XML documents
+       (for instance, within <code>&lt;xs:documentation&gt;</code> elements of XSD files). 
+       This must be programmed entirely within a template,
+       which converts all XHTML tags to normal HTML tags (e.g. by removing 'xhtml' namespace prefix from the tag names).
+       Further, everything will be processed by the generator itself (see below). As an example, see also 
+       <a href="xsddoc/about.html#proc.ann.xhtml">XSDDoc | Annotation Processing | Support of XHTML</a>.
+     </li>  
+     <li>
+       rendering of embedded HTML, which means interpreting in non-HTML output formats (such as RTF)
+       the HTML tags embedded in text data (e.g. documentation comments). Almost all HTML tags practically
+       usable in documentation comments are supported. See
+       <a target="_blank" href="http://www.filigris.com/products/docflex/features/formatting.php#embedded_html">Formatting Features | Rendering of embedded HTML</a>
+       for the list of all supported HTML tags.
+     </li>
+  </ul>
+</li>
+<li><b>Inserting images</b>
+  <ul>
+    <li>statically specified in templates</li>
+    <li>
+      dynamically, obtained directly from XML documents (base64- or hex-encoded) or
+      from arbitrary files, URLs or Java resources
+    </li>
+    <li>
+      dynamically, obtained by <code>&lt;xhtml:img&gt;</code> tags found within special annotation elements
+      (e.g. see <a href="xsddoc/faq.html#xhtml.images">XSDDoc | FAQ | How to insert images?</a>)
+    </li>
+    <li>supported image formats: GIF, PNG, JPG, WMF, EMF, BMP</li>
+  </ul>
+</li>
+<li><b>Output formats</b>
+  <ul>
+    <li>
+      HTML (both framed multi-file and single-file output)
+    </li>
+    <li>
+      RTF (version 1.6 - supported since Word 2000)
+    </li>
+    <li>
+      TXT (plain text)
+    </li>
+  </ul>
+</li>
+<li><b>Generator GUI</b>
+  <ul>
+    <li>
+      Besides <a href="doc.html#generator.options">command line options</a>,
+      the template interpretor/output generator supports an alternative user-friendly way 
+      to control the template-based documentation generators interactively -- 
+      the high quality <i><a href="doc.html#generator_gui">Generator GUI</a></i>.
+    </li>
+    <li>
+      The generator GUI starts with the <a href="doc.html#generator_gui">Generator Dialog</a>,
+      where you can specify all general settings (such as the main template, the input XML files,
+      the output format and the output directory), start the generation, track its progress and stop at any moment you need.
+    </li>
+    <li>
+      The grid-tree-based 
+      <a href="doc.html#generator_gui.param_inspector">Parameter Inspector</a>
+      invoked from the <a href="doc.html#generator_gui">Generator Dialog</a>
+      for a selected template allows you to view the descriptions of all template parameters controlling 
+      the template application (template-driven documentation generator) and 
+      set their values according to the parameter data types.
+    </li>
+    <li>
+      The generator options specific for the selected output format can be set in the 
+      corresponding
+      <a href="doc.html#generator_gui.output_format">Format Option Inspector</a>
+      (also invoked from the <a href="doc.html#generator_gui">Generator Dialog</a>).
+    </li>
+    <li>
+      Once the generation is finished (or cancelled), you can start it again 
+      with different settings or a new main template without restarting the whole generator.
+    </li>
+  </ul>
+</li>
+<li><b>Integrations</b>
+  <ul>
+    <li>
+      <a href="doc.html#integrations.ant">Apache Ant</a>
+    </li>
+    <li>
+      <a href="doc.html#integrations.maven.plugin">Apache Maven 2</a>
+    </li>
+  </ul>
+</li>
+
+</ul>
+
+See also <a target="_blank" href="http://www.filigris.com/products/docflex/features/">DocFlex Technology | Key Features</a>.
+
+<h3>
+  <a name="technical_requirements"></a>
+  Technical Requirements
+</h3>
+
+DocFlex/XML requires 
+<a href="http://java.sun.com/" target="_blank">Java</a>&trade; Version 6.x, 5.x or 1.4.x
+installed on your system. (<a href="http://java.sun.com/javase/6/" target="_blank">Java 6</a> 
+may be preferable as it works substantially faster.)
+<p class="mrg8">
+Since DocFlex/XML is a pure Java application 
+(both the <a href="#template_designer">Template Designer</a> and 
+<a href="doc.html#generator_gui">Generator GUI</a>
+are based entirely on <a href="http://en.wikipedia.org/wiki/Swing_(Java)" target="_blank">Swing</a>),
+it is supposed to work on any operating system where Java2 Runtime Environment can be installed.
+<p class="mrg8">
+Specifically, the DocFlex/XML software available for <a href="http://www.filigris.com/downloads/" target="_blank">downloads</a>
+includes both <b>MS Windows</b> BAT files and <b>Linux</b> shell script files 
+to run DocFlex/XML immediately on those operating systems.
+We have been also reported that DocFlex was successfully working under <b>Mac OS X</b>.
+<p class="mrg8">
+Additionally, a sample Ant buildfile and Maven 2 Plugin are provided that will allow you 
+to use DocFlex/XML with both <b>Apache Ant</b> and <b>Maven 2</b>.
+For more details, please see 
+<a href="doc.html#integrations">Documentation | Integrations</a>.
+<p class="mrg8">
+To parse XML files, DTDs and XML Schemas, DocFlex/XML uses
+<a href="http://xerces.apache.org/xerces2-j/" target="_blank">Apache Xerces2 Java Parser</a> version 2.9.1,
+whose binaries are included in the DocFlex/XML archives.
+In case of any questions concerning that library, please refer to the Apache Xerces home page:
+<a href="http://xerces.apache.org" target="_blank">http://xerces.apache.org</a>.
+
+<p class="mrg8">
+<table cellspacing="0" cellpadding="0">
+  <tr valign="top">
+    <td><b>Note:</b>&nbsp;&nbsp;</td>
+    <td>
+      Heavy template applications (like <a href="xsddoc/about.html">XSDDoc</a>) 
+      may require considerable computational resources. To run them, you may need a powerful enough computer
+      (e.g. with Intel Pentium 4 or AMD Athlon processor) and at least 512 MB RAM memory.
+    </td>
+  </tr>
+</table>
+
+<h2>
+  <a name="editions"></a>
+  2.&nbsp; Editions
+</h2>
+
+Currently, DocFlex/XML comes in two editions:
+
+<ol>
+ <li><a href="#docflex-xml-sdk">DocFlex/XML SDK</a> - the System Development Kit to design and run template applications</li>
+ <li><a href="#docflex-xml-re">DocFlex/XML RE</a> - the free Runtime Environment to run template applications</li>
+</ol>
+
+<h3>
+  <a name="docflex-xml-sdk"></a>
+  DocFlex/XML SDK
+</h3>
+
+This edition represents a System Development Kit to design and run DocFlex/XML template applications.
+This includes:
+<ul>
+<li class="mrg8">
+  The graphic <b><a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer">Template Designer</a></b>,
+  which allows you to visually design your own sophisticated documentation or report generators 
+  (by any data stored in XML files) implemented in the form of template applications
+  as well as to modify any existing ones.
+</li>
+<li class="mrg8">
+  The <b>template interpreter / output <a href="doc.html#generator">generator</a></b>,
+  using which you can execute any template application and generated the high quality output documentation
+  in framed multi-file HTML, single-file HTML and RTF output formats (as well as plain text files,
+  which you can use to transform your XML data into other representations).
+</li>
+</ul>
+
+It is all the functionality currently implemented about <a href="#top">DocFlex/XML</a>.
+Additionally, DocFlex/XML SDK also includes some
+<a href="http://www.filigris.com/products/docflex_xml/samples/" target="_blank">sample templates</a>
+and is bundled with two real template applications:
+
+<ol>
+<li class="mrg8">
+  <a href="xmldoc.html">XMLDoc</a> (<b>&ldquo;XML File Documentor&rdquo;</b>)
+  template application that will allow you to compile any number of generic XML files into a nice 
+  looking web-ready HTML or printable RTF documentation with the optional inclusion of 
+  the namespace binding report (that shows which namespace prefixes are bound to which 
+  namespace URIs and where).
+</li>
+<li class="mrg8">
+  <a href="xsddoc/about.html">XSDDoc</a>
+  (<b>&ldquo;XML Schema Documentation Generator&rdquo;</b>) template application,
+  which implements a professional quality W3C XML Schema Documentation Generator
+  able to produce both multi-framed Javadoc-like
+  <a href="xsddoc/about.html#output.html">HTML</a> and printable
+  <a href="xsddoc/about.html#output.rtf">RTF</a> documentation.
+  <p class="mrg8">
+  <table cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><b>Note:</b>&nbsp;&nbsp;</td>
+      <td>
+        This is a commercial template application that requires separate licensing.
+        For more information, please see 
+        <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta">Licensing of Templates | Commercial Template Applications</a>
+        and <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#multiple_licenses">Multiple Licenses</a>.
+      </td>
+    </tr>
+  </table>
+</li>
+</ol>
+
+<a href="#docflex-xml-sdk">DocFlex/XML SDK</a> itself (the Java executables) may work in three modes:
+<b><i>limited</i></b>, <b><i>full</i></b> and <b><i>trial</i></b>.
+<p>
+The differences between those modes are shown in the following table:
+<p class="mrg8">
+<table width="100%" border="1" cellspacing="1" cellpadding="5" class="brdr1">
+
+<tr align="center" bgcolor="#e9e9e9">
+  <th width="40%" class="brdr1"><table cellpadding="0" cellspacing="0" border="0"><tr><td></td></tr></table></th>
+  <th width="20%" class="brdr1"><b class="impr">Limited Mode</b></th>
+  <th width="20%" class="brdr1"><b class="impr">Full Mode</b></th>
+  <th width="20%" class="brdr1"><b class="impr">Trial Mode</b></th>
+</tr>
+
+<!-- Licensing -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">Covering license(s)</span>
+  </td>
+  <td class="brdr1">
+    <span class="nav">
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#limited_free_license">Limited Free License</a> 
+      (activated by default)
+    </span>
+  </td>
+  <td class="brdr1">
+    <span class="nav">
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license">Commercial</a> or
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#academic_license">Academic</a> License
+    </span>
+  </td>
+  <td class="brdr1">
+    <span class="nav"><a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#trial_license">Trail License</a></span>
+  </td>
+</tr>
+
+<!-- Template Designer -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">
+      <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer">Template Designer</a>
+    </span>
+  </td>
+  <td class="brdr1"><span class="nav">demo only</span></td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- Designing templates -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">Possibility to create/modify templates</span>
+  </td>
+  <td class="brdr1">&#8211;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- Execution of custom templates -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">Execution of any <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#templates.custom">custom templates</a>
+    (with <a href="#docflex-xml-sdk">DocFlex/XML SDK</a>)</span>
+  </td>
+  <td class="brdr1">&#8211;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">
+    <span class="nav">
+      unlimited (however, with <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#trial_license.output.markers">trial markers</a> in output)
+    </span>
+  </td>
+</tr>
+
+<!-- Execution of custom templates with DocFlex/XML RE -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">Possibility to execute your created/modified
+    <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#templates.custom">custom templates</a>
+    with <a href="#docflex-xml-re">DocFlex/XML RE</a></span>
+  </td>
+  <td class="brdr1">&#8211;</td>
+  <td class="brdr1">
+    <span class="nav">
+      only those created or modified the last time under a
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license">Commercial License</a>
+    </span>
+  </td>
+  <td class="brdr1">&#8211;</td>
+</tr>
+
+<!-- XMLDoc -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">
+      <a href="xmldoc.html">XMLDoc</a> (execution, features)
+    </span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- XSDDoc -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">
+      <a href="xsddoc/about.html">XSDDoc</a> (execution, features)
+    </span>
+  </td>
+  <td colspan="3" class="brdr1">
+    <span class="nav">
+      Limited processing (with some features disabled) is always possible.
+      To unlock all features, a 
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license">Commercial</a>,
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#academic_license">Academic</a> or
+      <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#trial_license">Trail</a> License
+      for <a href="xsddoc/about.html">XSDDoc</a> template application is required.
+    </span>
+  </td>
+</tr>
+
+<!-- XML input files -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">
+      Any number of input XML files
+    </span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- XML catalogs -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">
+      Support of <a href="doc.html#generator_gui.xml_catalogs">OASIS XML Catalogs</a>
+      (for input XML files)
+    </span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- Generator GUI -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr"><a href="doc.html#generator_gui">Generator GUI</a></span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- HTML output -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">HTML generation (framed multi-file, single-file)</span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- RTF output -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">RTF generation</span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- TXT output -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">TXT generation (plain text)</span>
+  </td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+  <td class="brdr1">&#215;</td>
+</tr>
+
+<!-- Output Usage -->
+
+<tr align="center">
+  <td align="left" class="brdr1">
+    <span class="impr">Possible usage of generated documentation</span>
+  </td>
+  <td class="brdr1">
+    <span class="nav">any usage possible, however modifying of HTML files is prohibited</span>
+  </td>
+  <td class="brdr1">
+    <span class="nav">
+      unlimited (under <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#academic_license">Academic License</a>,
+      only for education purposes)
+    </span>
+  </td>
+  <td class="brdr1">
+    <span class="nav">
+      for evaluation only
+      (<a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#trial_license.output.markers">trial markers</a> will be inserted)
+    </span>
+  </td>
+</tr>
+
+</table>
+
+<h3>
+  <a name="docflex-xml-re"></a>
+  <a name="docflex-xml-kit"></a>
+  DocFlex/XML RE
+</h3>
+
+This is a reduced <b>freeware</b> edition that can be used as a Runtime Environment to run
+<a href="#top">DocFlex/XML</a> templates.
+<p>
+DocFlex/XML RE includes the <b>template interpreter / output <a href="doc.html#generator">generator</a></b>,
+which by itself will work without limitations. That means, it will generate any output in all formats with all features supported.
+However, you can use it to interpret (execute) only two kinds of templates:
+<ol>
+<li>
+  The templates developed by Filigris Works. Some of them, called 
+  <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta">commercial template applications</a>,
+  require separate licensing.
+</li>
+<li>
+  Custom templates, however, only those created or modified the last time with <a href="#docflex-xml-sdk">DocFlex/XML SDK</a>
+  working under a <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#commercial_license"</a>Commercial License</a>.
+</li>
+</ol>
+
+The <a target="_blank" href="http://www.filigris.com/products/docflex_xml/docs/design_templates.php#designer">Template Designer</a> 
+is not included in DocFlex/XML RE and you won't be able to create or modify any templates using it.
+<p>
+DocFlex/XML RE is bundled with two template applications:
+<ol>
+<li class="mrg8">
+  <a href="xmldoc.html">XMLDoc</a> (<b>&ldquo;XML File Documentor&rdquo;</b>),
+  which allows you to convert any your generic XML files (that is without recognizing and documenting of any specific 
+  XML-based vocabulary) into a framed or single-file HTML or printable RTF documentation with the optional inclusion
+  of the namespace binding report (that shows which namespace prefixes are bound to which 
+  namespace URIs and where). You can use it for free!
+</li>
+<li class="mrg8">
+  <a href="xsddoc/about.html">XSDDoc</a>
+  (<b>&ldquo;XML Schema Documentation Generator&rdquo;</b>) template application,
+  which implements a professional quality W3C XML Schema Documentation Generator
+  able to produce both multi-framed Javadoc-like
+  <a href="xsddoc/about.html#output.html">HTML</a> and printable
+  <a href="xsddoc/about.html#output.rtf">RTF</a> documentation.
+  <p class="mrg8">
+  <table cellspacing="0" cellpadding="0">
+    <tr valign="top">
+      <td><b>Note:</b>&nbsp;&nbsp;</td>
+      <td>
+        This is a commercial template application that requires separate licensing.
+        For more information, please see 
+        <a target="_blank" href="http://www.filigris.com/buy/licensing_pricing.php#templates.cta">Licensing of Templates | Commercial Template Applications</a>.
+      </td>
+    </tr>
+  </table>
+</li>
+</ol>
+
+<p>
+<hr>
+<span class="impr">Copyright&copy; 2003-2009 Filigris Works, Leonid Rudy Softwareprodukte. All rights reserved.<br>
+To contact us, please visit
+<a href="http://www.filigris.com">www.filigris.com</a> or e-mail to: <a href="mailto:contact@filigris.com">contact@filigris.com</a>
+</span>
+</p>
+
+</body>
+
+</html>

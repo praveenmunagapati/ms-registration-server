@@ -1,0 +1,75 @@
+<tables xmlns="http://labkey.org/data/xml">
+    <table tableName="manifests" tableDbType="TABLE">
+        <columns>
+            <column columnName="rowid"/>
+            <column columnName="createdby">
+                <columnTitle>Uploaded By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <formatString>dd-MMM-yy hh:mm a</formatString>
+            </column>
+            <column columnName="container"/>
+            <column columnName="shipid"/>
+            <column columnName="shipdate"/>
+            <column columnName="recipientlab"/>
+            <column columnName="shippinglab"/>
+            <column columnName="shippingmethod"/>
+            <column columnName="datereceived">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="manifestfilename"/>
+        </columns>
+    </table>
+    <table tableName="manifestspecimens" tableDbType="TABLE">
+        <columns>
+            <column columnName="rowid"/>
+            <column columnName="createdby">
+                <columnTitle>Uploaded By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <columnTitle>Uploaded Time</columnTitle>
+                <formatString>dd/MMM/yy hh:mm a</formatString>
+            </column>
+            <column columnName="modifiedby">
+                <columnTitle>Reconciled By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="modified">
+                <columnTitle>Reconciled Time</columnTitle>
+                <formatString>dd/MMM/yy hh:mm a</formatString>
+            </column>
+            <column columnName="container"/>
+            <column columnName="shipid"/>
+            <column columnName="specimenid"/>
+            <column columnName="groupname"/>
+            <column columnName="ptid"/>
+            <column columnName="protocol"/>
+            <column columnName="visit"/>
+            <column columnName="collectiondate"/>
+            <column columnName="sampletype"/>
+            <column columnName="additive"/>
+            <column columnName="cellspervial"/>
+            <column columnName="volpervial"/>
+            <column columnName="boxnumber"/>
+            <column columnName="rownumber"/>
+            <column columnName="columnnumber"/>
+            <column columnName="visittype"/>
+            <column columnName="reconciled"/>
+            <column columnName="onmanifest"/>
+        </columns>
+    </table>
+</tables>

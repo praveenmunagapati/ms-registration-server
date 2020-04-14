@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Copyright (c) 2009-2019 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xmlns="http://labkey.org/data/xml">
+  <table tableName="QueryDef" tableDbType="TABLE">
+    <cacheSize>100000</cacheSize>
+    <columns>
+      <column columnName="QueryDefId"/>
+      <column columnName="EntityId"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Container"/>
+      <column columnName="Name"/>
+      <column columnName="Schema"/>
+      <column columnName="Sql"/>
+      <column columnName="MetaData"/>
+      <column columnName="SchemaVersion"/>
+      <column columnName="Flags"/>
+      <column columnName="Description"/>
+    </columns>
+  </table>
+    <table tableName="CustomView" tableDbType="TABLE">
+      <cacheSize>100000</cacheSize>
+      <columns>
+        <column columnName="CustomViewId"/>
+        <column columnName="EntityId"/>
+        <column columnName="Created"/>
+        <column columnName="CreatedBy"/>
+        <column columnName="Modified"/>
+        <column columnName="ModifiedBy"/>
+        <column columnName="Schema"/>
+        <column columnName="QueryName"/>
+        <column columnName="Container"/>
+        <column columnName="Name"/>
+        <column columnName="CustomViewOwner"/>
+        <column columnName="Columns"/>
+        <column columnName="Filter" />
+        <column columnName="Flags"/>
+      </columns>
+    </table>
+    <table tableName="ExternalSchema" tableDbType="TABLE">
+        <cacheSize>0</cacheSize><!-- Unlimited, since size scales with Container count -->
+        <columns>
+            <column columnName="ExternalSchemaId" />
+            <column columnName="EntityId" />
+            <column columnName="Created" />
+            <column columnName="CreatedBy" />
+            <column columnName="Modified" />
+            <column columnName="ModifiedBy" />
+            <column columnName="Container" />
+            <column columnName="DataSource">
+                <columnTitle>Data Source</columnTitle>
+                <description>JNDI name of the DataSource associated with this schema.</description>
+            </column>
+            <column columnName="UserSchemaName">
+                <columnTitle>Schema Name</columnTitle>
+                <description>Name of the schema as referred to from within LabKey Server.</description>
+            </column>
+            <column columnName="SourceSchemaName">
+                <columnTitle>Source Schema Name</columnTitle>
+                <description>The name of the physical schema in the underlying database.</description>
+            </column>
+            <column columnName="Editable">
+                <description>Allows insert/update/delete. Caveat: This setting only works if you have a single primary key in your table.</description>
+            </column>
+            <column columnName="Indexable">
+                <description>Determines whether the schema should be indexed for full-text searching.</description>
+            </column>
+            <column columnName="FastCacheRefresh">
+                <description>Whether or not this external schema is set to refresh its cache often. This is intended for use during development.</description>
+            </column>
+            <column columnName="Tables">
+                <description>Allows exposing selected tables in the schema.</description>
+            </column>
+            <column columnName="MetaData">
+                <description>You can use a specialized XML format to specify which columns are look-ups, formats, captions, etc.</description>
+            </column>
+            <column columnName="SchemaType">
+                <description>Type of schema; either "external" or "linked".</description>
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="SchemaTemplate">
+                <description>Name of schema template defined in a module.</description>
+                <isHidden>true</isHidden>
+            </column>
+        </columns>
+    </table>
+    <table tableName="QuerySnapshotDef" tableDbType="TABLE">
+        <columns>
+            <column columnName="RowId"/>
+            <column columnName="QueryDefId"/>
+            <column columnName="EntityId"/>
+            <column columnName="Created"/>
+            <column columnName="CreatedBy"/>
+            <column columnName="Modified"/>
+            <column columnName="ModifiedBy"/>
+            <column columnName="Container"/>
+            <column columnName="Name"/>
+            <column columnName="Schema"/>
+            <column columnName="Columns"/>
+            <column columnName="Filter"/>
+            <column columnName="ParticipantGroups"/>
+            <column columnName="LastUpdated"/>
+            <column columnName="NextUpdate"/>
+            <column columnName="UpdateDelay"/>
+            <column columnName="QueryTableName"/>
+            <column columnName="QueryTableContainer"/>
+            <column columnName="OptionsId"/>
+        </columns>
+    </table>
+    <table tableName="OlapDef" tableDbType="TABLE">
+        <columns>
+            <column columnName="RowId"/>
+            <column columnName="Created"/>
+            <column columnName="CreatedBy"/>
+            <column columnName="Modified"/>
+            <column columnName="ModifiedBy"/>
+            <column columnName="Container"/>
+            <column columnName="Name"/>
+            <column columnName="Module"/>
+            <column columnName="Definition"/>
+        </columns>
+    </table>
+</tables>

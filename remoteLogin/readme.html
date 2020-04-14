@@ -1,0 +1,493 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="readme_files/filelist.xml">
+<title>Remote Login API Overview</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;}
+h2
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<h1 style='margin-right:-.5in'>Remote Login API Overview</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>This document describes the
+simple remote login and permissions service available starting in LabKey server
+version 2.2.</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The remote login/permissions
+service allows cooperating websites to</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Use a designated LabKey server for login</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Attach permissions to their own resources based on permissions to
+containers (folders) on the labkey server.</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The remote login/permissions
+service has two styles of interaction</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Simple URL/XML based API which can be used by any language</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span class=GramE><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Java wrapper classes that make the API a little more convenient for
+people building webapps in java.</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span class=GramE><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>PHP wrapper classes that make the API a little more convenient for
+people building webapps in PHP.</span></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The remote login/permissions
+service supports the following operations</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Get a user email and opaque token from the LabKey server. This is
+accomplished via a web redirect and the LabKey server’s login <span
+class=GramE>api</span> will be shown if the user does not currently have a
+logged-in session active in the browser.</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span class=GramE><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Check permissions for a folder on the labkey server.</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Invalidate the token, so that it cannot be used for further permission
+checking.</p>
+
+<h1 style='margin-right:-.5in'>Base URL</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>A labkey server has a base URL
+that we use throughout this API description. This is of the form</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&lt;<span class=GramE>protocol</span>&gt;//&lt;server&gt;[:&lt;port&gt;]/[contextPath]</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'><span class=MsoPageNumber><span
+style='font-family:"Courier New"'>&nbsp;</span></span></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Such as</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'><a
+href="http://localhost:8080/labkey">http://localhost:8080/labkey</a></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>In the above example, the port is
+8080 and the contextpath is labkey. On some servers (such as labkey.org) there
+is no context path. This doc will use ${baseurl} to refer to this base URL. </p>
+
+<h1 style='margin-right:-.5in'>URL/XML API</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>There are 3 main actions supported
+by the Login controller</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<h2 style='margin-right:-.5in'>createToken.view</h2>
+
+<p class=MsoNormal style='margin-right:-.5in'>To ensure that a user is logged
+in and to get a token for further calls, a client must redirect the browser to
+the URL</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>${baseurl}/login/createToken.view?returnUrl=${url
+of your page}</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Where ${<span class=GramE>url</span>
+of your page} is a properly encoded url parameter for a page <i>in the client
+web application</i> where control will be returned. After the user is logged in
+(if necessary) the browser will be redirected back to &lt;<span class=GramE>url</span>
+of your page&gt; <b><i>with the following 2 extra parameters which your page
+will have to save somewhere </i></b><i>(usually session state)</i><b>.</b></p>
+
+<p class=MsoNormal style='margin-right:-.5in'><b>&nbsp;</b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span class=GramE><b>labkeyToken</b></span> – this is a hex string that
+your web application will pass into subsequent calls to check permissions.</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span class=GramE><b>labkeyEmail</b></span> – this is the email address
+used to log in. It is not required to be passed in further calls</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'><b>Example<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:-.5in'><span style='mso-bidi-font-weight:
+bold'>To create a token for the web page<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:-.5in'><span style='mso-bidi-font-weight:
+bold'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>http://localhost:8080/logintest/permissions.jsp</p>
+
+<p class=MsoNormal style='margin-right:-.5in'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>You would use the following URL</p>
+
+<h2 style='margin-right:-.5in'><span style='font-size:12.0pt;font-family:"Times New Roman";
+font-weight:normal;font-style:normal'>https://www.labkey.org/login/createToken.view?returnUrl=http%3A%2F%2Flocalhost%3A8080%2Flogintest%2Fpermissions.jsp<o:p></o:p></span></h2>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>After the login the browser would return to your page with
+additional parameters:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>http://localhost:8080/logintest/permissions.jsp?labkeyToken=7fcfabbe1e1f377ff7d2650f5427966e&amp;labkeyEmail=marki%40labkey.com</p>
+
+<h1 style='margin-right:-.5in'>verifyToken.view</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>This action is not intended to be
+used from the browser (though you certainly can do so for testing). This URL
+returns an XML document indicating what permissions are available for the
+logged in user on a particular folder. </p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Your web app will access this URL
+(Note that your firewall configuration must allow your web server to call out
+to the LabKey server) and parse the resulting page. The general form is</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>${baseurl}/login/${containerPath}/verifyToken.view?labkeyToken=${token}</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Where ${containerPath} is the
+path on the labkey server to the folder you want to check permisisons against
+and ${token} is the token sent back to your returnUrl from createToken.view.</p>
+
+<p class=MsoNormal style='margin-right:-.5in'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-right:-.5in'><b style='mso-bidi-font-weight:
+normal'>Example<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>To check permissions for the home
+folder on <a href="http://www.labkey.org/">www.labkey.org</a>, here’s what you’d
+request:</p>
+
+<p class=MsoNormal style='margin-right:-.5in'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>https://www.labkey.org/login/home/verifyToken.view?labkeyToken=7fcfabbe1e1f377ff7d2650f5427966e</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>An XML document is returned.
+There is currently no XML schema for the document, but it is of the form</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&lt;TokenAuthentication
+success="true" token="${token}" email="${email}" permissions="${permissions}"
+/&gt;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Where permissions is an integer
+with the following bits turned on for permissions to the folder.</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+READ: 0x00000001</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+INSERT: 0x00000002</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+UPDATE: 0x00000004</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ADMIN: 0x00008000</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>If the token is invalid the
+return will be of the form</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&lt;TokenAuthentication
+success="false" message="${message}"&gt;</p>
+
+<h1 style='margin-right:-.5in'>invalidateToken.view</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>This URL invalidates a token and
+optionally returns to another URL. It is used as follows</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>${baseurl}/login/createToken.view?labkeyToken=${token}&amp;returnUrl=${url
+of your page}</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Where ${token} is the token
+received from createToken.view and returnUrl is any page you would like to
+redirect back to. <span class=GramE>returnUrl</span> should be supplied when
+calling from a browser and should NOT be supplied when calling from a server. </p>
+
+<h1 style='margin-right:-.5in'>Java API</h1>
+
+<p class=MsoNormal style='margin-right:-.5in'>The Java API wraps the calls
+above with some convenient java classes that</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span class=GramE>store</span> state in web server session</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>properly encode parameters</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>parse XML files and decode permissions</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span class=GramE>cache</span> permissions </p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The Java API provides no new
+functionality over the URL/XML API</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>To use the Java API store the
+remoteLogin.jar in the WEB-INF/lib directory of your web application.&nbsp; The
+API provides two main classes:</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b>RemoteLogin</b> – contains a static method to return a
+RemoteLoginHelper instance for the current request.</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-.5in;margin-bottom:0in;
+margin-left:.25in;margin-bottom:.0001pt;text-indent:-.25in'><span class=GramE><span
+style='font-family:Symbol'>·</span><span style='font-size:7.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><b>RemoteLoginHelper – </b>Interface providing methods for calling back
+to the server.</span></p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Typically a protected resource in
+a client application will do something like this</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;
+RemoteLoginHelper rlogin = <span class=GramE>RemoteLogin.getHelper(</span>request,
+REMOTE_SERVER);</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp; <span
+class=GramE>if</span> (!rlogin.isLoginComplete())</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp; {</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>response.sendRedirect(</span>rlogin.getLoginRedirect());</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>return</span>;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp; }</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;
+Set&lt;RemoteLogin.Permission&gt; permissions = <span class=GramE>rlogin.getPermissions(</span>FOLDER_PATH);</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp; <span
+class=GramE>if</span> (permissions.contains(RemoteLogin.Permission.READ))</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//Show data</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp; <span
+class=GramE>else</span></p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//Permission denied</p>
+
+<p class=MsoPlainText style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The API is best described by the
+Javadoc and the accompanying sample web app.</p>
+
+<h2 style='margin-right:-.5in'><span class=GramE>https</span> and certificates</h2>
+
+<p class=MsoNormal style='margin-right:-.5in'>The Java API uses the standard
+Java URL class to connect to server and validates certificates from the server.
+To properly connect to an https server, clients <i>may</i> have to install
+certificates in their local certificate store using keytool.</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>Help can be found here:
+http://java.sun.com/javase/6/docs/technotes/tools/windows/keytool.html</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-right:-.5in'>The default certificate store shipped
+with Java JDK 1.6 supports more certificate authorities than previous jdk’s. It
+may be easier to run your web app under 1.6 than install a certificate on your
+client JDK. The labkey.org certificate is supported under JDK 1.6.</p>
+
+</div>
+
+</body>
+
+</html>

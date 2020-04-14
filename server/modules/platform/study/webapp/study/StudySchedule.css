@@ -1,0 +1,44 @@
+.x4-tip {
+    background-color: white;
+    border-width: 2px;
+}
+
+.study-schedule-container .x4-toolbar-default,
+.x4-column-header {
+    background-image: none;
+    background-color: transparent;
+}
+
+.study-schedule-container .x4-column-header-inner .x4-column-header-text {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* column hover */
+.study-schedule-container .x4-column-header-over,
+.study-schedule-container .x4-column-header-sort-ASC,
+.study-schedule-container .x4-column-header-sort-DESC {
+    background-image: none;
+    background-color: transparent;
+    border:  0 none;
+}
+
+.study-schedule-container td.type-column div {
+    text-align: center !important;
+}
+
+.unchecked, .checked {
+    height: 20px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 5px 0 4px 24px;
+    cursor: pointer;
+}
+
+.unchecked {
+    background: url("../_images/milestone_no.png") center no-repeat;
+}
+
+.checked {
+    background: url("../_images/milestone_yes.png") center no-repeat;
+}

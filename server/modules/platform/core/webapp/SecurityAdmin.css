@@ -1,0 +1,26 @@
+.pSite button, li.pSite, div.pSite {font-weight:bold;}
+.pGroup button, li.pGroup {font-weight:bold;}
+.pUser button, div.pUser {}
+.pUnassignable {font-style:italic;}
+
+span.closeicon {
+    background-position: 0 0 !important;
+    height: 15px !important; width: 15px !important;
+}
+
+table.userinfo tr {
+    line-height: 19px;
+}
+
+table.userinfo td {
+    padding-right: 5px;
+}
+
+p.userinfoHdr {
+    font-weight: bold;
+    margin: 6px 0px !important;
+}
+
+.themed-panel a {
+    color: black;
+}

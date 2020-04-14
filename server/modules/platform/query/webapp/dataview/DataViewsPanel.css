@@ -1,0 +1,178 @@
+/* Grid */
+.dvc .x4-grid-table {
+    border-bottom: 1px solid #C5C5C5;
+}
+
+.dvc .x4-grid-header-ct,
+.dvc .x4-toolbar-default,
+.dvc .x4-column-header,
+.dvc .x4-column-header-over,
+.dvc .x4-column-header-sort-ASC,
+.dvc .x4-column-header-sort-DESC {
+    background-image: none;
+    background-color: transparent;
+    border-bottom: none !important;
+}
+
+.dvc .x4-grid-cell-inner
+{
+    height: 25px;
+}
+
+.dvc .x4-tree-icon-leaf
+{
+    vertical-align: middle;
+}
+
+/* Specific to Data Views Panel */
+/* Border Layout */
+.dvc .x4-border-layout-ct {
+    background-color: transparent;
+}
+
+.dvc .x4-region-collapsed-placeholder {
+    display: none;
+    height : 0px !important;
+}
+
+.dvc .x4-panel .x4-grid-body {
+    background-color: transparent;
+}
+
+.dvc .x4-grid-cell-first,
+.dvc .x4-name-column-cell {
+    border-left: 1px solid #C5C5C5 !important;
+}
+
+.dvc .x4-grid-row .x4-grid-cell {
+    border-right: 1px solid #C5C5C5 !important;
+}
+
+.dvc .x4-grid-view {
+    border-bottom: 1px solid #C5C5C5;
+}
+
+.dvc td.type-column div {
+    text-align: center !important;
+}
+
+/* Tree Column */
+.dvc .dvcategory img.x4-tree-icon {
+    display: none;
+}
+
+.dvc .dvcategory div.x4-grid-cell-inner {
+    font: bold 12px 'Roboto',Verdana, Arial, Helvetica, sans serif;
+    border-bottom: 1px solid #154B76;
+}
+
+.dvc .dvcategory div.x4-grid-cell-inner span {
+    vertical-align: -3px;
+}
+
+.dvc .x4-grid-tree-node-leaf td {
+    padding-left: 0px !important;
+}
+
+.dataset-search .x4-form-text {
+    font-size: 17px;
+    padding-left: 6px;
+    border-color: #D9D9D9;
+    border-top-color: silver;
+    height: 25px;
+    line-height: 15px;
+}
+
+/* participant & group filter panel label */
+.lk-filter-panel-label:hover
+{
+    text-decoration: underline;
+}
+
+/* Ext4 Windows */
+.data-window,
+.data-window .x4-window-header-default-top
+{
+    border-color: #A9A9A9;
+    background-color: white;
+}
+
+.data-window .x4-window-body-default {
+    border-color:  transparent !important;
+}
+
+.data-window span.x4-window-header-text-default
+{
+    color: #333333;
+}
+
+/* Ext4 Forms */
+.data-window .x4-form-cb-label-after
+{
+    position: absolute;
+}
+
+/* Hover Tip */
+div.data-views-tip-panel
+{
+    box-shadow: rgb(220, 220, 220) 4px 5px 5px;
+}
+
+div.hide-tip {
+    display: none !important;
+}
+
+/* Thumbnails -- seen in hover tooltip, edit prop panel, and some report save dialogs */
+div.thumbnail
+{
+    margin-top: 5px;
+}
+
+div.thumbnail img,
+div.icon img
+{
+    max-width: 300px;
+    display: block;
+    vertical-align: middle;
+}
+
+/* Part of Browser.js -- migrate if necessary */
+.fbrowser .fbody {
+    background-color: #d3d3d3;
+}
+
+.fbrowser .x4-toolbar-default {
+    border-color: #b4b4b4;
+}
+
+.fbrowser .x4-grid-header-ct {
+    border-collapse: collapse;
+}
+
+.fbrowser .x4-grid-body {
+    border-collapse: collapse;
+    border-width: 0;
+}
+
+.fbrowser table.fb-details {
+    margin: 5px 40px;
+}
+
+.fbrowser table.fb-details th {
+    text-align: right;
+    color: #404040;
+}
+
+.fbrowser table.fb-details td {
+    padding-left: 5px;
+}
+
+.fbrowser .upload-files-panel .x4-panel-body {
+    border-top-width: 0 !important;
+}
+
+.dataview-icon {
+    vertical-align: 0;   /* reset alignment */
+    background-size: 16px 16px;
+    height: 16px;
+}

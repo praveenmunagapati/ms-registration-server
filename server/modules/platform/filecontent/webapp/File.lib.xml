@@ -1,0 +1,26 @@
+<libraries xmlns="http://labkey.org/clientLibrary/xml/">
+    <library compileInProductionMode="true">
+        <script path="File/data/webdav/Proxy.js"/>
+        <script path="File/data/webdav/URI.js"/>
+        <script path="File/data/webdav/Response.js"/>
+        <script path="File/data/Pipeline.js"/>
+        <script path="File/system/Abstract.js"/>
+        <script path="File/system/Webdav.js"/>
+        <script path="File/panel/Browser.js"/>
+        <script path="File/panel/Preview.js"/>
+        <script path="File/panel/Upload.js"/>
+        <script path="File/panel/Admin.js"/>
+        <script path="File/panel/Toolbar.js"/>
+        <script path="File/panel/FileProperties.js"/>
+        <script path="File/panel/Actions.js"/>
+        <script path="File/panel/EmailProps.js"/>
+        <script path="File/panel/EditCustomFileProps.js"/>
+        <script path="File/panel/ContextMenu.js"/>
+        <script path="File/util/IconUtil.js"/>
+        <script path="File/FileContent.css"/>
+    </library>
+    <dependencies>
+        <dependency path="Ext4ClientApi"/> <!-- Needed for EditCustomFileProps.js -->
+        <dependency path="internal-FileDrop"/>
+    </dependencies>
+</libraries>

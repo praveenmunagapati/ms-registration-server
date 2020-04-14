@@ -1,0 +1,43 @@
+
+.highlight {
+    background-color: #C0C0C0;
+}
+
+table.guideset-tbl {
+    width: 100%;
+}
+
+table.guideset-tbl td,
+div.guideset-no {
+    padding: 4px;
+}
+
+td.guideset-hdr {
+    width: 75px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.x-fieldset {
+    border: none;
+}
+
+.x-fieldset legend {
+    background-color: transparent;
+    border: none;
+    font: inherit;
+    font-weight: bold;
+    color: black;
+    margin: 8px 0;
+}
+
+div .guideset-numberfield {
+    margin: 2px 5px;
+    padding: 1px;
+}
+
+div.guideset-label {
+    padding: 3px;
+    font-weight: bold;
+    font-size: 13px;
+}

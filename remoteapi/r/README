@@ -1,0 +1,6 @@
+The Rlabkey sources and documentation have been moved to:
+https://github.com/LabKey/labkey-api-r
+
+This folder now only contains the minimum needed for running automated tests with a Subversion enlistment:
+- Pre-built packages in the "latest" folder
+- The "test" folder and contents

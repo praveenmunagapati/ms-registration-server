@@ -1,0 +1,2 @@
+project.tasks.jar.archiveBaseName.set('Specimen_tracking')
+project.tasks.jspJar.archiveBaseName.set('Specimen_tracking_jsp')

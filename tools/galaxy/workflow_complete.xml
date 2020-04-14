@@ -1,0 +1,11 @@
+<tool id="workflow_complete" name="Complete workflow">
+  <description>and signal LabKey</description>
+  <command>java -cp '${GALAXY_DATA_INDEX_DIR}/../tools/labkey' WorkflowComplete '$properties' '$matches'</command>
+  <inputs>
+    <param format="xml" name="properties" type="data" label="Properties file"/>
+    <param format="tabular" name="matches" type="data" label="Matches file"/>
+  </inputs>
+  <help>
+This tool copies the genotyping matches.txt file to the shared file system and signals LabKey Server to start importing the results.
+  </help>
+</tool>

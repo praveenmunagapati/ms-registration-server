@@ -1,0 +1,4 @@
+{table}
+Filename|Component|Version|Source|License|Purpose
+jxl-2.6.3.jar|ELISpot|2.6.3|{link:jexcelapi|http://www.jexcelapi.org/}|{link:LGPL|http://www.opensource.org/licenses/lgpl-license.php}|Java Excel library
+{table}

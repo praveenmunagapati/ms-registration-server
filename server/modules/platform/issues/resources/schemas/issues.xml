@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ * Copyright (c) 2004-2017 Fred Hutchinson Cancer Research Center
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<table tableName="Comments" tableDbType="TABLE">
+		<columns>
+            <column columnName="EntityId"/>
+			<column columnName="CommentId"/>
+			<column columnName="IssueId">
+				<columnTitle>Issue Id</columnTitle>
+				<inputType>select</inputType>
+				<inputLength>10</inputLength>
+				<nullable>false</nullable>
+				<isAutoInc>false</isAutoInc>
+				<isReadOnly>false</isReadOnly>
+				<isUserEditable>false</isUserEditable>
+				<fk>
+					<fkColumnName>IssueId</fkColumnName>
+					<fkTable>Issues</fkTable>
+				</fk>
+			</column>
+			<column columnName="CreatedBy"/>
+			<column columnName="Created">
+				<columnTitle>Created</columnTitle>
+				<inputType>text</inputType>
+				<inputLength>23</inputLength>
+				<nullable>false</nullable>
+				<isAutoInc>false</isAutoInc>
+				<isReadOnly>false</isReadOnly>
+				<isUserEditable>true</isUserEditable>
+			</column>
+			<column columnName="Comment">
+				<columnTitle>Comment</columnTitle>
+				<inputType>text</inputType>
+				<scale>1073741823</scale>
+				<inputLength>40</inputLength>
+				<isReadOnly>false</isReadOnly>
+				<isUserEditable>true</isUserEditable>
+			</column>
+		</columns>
+		<tableTitle>Comments</tableTitle>
+		<pkColumnName>Created,IssueId</pkColumnName>
+		<titleColumn>IssueId</titleColumn>
+	</table>
+	<table tableName="Issues" tableDbType="TABLE">
+        <description>Contains a row for each issue created in this folder.</description>
+		<columns>
+			<column columnName="_ts">
+				<columnTitle>_ts</columnTitle>
+				<inputType>text</inputType>
+				<inputLength>8</inputLength>
+				<isReadOnly>true</isReadOnly>
+			</column>
+			<column columnName="IssueId">
+				<columnTitle>Issue</columnTitle>
+				<inputType>text</inputType>
+				<displayWidth>50</displayWidth>
+				<inputLength>10</inputLength>
+				<nullable>false</nullable>
+				<isReadOnly>true</isReadOnly>
+				<isUserEditable>false</isUserEditable>
+                <url>org.labkey.issue.IssuesController$DetailsAction.class?issueId=${IssueId}</url>
+			</column>
+			<column columnName="Container">
+				<columnTitle>Container</columnTitle>
+				<datatype>entityid</datatype>
+				<nullable>true</nullable>
+				<isReadOnly>false</isReadOnly>
+				<fk>
+					<fkDbSchema>core</fkDbSchema>
+					<fkTable>Containers</fkTable>
+				</fk>
+			</column>
+			<column columnName="Duplicate">
+				<columnTitle>Duplicate</columnTitle>
+				<inputType>text</inputType>
+				<inputLength>10</inputLength>
+				<isReadOnly>false</isReadOnly>
+				<isUserEditable>true</isUserEditable>
+			</column>
+			<column columnName="EntityId">
+				<columnTitle>Entity Id</columnTitle>
+				<datatype>entityid</datatype>
+				<isReadOnly>true</isReadOnly>
+				<isHidden>true</isHidden>
+			</column>
+            <column columnName="LastIndexed">
+                <isReadOnly>true</isReadOnly>
+            </column>
+			<column columnName="IssueDefId">
+				<columnTitle>Issue Definition</columnTitle>
+				<isHidden>true</isHidden>
+				<fk>
+					<fkColumnName>RowId</fkColumnName>
+					<fkTable>IssueListDef</fkTable>
+				</fk>
+			</column>
+        </columns>
+		<tableTitle>Issues</tableTitle>
+		<pkColumnName>IssueId</pkColumnName>
+		<versionColumnName>_ts</versionColumnName>
+	</table>
+    <table tableName="EmailPrefs" tableDbType="TABLE">
+        <columns>
+            <column columnName="Container"/>
+            <column columnName="UserId"/>
+            <column columnName="EmailOption"/>
+        </columns>
+    </table>
+    <table tableName="RelatedIssues" tableDbType="TABLE">
+        <columns>
+            <column columnName="IssueId"/>
+            <column columnName="RelatedIssueId"/>
+        </columns>
+    </table>
+	<table tableName="IssueListDef" tableDbType="TABLE">
+		<columns>
+			<column columnName="RowId">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="Name">
+				<isHidden>true</isHidden>
+			</column>
+			<column columnName="Label"/>
+			<column columnName="Kind"/>
+			<column columnName="Container"/>
+			<column columnName="Created"/>
+			<column columnName="Modified"/>
+			<column columnName="CreatedBy"/>
+			<column columnName="ModifiedBy"/>
+		</columns>
+	</table>
+</tables>

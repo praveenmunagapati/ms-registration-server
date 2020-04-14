@@ -1,0 +1,24 @@
+<customView xmlns="http://labkey.org/data/xml/queryCustomView" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <column name="Scan" />
+        <column name="Charge" />
+        <column name="SpScore" />
+        <column name="DeltaCn" />
+        <column name="XCorr" />
+        <column name="SpRank" />
+        <column name="IonPercent" />
+        <column name="Mass" />
+        <column name="DeltaMass" />
+        <column name="PeptideProphet" />
+        <column name="Peptide" />
+        <column name="ProteinHits" />
+        <column name="SeqId/DatabaseSequenceName" />
+        <column name="SeqId/Mass" />
+        <column name="SeqId/Peptides" />
+        <column name="SeqId/UniquePeptides" />
+        <column name="SeqId/AACoverage" />
+        <column name="SeqId/BestName" />
+        <column name="SeqId/BestGeneName" />
+        <column name="SeqId/Description" />
+    </columns>
+</customView>

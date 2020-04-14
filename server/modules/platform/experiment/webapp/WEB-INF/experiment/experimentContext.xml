@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="experimentPipelineRegistry" class="org.labkey.api.pipeline.TaskPipelineRegistrar">
+        <property name="factoryImpls">
+            <list>
+                <bean class="org.labkey.experiment.pipeline.XarGeneratorTask$Factory"/>
+                <bean class="org.labkey.experiment.pipeline.MoveRunsTaskFactory">
+                    <property name="location" value="webserver-high-priority" />
+                </bean>
+            </list>
+        </property>
+
+        <property name="pipelines">
+            <list>
+                <!-- Move runs job pipeline -->
+                <bean class="org.labkey.api.pipeline.TaskPipelineSettings">
+                    <constructor-arg type="java.lang.Class" value="org.labkey.experiment.pipeline.MoveRunsPipelineJob"/>
+                    <property name="taskProgressionSpec">
+                        <list>
+                            <bean id="moveRuns" class="org.labkey.api.pipeline.TaskId">
+                                <constructor-arg><value type="java.lang.Class">org.labkey.experiment.pipeline.MoveRunsTask</value></constructor-arg>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,296 @@
+.generic-chart-panel .x4-mask,
+.time-chart-panel .x4-mask {
+    opacity: .75;
+    background: #ffffff;
+}
+
+.chart-warning {
+    background-color: #ffe5e5;
+}
+.chart-warning span, .chart-warning div {
+    color: #d83f48;
+    font-weight: bold;
+}
+
+.chart-wizard-dialog {
+    padding: 0;
+    border-color: #b4b4b4;
+    background-color: #eeeeee;
+    box-shadow: none;
+}
+
+.chart-wizard-dialog .x4-window-body-default {
+    border-color:  transparent !important;
+}
+
+.chart-wizard-panel {
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+.chart-wizard-panel div, .chart-wizard-panel span {
+    color: #404040;
+}
+
+.chart-wizard-panel .labkey-error {
+    color: #FF0000;
+}
+
+.chart-wizard-panel .x4-border-layout-ct {
+    background-color: transparent;
+}
+
+.chart-wizard-panel .region-panel {
+    background-color: #eeeeee;
+    margin: 10px;
+}
+
+.chart-wizard-panel .title-panel div {
+    background-color: #eeeeee;
+    color: #707070;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.chart-type-panel .query-columns .x4-grid-cell {
+    cursor: pointer;
+}
+
+.chart-type-panel .query-combo-mask {
+    height: 22px;
+    width: 100%;
+    border: none;
+}
+
+.chart-type-panel .mapping-panel {
+    border: solid #c0c0c0 1px;
+}
+
+.chart-type-panel .mapping-panel .mapping-query-col {
+    padding: 15px 0 15px 15px;
+}
+.chart-type-panel .mapping-panel .field-selections {
+    padding: 15px;
+}
+.chart-type-panel .mapping-panel .mapping-query-col .description {
+    padding-bottom: 15px;
+}
+.chart-type-panel .field-selections .type-title {
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.chart-type-panel .field-selections .type-footer {
+    font-size: 12px;
+}
+.chart-type-panel .field-selections .missing-required .field-title {
+    color: red;
+}
+.chart-type-panel .field-selections .field-area {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #eeeeee;
+    border: dashed transparent 3px;
+}
+.chart-type-panel .field-selections .field-area-drop-text {
+    position: absolute;
+    top: 33px;
+    left: 79px;
+    color: #c0c0c0;
+    cursor: default;
+}
+.chart-type-panel .field-selections .drop-target .field-area {
+    border-color: #c0c0c0;
+}
+.chart-type-panel .field-selections .drop-target-over .field-area {
+    border-color: #41c49f;
+}
+.chart-type-panel .field-selections .drop-target-over .field-selection-display {
+    opacity: 0.5;
+}
+.chart-type-field-selection-drag {
+    width: 300px;
+}
+.chart-type-panel .field-selections .field-selection-display,
+.chart-type-field-selection-drag {
+    background-color: #41c49f;
+    margin-top: 4px;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 8px;
+    border: solid transparent 1px;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-text,
+.chart-type-field-selection-drag {
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-subtext {
+    display: none; /*only show the active/selected one*/
+    color: #707070;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-subtext .unselected {
+    opacity: 0.3;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-subtext .unselected:hover,
+.chart-type-panel .field-selections .field-selection-display .field-selection-subtext .x4-form-item-label {
+    opacity: 1;
+    color: #404040;
+}
+.chart-type-panel .field-selections .field-selection-display.x4-item-selected .field-selection-subtext,
+.chart-type-panel .field-selections .field-selection-display .always-show {
+    display: block;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-remove {
+    display: none;
+    position: absolute;
+    right: 17px;
+    color: #707070;
+}
+.chart-type-panel .field-selections .field-selection-display.x4-item-selected,
+.chart-type-panel .field-selections .field-selection-display:hover {
+    border-color: #707070;
+    cursor: default;
+}
+.chart-type-panel .field-selections .field-selection-display:hover .field-selection-remove {
+    display: inline-block;
+}
+.chart-type-panel .field-selections .field-selection-display .field-selection-remove:hover {
+    color: #404040;
+}
+.chart-type-panel .field-selections .alternate-field-selection {
+    background-color: #eeeeee;
+}
+.chart-type-panel .field-selections .alternate-field-selection .x4-form-item-label,
+.chart-type-panel .field-selections .alternate-field-selection .x4-form-cb-label,
+.chart-type-panel .x4-form-text {
+    font-size: 12px;
+    color: #404040;
+}
+
+.chart-type-panel .types-panel {
+    background-color: #ffffff;
+    border: solid #c0c0c0 1px;
+}
+
+.chart-type-panel .types-panel .item {
+    margin: 10px;
+    padding: 5px;
+    border: solid transparent 2px;
+}
+.chart-type-panel .types-panel .item div {
+    font-weight: bold;
+    cursor: default;
+}
+.chart-type-panel .types-panel .item-disabled img {
+    opacity: 0.2;
+}
+.chart-type-panel .types-panel .item-disabled div {
+    opacity: 0.5;
+}
+.chart-type-panel .types-panel .x4-item-selected div {
+    color: #41c49f;
+}
+.chart-type-panel .types-panel .item-active:hover {
+    border: solid #41c49f 2px;
+}
+
+.chart-layout-panel .navigation-panel .item {
+    padding: 2px 15px 8px 0;
+    color: #707070;
+}
+.chart-layout-panel .navigation-panel .item-over {
+    color: #404040;
+    font-weight: bold;
+    cursor: pointer;
+}
+.chart-layout-panel .navigation-panel .item-selected {
+    color: #41c49f;
+    font-weight: bold;
+    cursor: default;
+}
+
+.chart-layout-panel .option-label {
+    color: #000000;
+}
+
+.chart-layout-panel .revert-label-button {
+    padding: 2px;
+    border: solid 1px #a9a9a9;
+}
+
+.chart-wizard-dialog .revert-label-button:hover {
+    background: #a9a9a9;
+}
+
+.chart-layout-panel .revert-label-button .x4-btn-icon-el {
+    font-size: 14px;
+    padding-top: 1px;
+    padding-left: 2px;
+}
+
+.chart-layout-panel .y-measure-form .y-measure-label {
+    font-weight: bold;
+}
+.chart-layout-panel .y-measure-form:first-of-type .y-measure-label {
+    padding-top: 15px;
+}
+.chart-layout-panel .y-measure-form:not(:first-of-type) .y-measure-label {
+    padding-top: 30px;
+}
+
+.chart-filter-panel .x4-grid-row-alt .x4-grid-td {
+    background-color: transparent;
+}
+
+.chart-filter-panel .x4-column-header-text {
+    padding-top: 1px;
+    font-weight: bold;
+}
+
+.chart-filter-panel .x4-column-header-over {
+    cursor: default !important;
+}
+
+.chart-filter-panel .query-filter ul {
+    padding-left: 25px;
+}
+
+.chart-filter-panel .query-filter ul li {
+    padding: 5px 0;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.chart-render-div .export-icon {
+    display: none;
+    opacity: 0.4;
+    font-size: 24px;
+    color: #707070;
+    padding-top: 10px;
+    position: absolute;
+}
+.chart-render-div:hover .export-icon {
+    display: block;
+}
+.chart-render-div .export-icon:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.chart-render-div:not(:first-of-type) {
+    border-top: solid #b4b4b4 1px;
+}
+
+.save-form-panel {
+    padding: 10px;
+    background-color: #ffffff !important;
+    border: solid 1px #b4b4b4;
+}
+
+div.thumbnail img {
+    max-width: 300px;
+    display: block;
+}

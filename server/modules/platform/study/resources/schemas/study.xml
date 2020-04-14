@@ -1,0 +1,2140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Copyright (c) 2009-2019 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ../../../api/schemas/tableInfo.xsd"
+        xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <table tableName="Study" tableDbType="TABLE">
+    <description>Contains one row per study, describing basic and extended study properties.</description>
+    <cacheSize>0</cacheSize><!-- Unlimited, since size scales with Container count -->
+    <columns>
+      <column columnName="Label">
+        <description>The display label of the study.</description>
+      </column>
+      <column columnName="Container">
+        <description>The container for the study.</description>
+      </column>
+      <column columnName="entityid">
+        <description>A unique string ID for the study.</description>
+      </column>
+      <column columnName="TimepointType">
+        <description>Whether the study uses visits, relative dates, or continuous dates.  TimepointType may be VISIT, DATE, or CONTINUOUS.</description>
+      </column>
+      <column columnName="StartDate">
+        <description>The start date of the study.  Note that subjects can also have individual start dates.</description>
+      </column>
+      <column columnName="EndDate">
+        <description>The end date of the study.</description>
+      </column>
+      <column columnName="DefaultTimepointDuration">
+        <description>The number of days an automatically created timepoint should span.</description>
+      </column>
+      <column columnName="SecurityType">
+        <description>The security type for the study. Indicates how dataset read/write access is determined.</description>
+      </column>
+      <column columnName="participantcohortdatasetid">
+        <description>The ID of the study dataset that contains data for automatic subject cohort assignment.</description>
+      </column>
+      <column columnName="participantcohortproperty">
+        <description>The name of the property/field in the subject cohort dataset that contains the subject's cohort name.</description>
+      </column>
+      <column columnName="manualCohortAssignment">
+        <description>Whether the study uses manual (versus automatic) cohort assignment.</description>
+      </column>
+      <column columnName="LSID"/>
+      <column columnName="BlankQCStatePublic">
+        <description>Whether data without an assigned QC state should be considered public.  Applies only in studies where QC states are configured.</description>
+      </column>
+      <column columnName="DefaultPipelineQCState">
+        <description>The default quality control state to be applied to data imported via the pipeline.</description>
+      </column>
+      <column columnName="DefaultAssayQCState">
+        <description>The default quality control state to be applied to assay data copied to the study.</description>
+      </column>
+      <column columnName="DefaultDirectEntryQCState">
+        <description>The default quality control state to be applied to data manually edited within the study.</description>
+      </column>
+      <column columnName="ShowPrivateDataByDefault">
+        <description>Whether private data (as indicated by the data's quality control state) is visible by default.</description>
+      </column>
+      <column columnName="AllowReload">
+        <description>Whether the study can be reloaded from disk-based files.</description>
+      </column>
+      <column columnName="ReloadInterval">
+        <description>How frequently automatic reloads of the study should take place.</description>
+      </column>
+      <column columnName="LastReload">
+        <description>The timestamp of the most recent study reload.</description>
+      </column>
+      <column columnName="ReloadUser">
+        <description>The user who initiated automatic reload.</description>
+      </column>
+      <column columnName="AdvancedCohorts">
+        <description>Whether advanced cohort assignment is enabled.  Advanced cohort support allows subjects to change cohorts over time.</description>
+      </column>
+      <column columnName="ParticipantCommentDatasetId">
+        <description>The ID of the study dataset that contains data for subject-level comments.</description>
+      </column>
+      <column columnName="ParticipantCommentProperty">
+        <description>The default property/field within the Subject Comment dataset that should be displayed in specimen and dataset views.</description>
+      </column>
+      <column columnName="ParticipantVisitCommentDatasetId">
+        <description>The ID of the study dataset that contains data for subject/visit-level comments</description>
+      </column>
+      <column columnName="ParticipantVisitCommentProperty">
+        <description>The default property/field within the Subject/Visit Comment dataset that should be displayed in specimen and dataset views.</description>
+      </column>
+      <column columnName="SubjectNounSingular">
+        <description>The singular noun used to identify subjects.  Examples include "Participant", "Mouse", or "Yeast".</description>
+      </column>
+      <column columnName="SubjectNounPlural">
+        <description>The plural noun used to identify subjects.  Examples include "Participants", "Mice", or "Yeasts".</description>
+      </column>
+      <column columnName="SubjectColumnName">
+        <description>The column header for subject IDs.  Examples include "ParticipantId", "MouseId", or "YeastId".</description>
+      </column>
+      <column columnName="Description">
+        <description>The description of the study to show on the Overview tab. Content will be rendered using the selected description Render Type.</description>
+      </column>
+      <column columnName="DescriptionRendererType">
+        <description>The render type format for the description when displayed on the Overview tab.</description>
+      </column>
+      <column columnName="ProtocolDocumentEntityId">
+        <description>The entity id used to generate the attachment parent of the study protocol document.</description>
+      </column>
+      <column columnName="SourceStudyContainerId">
+        <description>The entity id of the study container from which this study was derived.  Will be null if a study is not an ancillary study.</description>
+      </column>
+      <column columnName="Investigator">
+        <description>The investigator of the study.</description>
+      </column>
+      <column columnName="Grant">
+        <description>The grant for the study.</description>
+      </column>
+      <column columnName="Species">
+        <description>The species of the subjects in the study.</description>
+      </column>
+      <column columnName="AlternateIdPrefix">
+        <description>Optional prefix to use when generating random alternate participant IDs.</description>
+      </column>
+      <column columnName="AlternateIdDigits">
+        <description>Number of digits to use when generating random alternate participant IDs.</description>
+      </column>
+      <column columnName="StudySnapshot">
+        <description>RowId of the row in StudySnapshot that contains the settings used when creating this snapshot. Null if the study is not a snapshot.</description>
+      </column>
+      <column columnName="LastSpecimenLoad">
+        <description>Timestamp of the last specimen load.</description>
+      </column>
+      <column columnName="AllowReqLocRepository">
+        <description>Whether to allow Repository locations to be Requesting Locations.</description>
+      </column>
+      <column columnName="AllowReqLocClinic">
+        <description>Whether to allow Clinic locations to be Requesting Locations.</description>
+      </column>
+      <column columnName="AllowReqLocSal">
+        <description>Whether to allow Site Affiliated Lab locations to be Requesting Locations.</description>
+      </column>
+      <column columnName="AllowReqLocEndpoint">
+        <description>Whether to allow Endpoint Lab locations to be Requesting Locations.</description>
+      </column>
+      <column columnName="ParticipantAliasDatasetId">
+        <description>Name of the dataset that contains participant alias data, if any.</description>
+      </column>
+      <column columnName="ParticipantAliasSourceProperty">
+        <description>Name of the column in the selected participant alias dataset that contains the source value.</description>
+      </column>
+      <column columnName="ParticipantAliasProperty">
+        <description>Name of the column in the selected participant alias dataset that contains the alias value.</description>
+      </column>
+      <column columnName="AssayPlan">
+        <description>The assay plan for the study.</description>
+      </column>
+      <column columnName="ShareDatasetDefinitions">
+      </column>
+      <column columnName="ShareVisitDefinitions">
+      </column>
+      <column columnName="ValidateQueriesAfterImport">
+        <description>Flag to perform query validation after import.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="Site" tableDbType="NOT_IN_DB">
+    <description>Contains one row per study-affiliated location.  Locations can include labs, clinics, and repositories.</description>
+    <titleColumn>Label</titleColumn>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique identifier for each location.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="ExternalId">
+        <description>The external identifier for each location, if imported from an external data source.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="LdmsLabCode">
+        <description>The unique LDMS identifier assigned to each location, if imported from an LDMS system.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="LabwareLabCode">
+        <description>The unique Labware identifier assigned to each location, if imported from a Labware system.</description>
+        <datatype>Varchar</datatype>
+        <scale>20</scale>
+      </column>
+      <column columnName="LabUploadCode">
+        <description>The upload code for each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>10</scale>
+      </column>
+      <column columnName="Sal">
+        <description>Whether each location is a site-affiliated laboratory.</description>
+        <datatype>boolean</datatype>
+      </column>
+      <column columnName="Repository">
+        <description>Whether each location is a repository.</description>
+        <datatype>boolean</datatype>
+      </column>
+      <column columnName="Endpoint">
+        <description>Whether each location is an endpoint laboratory.</description>
+        <datatype>boolean</datatype>
+      </column>
+      <column columnName="Clinic">
+        <description>Whether each location is a clinic.</description>
+        <datatype>boolean</datatype>
+      </column>
+      <column columnName="Label">
+        <description>The long/friendly name of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>200</scale>
+      </column>
+      <column columnName="Description">
+        <description>A short description of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>500</scale>
+      </column>
+      <column columnName="StreetAddress">
+        <description>The street address of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>200</scale>
+      </column>
+      <column columnName="City">
+        <description>The city or town of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>200</scale>
+      </column>
+      <column columnName="GoverningDistrict">
+        <description>The governing district (i.e. state, province, federal district) of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>200</scale>
+      </column>
+      <column columnName="Country">
+        <description>The country of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>200</scale>
+      </column>
+      <column columnName="PostalArea">
+        <description>The postal area code (i.e. zip, postcode) of each location.</description>
+        <datatype>Varchar</datatype>
+        <scale>50</scale>
+      </column>
+      <column columnName="Container">
+        <isKeyField>true</isKeyField>
+      </column>
+       <column columnName="EntityId">
+         <description>A unique string identifier for each location.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="VisitAliases" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="Name"/>
+      <column columnName="SequenceNum"/>
+    </columns>
+  </table>
+  <table tableName="Visit" tableDbType="TABLE">
+    <description>Contains one row per defined visit in a study.</description>
+    <columns>
+      <column columnName="TypeCode">
+        <description>A string type code for each visit.</description>
+      </column>
+      <column columnName="Label">
+        <description>The long/friendly name of each visit.</description>
+        <columnTitle>Visit Label</columnTitle>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="DisplayOrder">
+        <description>An integer value used to sort visits in display order.</description>
+      </column>
+      <column columnName="ShowByDefault">
+        <description>Whether each visit should be displayed by default in study views and queries.</description>
+      </column>
+      <column columnName="VisitDateDatasetId">
+        <description>The ID of the study dataset that maps from study dates to study visit IDs.</description>
+      </column>
+      <column columnName="rowid">
+        <description>The unique integer row ID of each visit.</description>
+      </column>
+      <column columnName="SequenceNumMax">
+        <description>The maximum sequence number associated with each visit.</description>
+      </column>
+      <column columnName="SequenceNumMin">
+        <description>The minimum sequence number associated with each visit.</description>
+      </column>
+      <column columnName="ProtocolDay">
+        <description>The expected day for this visit according to the protocol, used for study alignment.</description>
+      </column>
+      <column columnName="cohortid">
+        <description>The ID of each visit's cohort, if it is cohort specific.</description>
+      </column>
+      <column columnName="ChronologicalOrder">
+        <description>An integer value used to sort visits chronologically.</description>
+      </column>
+      <column columnName="sequencenumhandling"/>
+      <column columnName="Description">
+        <description>A short description of the visit.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="VisitMap" tableDbType="TABLE">
+    <columns>
+      <column columnName="Container"/>
+      <column columnName="DataSetId">
+        <propertyURI>http://cpas.labkey.com/Study#DatasetId</propertyURI>
+      </column>
+      <column columnName="Required"/>
+      <column columnName="visitrowid"/>
+    </columns>
+  </table>
+  <table tableName="VisitTagMap" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="VisitId">
+        <description>The rowId of the visit.</description>
+      </column>
+      <column columnName="VisitTag">
+        <description>The name of the visit tag.</description>
+      </column>
+      <column columnName="CohortId">
+        <description>The ID of the cohort, if the visit/tag combination is cohort specific.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="DataSet" tableDbType="TABLE">
+    <description>Contains one row of metadata per study dataset.</description>
+    <columns>
+      <column columnName="Container"/>
+      <column columnName="DataSetId">
+        <propertyURI>http://cpas.labkey.com/Study#DatasetId</propertyURI>
+      </column>
+      <column columnName="TypeURI">
+        <description>A URI/LSID uniquely identifying each dataset's type.</description>
+      </column>
+      <column columnName="Label">
+        <description>The label to be presented to users for each dataset.</description>
+      </column>
+      <column columnName="CategoryId">
+        <description>The category of each dataset.</description>
+        <fk>
+          <fkColumnName>RowId</fkColumnName>
+          <fkTable>ViewCategory</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Type">
+        <description>Describes the type of the dataset, defaults to 'standard'.</description>
+      </column>
+      <column columnName="DisplayOrder">
+        <description>The display order of each dataset.</description>
+      </column>
+      <column columnName="ShowByDefault">
+        <description>Whether each dataset should be displayed by default in study queries.</description>
+      </column>
+      <column columnName="EntityId">
+        <description>A unique string identifier for each dataset.</description>
+      </column>
+      <column columnName="VisitDatePropertyName">
+        <description>The name of the property/field identifying the visit date in each dataset.</description>
+      </column>
+      <column columnName="KeyPropertyName">
+        <description>The name of the property/field identifying the additional key column of each dataset.</description>
+      </column>
+      <column columnName="KeyManagementType">
+        <description>Whether the additional key column of each dataset is managed by the server (either as RowId or GUID/EntityId, versus provided during import), or is None.</description>
+      </column>
+      <column columnName="Name">
+        <description>The name of each dataset.</description>
+      </column>
+      <column columnName="Description">
+        <description>The description of each dataset.</description>
+      </column>
+      <column columnName="DemographicData">
+        <description>Whether each dataset contains demographic data, which is keyed only on Subject ID (versus non-demographic data keyed on Subject ID and visit).</description>
+      </column>
+      <column columnName="cohortid">
+        <description>The ID of each dataset's cohort, if it is cohort specific.</description>
+      </column>
+      <column columnName="ProtocolId">
+        <description>The unique ID of the assay design associated with each dataset, if the data is assay-associated.</description>
+      </column>
+      <column columnName="Modified">
+        <description>The timestamp of the last modification of this dataset.</description>
+        <formatString>DateTime</formatString>
+      </column>
+      <column columnName="Tag">
+        <description>An additional field to provide flexible categorization of data</description>
+      </column>
+      <column columnName="DataSharing">
+        <description>Controls sharing of dataset rows across folders: NONE,ALL,PTID</description>
+      </column>
+      <column columnName="UseTimeKeyField">
+        <description>Whether to use the time portion of the date field as a key field</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SampleRequest" tableDbType="TABLE">
+    <description>Contains one row per specimen request.</description>
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="CreatedBy">
+        <description>The user who created each request.</description>
+        <datatype>int</datatype>
+        <columnTitle>Created By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <fk>
+          <fkColumnName>UserId</fkColumnName>
+          <fkTable>Users</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Created">
+        <description>The timestamp of request creation.</description>
+        <columnTitle>Created</columnTitle>
+        <inputType>text</inputType>
+        <formatString>DateTime</formatString>
+        <inputLength>23</inputLength>
+        <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="ModifiedBy">
+        <description>The user who last modified each specimen request.</description>
+        <datatype>int</datatype>
+        <columnTitle>Modified By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <fk>
+          <fkColumnName>UserId</fkColumnName>
+          <fkTable>Users</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Modified">
+       <description>The timestamp of the last modification of each specimen request.</description>
+        <columnTitle>Last Modified</columnTitle>
+        <inputType>text</inputType>
+        <formatString>DateTime</formatString>
+        <inputLength>23</inputLength>
+        <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="StatusId">
+        <description>The ID of the current status of each request.</description>
+        <columnTitle>Status</columnTitle>
+      </column>
+      <column columnName="Comments">
+        <description>All comments associated with each request.  These comments include all initial values from the new request form.</description>
+      </column>
+      <column columnName="DestinationSiteId">
+        <description>The ID of the selected destination location for each request.</description>
+      </column>
+      <column columnName="_ts"/>
+      <column columnName="Hidden">
+        <description>Whether each request is for system use only.</description>
+      </column>
+      <column columnName="EntityId">
+        <description>A unique string identifier for each request.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SampleRequestEvent" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="CreatedBy">
+        <datatype>int</datatype>
+        <columnTitle>User</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <fk>
+          <fkColumnName>UserId</fkColumnName>
+          <fkTable>Users</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Created">
+        <columnTitle>Created</columnTitle>
+        <inputType>text</inputType>
+        <formatString>DateTime</formatString>
+        <inputLength>23</inputLength>
+        <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="EntityId"/>
+      <column columnName="EntryType"/>
+      <column columnName="RequestId"/>
+      <column columnName="Container"/>
+      <column columnName="Comments"/>
+      <column columnName="RequirementId"/>
+    </columns>
+  </table>
+  <table tableName="Participant" tableDbType="TABLE">
+    <description>Contains one row per subject.</description>
+    <columns>
+      <column columnName="Container"/>
+      <column columnName="ParticipantId">
+        <description>Subject identifier</description>
+        <propertyURI>http://cpas.labkey.com/Study#ParticipantId</propertyURI>
+      </column>
+      <column columnName="EnrollmentSiteId">
+        <description>The enrollment location of each subject.</description>
+      </column>
+      <column columnName="CurrentSiteId">
+        <description>The current location of each subject.</description>
+      </column>
+      <column columnName="StartDate">
+        <description>The start date for each subject.</description>
+      </column>
+      <column columnName="CurrentCohortId">
+        <description>The current cohort assignment of each subject.  For studies with advanced cohort support enabled, this corresponds to the cohort assignment from the last chronological visit.</description>
+      </column>
+      <column columnName="InitialCohortId">
+        <description>The initial cohort assignment of each subject.  For studies with advanced cohort support enabled, this corresponds to the cohort assignment from the first chronological visit.  For studies without advanced cohort support, this will be equal to the current cohort assignment.</description>
+      </column>
+      <column columnName="DateOffset">
+        <description>A randomly generated date offset for this participant. This can be used to shift each participant's date values when publishing a study.</description>
+      </column>
+      <column columnName="AlternateId">
+        <description>A randomly generated alternate participant ID. This can be used in place of internal particiapnt IDs when publishing a study.</description>
+      </column>
+      <column columnName="LastIndexed"/>
+      <column columnName="Modified"/>
+    </columns>
+    <importTemplates>
+      <template label="Export Participant Transforms" url="/study/exportParticipantTransforms.view"/>
+    </importTemplates>
+  </table>
+  <table tableName="SampleRequestActor" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="SortOrder"/>
+      <column columnName="Label"/>
+      <column columnName="PerSite"/>
+    </columns>
+  </table>
+  <table tableName="SampleRequestRequirement" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="RequestId"/>
+      <column columnName="ActorId"/>
+      <column columnName="SiteId"/>
+      <column columnName="Description"/>
+      <column columnName="Complete"/>
+      <column columnName="OwnerEntityId"/>
+    </columns>
+  </table>
+  <table tableName="SampleRequestStatus" tableDbType="TABLE">
+    <description>Contains one row per possible sample request status.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of each status.</description>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="SortOrder">
+        <description>The sort order of each status, when displayed in drop-downs in the UI.</description>
+      </column>
+      <column columnName="Label">
+        <description>The label of each status.</description>
+      </column>
+      <column columnName="FinalState">
+        <description>Whether each status is a final state.  Final states indicate that no further processing is expected.</description>
+      </column>
+      <column columnName="SpecimensLocked">
+        <description>Whether specimens in requests in each status are locked.  Locked specimens cannot be requested by other users.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="studydatatemplate" tableDbType="NOT_IN_DB">
+    <columns>
+      <column columnName="container">
+          <datatype>Varchar</datatype>
+      </column>
+      <column columnName="ParticipantSequenceNum">
+        <description>A string value uniquely identifying the subject/visit combination for each dataset row.</description>
+          <propertyURI>http://cpas.labkey.com/Study#ParticipantSequenceNum</propertyURI>
+          <datatype>Varchar</datatype>
+          <nullable>false</nullable>
+      </column>
+      <column columnName="participantid">
+        <columnTitle>Participant ID</columnTitle>
+        <description>Subject identifier</description>
+        <propertyURI>http://cpas.labkey.com/Study#ParticipantId</propertyURI>
+        <datatype>Varchar</datatype>
+        <nullable>false</nullable>
+        <importAliases>
+            <importAlias>ptid</importAlias>
+        </importAliases>
+      </column>
+      <column columnName="datasetid">
+        <columnTitle>Dataset ID</columnTitle>
+        <propertyURI>http://cpas.labkey.com/Study#DatasetId</propertyURI>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="lsid">
+          <propertyURI>http://cpas.labkey.com/Study#LSID</propertyURI>
+          <datatype>Varchar</datatype>
+          <nullable>false</nullable>
+      </column>
+      <column columnName="dsrowid">
+        <columnTitle>DSRowId</columnTitle>
+        <propertyURI>http://cpas.labkey.com/Study#DSRowId</propertyURI>
+        <shownInInsertView>false</shownInInsertView>
+        <shownInUpdateView>false</shownInUpdateView>
+        <shownInDetailsView>false</shownInDetailsView>
+        <datatype>numeric</datatype>
+        <nullable>false</nullable>
+      </column>
+      <column columnName="sourcelsid">
+        <columnTitle>Source Lsid</columnTitle>
+        <propertyURI>http://cpas.labkey.com/Study#SourceLSID</propertyURI>
+        <shownInInsertView>false</shownInInsertView>
+        <shownInUpdateView>false</shownInUpdateView>
+        <shownInDetailsView>false</shownInDetailsView>
+        <datatype>Varchar</datatype>
+      </column>
+      <column columnName="created">
+        <columnTitle>Created</columnTitle>
+        <description>Date record/form was created</description>
+        <propertyURI>http://cpas.labkey.com/Study#Created</propertyURI>
+        <shownInInsertView>false</shownInInsertView>
+        <shownInUpdateView>false</shownInUpdateView>
+        <datatype>Date</datatype>
+        <importAliases>
+          <importAlias>dfcreate</importAlias>
+        </importAliases>
+      </column>
+        <column columnName="CreatedBy">
+            <propertyURI>http://cpas.labkey.com/Study#CreatedBy</propertyURI>
+            <fk>
+              <fkColumnName>UserId</fkColumnName>
+              <fkTable>Users</fkTable>
+              <fkDbSchema>core</fkDbSchema>
+            </fk>
+            <datatype>int</datatype>
+        </column>
+      <column columnName="modified">
+        <columnTitle>Modified</columnTitle>
+        <description>Last time record/form was modified</description>
+        <propertyURI>http://cpas.labkey.com/Study#Modified</propertyURI>
+        <shownInInsertView>false</shownInInsertView>
+        <shownInUpdateView>false</shownInUpdateView>
+        <datatype>Date</datatype>
+        <importAliases>
+          <importAlias>dfmodify</importAlias>
+        </importAliases>
+      </column>
+      <column columnName="ModifiedBy">
+          <propertyURI>http://cpas.labkey.com/Study#ModifiedBy</propertyURI>
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkTable>Users</fkTable>
+            <fkDbSchema>core</fkDbSchema>
+          </fk>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="SequenceNum">
+        <propertyURI>http://cpas.labkey.com/Study#SequenceNum</propertyURI>
+        <nullable>false</nullable>
+        <datatype>numeric</datatype>
+        <importAliases>
+            <importAlias>visit</importAlias>
+            <importAlias>visitid</importAlias>
+        </importAliases>
+      </column>
+        <!-- the actual column name is Date, should migrate this -->
+      <column columnName="_VisitDate">
+        <propertyURI>http://cpas.labkey.com/Study#VisitDate</propertyURI>
+        <datatype>date</datatype>
+      </column>
+      <column columnName="Date">
+        <datatype>date</datatype>
+      </column>
+      <column columnName="VisitDate">
+        <propertyURI>http://cpas.labkey.com/Study#VisitDate</propertyURI>
+        <datatype>date</datatype>
+        <importAliases>
+            <importAlias>date</importAlias>
+        </importAliases>
+      </column>
+      <column columnName="_key">
+        <propertyURI>http://cpas.labkey.com/Study#_Key</propertyURI>
+        <datatype>Varchar</datatype>
+        <isHidden>true</isHidden>
+      </column>
+      <column columnName="QCState">
+        <columnTitle>QC State</columnTitle>
+        <propertyURI>http://cpas.labkey.com/Study#QCState</propertyURI>
+        <fk>
+          <fkColumnName>RowId</fkColumnName>
+          <fkTable>QCState</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+        <datatype>int</datatype>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SampleRequestSpecimen" tableDbType="TABLE">
+    <description>Contains one row per specimen request/vial combination, used for mapping vials to requests.</description>
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="SampleRequestId">
+        <description>The ID of the specimen request.</description>
+      </column>
+      <column columnName="specimenglobaluniqueid">
+        <description>The global unique ID of the vial.</description>
+      </column>
+      <column columnName="orphaned">
+        <description>Whether the vial identified in each mapping has been removed from the specimen/vial tables.</description>
+      </column>
+    </columns>
+  </table>
+    <table tableName="Vial" tableDbType="NOT_IN_DB">
+      <description>One row per vial in the specimen tracking system.</description>
+      <columns>
+        <column columnName="RowId"/>
+        <column columnName="SpecimenHash">
+          <description>A string value that uniquely identifies the specimen/draw-level properties of the vial, including subject, visit, and specimen type.</description>
+        </column>
+        <column columnName="SpecimenId">
+          <description>The ID of the primary specimen associated with each vial.</description>
+        </column>
+        <column columnName="GlobalUniqueId">
+          <description>The global unique ID of each vial.  Assumed to be globally unique within a study, but duplicates can exist cross-study.</description>
+        </column>
+        <column columnName="Volume">
+          <description>The volume of each vial.</description>
+          <formatString>#,###.0#</formatString>
+        </column>
+        <column columnName="PrimaryVolume">
+          <description>The primary/original volume of each vial. This value is passed through from the specimen data feed, so the provided data determines whether this is primary volume per vial or primary volume per collection/draw.</description>
+        </column>
+        <column columnName="PrimaryVolumeUnits">
+          <description>The units of the primary volume value of each vial.  For example, cells or milliliters.</description>
+        </column>
+        <column columnName="requestable">
+          <description>Whether or not each vial should be requestable.  If null, requestability will be determined by whether the vial is at a repository or locked in another request.  If true/false, repository calculation is overridden, and only locked status will be considered.</description>
+        </column>
+        <column columnName="CurrentLocation" >
+          <description>The ID of the current location of the vial.  Current location is determined by the most recent event for each vial, and may be null if the most recent specimen event indicates that the vial has been shipped.</description>
+        </column>
+        <column columnName="AtRepository">
+          <description>Whether each vial is currently at a repository.</description>
+        </column>
+        <column columnName="LockedInRequest">
+          <description>Whether each vial is currently locked in a specimen request.</description>
+        </column>
+        <column columnName="Available">
+          <description>Whether each vial is currently available for request.  Calculated from the Requestable, AtRepository, and LockedInRequest columns.</description>
+        </column>
+        <column columnName="ProcessingLocation">
+          <description>The ID of the processing location of each vial.</description>
+        </column>
+        <column columnName="FirstProcessedByInitials">
+          <description>The value of the ProcessedByInitials from the first recorded event for this vial.</description>
+        </column>
+        <column columnName="AvailabilityReason">
+            <description>Text explanation for why each vial is or is not available for request.  May be null if the vial is available and no special circumstances apply.</description>
+        </column>
+        <column columnName="TotalCellCount">
+          <description>The total cell count for each vial.</description>
+          <formatString>0.####</formatString>
+        </column>
+        <column columnName="LatestComments">
+          <description>Additional comments on processing quality from latest event.</description>
+        </column>
+        <column columnName="LatestQualityComments">
+          <description>Additional comments on processing quality from latest event.</description>
+        </column>
+        <column columnName="TubeType">
+          <description>The type of vial.</description>
+        </column>
+      </columns>
+    </table>
+  <table tableName="Specimen" tableDbType="NOT_IN_DB">
+    <description>Contains one row per primary specimen collection/draw.</description>
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="ParticipantSequenceNum">
+        <description>A string value uniquely identifying the subject/visit combination for each specimen row.</description>
+      </column>
+      <column columnName="Ptid">
+        <description>The ID of the subject providing each specimen.</description>
+      </column>
+      <column columnName="DrawTimestamp">
+        <description>The timestamp of specimen collection.</description>
+        <formatString>DateTime</formatString>
+      </column>
+      <column columnName="DrawDate">
+        <description>The date of specimen collection.</description>
+        <formatString>Date</formatString>
+      </column>
+      <column columnName="DrawTime">
+        <description>The time of specimen collection.</description>
+        <formatString>Time</formatString>
+      </column>
+      <column columnName="SalReceiptDate">
+        <description>The timestamp of specimen receipt at the site-affiliated laboratory.</description>
+      </column>
+      <column columnName="SpecimenHash">
+        <description>A string value that uniquely identifies the specimen/draw-level properties of the specimen, including subject, visit, and specimen type.</description>
+      </column>
+      <column columnName="ClassId">
+        <description>The class, network, or study associated with each specimen.</description>
+      </column>
+      <column columnName="VisitValue">
+        <description>The visit value (sequence num) of specimen collection.</description>
+        <formatString>0.####</formatString>
+      </column>
+      <column columnName="ProtocolNumber">
+        <description>The protocol associated with each specimen.</description>
+      </column>
+      <column columnName="VisitDescription">
+        <description>A description of the visit type for each specimen.  For example, "visit", "day", or "week".</description>
+      </column>
+      <column columnName="VolumeUnits">
+        <description>The units of volume for each specimen.</description>
+      </column>
+      <column columnName="SubAdditiveDerivative">
+        <description>The sub-additive/derivative type of each specimen.</description>
+      </column>
+      <column columnName="PrimaryTypeId">
+        <description>The ID of the primary type of each specimen.</description>
+      </column>
+      <column columnName="DerivativeTypeId">
+        <description>The ID of the derivative type of each specimen.</description>
+      </column>
+      <column columnName="AdditiveTypeId">
+        <description>The ID of the additive type of each specimen.</description>
+      </column>
+      <column columnName="originatinglocationid">
+        <description>The ID of the originating (collection) location of each specimen.</description>
+      </column>
+      <column columnName="DerivativeTypeId2">
+        <description>The ID of the second derivative type of each specimen.</description>
+        <fk>
+          <fkColumnName>RowId</fkColumnName>
+          <fkTable>SpecimenDerivative</fkTable>
+          <fkDbSchema>study</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="AtRepositoryCount">
+        <description>The number of vials from each specimen that are currently at a repository.</description>
+      </column>
+      <column columnName="AvailableCount">
+        <description>The number of vials from each specimen that are currently available for request.</description>
+      </column>
+      <column columnName="AvailableVolume">
+        <description>The total volume of all vials from each specimen that are currently available for request.</description>
+      </column>
+      <column columnName="ExpectedAvailableCount">
+        <description>The total volume of all vials from each specimen that are expected to become available for request.  This includes vials currently available as well as those not available but not yet requested.</description>
+      </column>
+      <column columnName="LockedInRequestCount">
+        <description>The number of vials from each specimen that are currently locked in requests.</description>
+      </column>
+      <column columnName="TotalVolume">
+        <description>The total volume of all vials from each specimen.</description>
+      </column>
+      <column columnName="VialCount">
+        <description>The total number of vials from each specimen.</description>
+      </column>
+      <column columnName="ProcessingLocation">
+        <description>The ID of the processing location of each vial.</description>
+      </column>
+      <column columnName="FirstProcessedByInitials">
+          <description>The common FirstProcessedByInitials value for all vials in this specimen.  Will be null if all vials do not share a common FirstProcessedByInitials values.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenDetail" tableDbType="NOT_IN_DB">
+    <description>Contains one row per vial in the specimen tracking system.</description>
+    <columns>
+      <column columnName="RowId">
+          <description>A unique ID of each vial.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="SpecimenId">
+          <description>The ID of the specimen/collection/draw for each vial.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="Container">
+          <datatype>Varchar</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="GlobalUniqueId">
+          <description>The global unique ID of each vial.  Assumed to be globally unique within a study, but duplicates can exist cross-study.</description>
+          <datatype>Varchar</datatype>
+          <scale>50</scale>
+          <facetingBehavior>ALWAYS_OFF</facetingBehavior>
+      </column>
+      <column columnName="Ptid">
+          <description>The ID of the subject providing each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>32</scale>
+      </column>
+      <column columnName="ParticipantSequenceNum">
+          <description>A string value uniquely identifying the subject/visit combination for each specimendetail row.</description>
+          <datatype>Varchar</datatype>
+          <scale>200</scale>
+      </column>
+      <column columnName="DrawTimestamp">
+          <description>The timestamp of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>DateTime</formatString>
+      </column>
+      <column columnName="DrawDate">
+          <description>The date of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>Date</formatString>
+      </column>
+      <column columnName="DrawTime">
+          <description>The time of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>Time</formatString>
+      </column>
+      <column columnName="SalReceiptDate">
+          <description>The timestamp of specimen receipt at the site-affiliated laboratory.</description>
+          <datatype>date</datatype>
+      </column>
+      <column columnName="SpecimenHash">
+          <description>A string value that uniquely identifies the specimen/draw-level properties of the vial, including subject, visit, and specimen type.</description>
+          <datatype>Varchar</datatype>
+          <scale>256</scale>
+          <isReadOnly>true</isReadOnly>
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="ClassId">
+          <description>The class, network, or study associated with each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="VisitValue">
+          <description>The visit value (sequence num) of specimen collection.</description>
+          <datatype>numeric</datatype>
+          <formatString>0.####</formatString>
+      </column>
+      <column columnName="ProtocolNumber">
+          <description>The protocol associated with each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="VisitDescription">
+          <description>A description of the visit type for each specimen.  For example, "visit", "day", or "week".</description>
+          <datatype>Varchar</datatype>
+          <scale>10</scale>
+      </column>
+      <column columnName="VolumeUnits">
+          <description>The units of volume for each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="SubAdditiveDerivative">
+          <description>The sub-additive/derivative type of each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>50</scale>
+      </column>
+      <column columnName="PrimaryTypeId">
+          <description>The ID of the primary type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>SpecimenPrimaryType</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="DerivativeTypeId">
+          <description>The ID of the derivative type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>SpecimenDerivative</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="AdditiveTypeId">
+          <description>The ID of the additive type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>SpecimenAdditive</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="originatinglocationid">
+          <description>The ID of the originating (collection) location of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>Site</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="DerivativeTypeId2">
+          <description>The ID of the second derivative type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+            <fkColumnName>RowId</fkColumnName>
+            <fkTable>SpecimenDerivative</fkTable>
+            <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="PrimaryVolume">
+          <description>The primary/original volume of each vial. This value is passed through from the specimen data feed, so the provided data determines whether this is primary volume per vial or primary volume per collection/draw.</description>
+          <datatype>double</datatype>
+      </column>
+      <column columnName="PrimaryVolumeUnits">
+          <description>The units of the primary volume value of each vial.  For example, cells or milliliters.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="AtRepositoryCount">
+          <description>The number of vials from each specimen that are currently at a repository.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="AvailableCount">
+          <description>The number of vials from each specimen that are currently available for request.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="AvailableVolume">
+          <description>The total volume of all vials from each specimen that are currently available for request.</description>
+          <datatype>double</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="ExpectedAvailableCount">
+          <description>The total volume of all vials from each specimen that are expected to become available for request.  This includes vials currently available as well as those not available but not yet requested.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="LockedInRequestCount">
+          <description>The number of vials from each specimen that are currently locked in requests.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="TotalVolume">
+          <description>The total volume of all vials from each specimen.</description>
+          <datatype>double</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="VialCount">
+          <description>The total number of vials from each specimen.</description>
+          <datatype>int</datatype>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="Volume">
+          <description>The volume of each vial.</description>
+          <datatype>double</datatype>
+          <formatString>#,###.0#</formatString>
+      </column>
+      <column columnName="requestable">
+          <description>Whether or not each vial should be requestable.  If null, requestability will be determined by whether the vial is at a repository or locked in another request.  If true/false, repository calculation is overridden, and only locked status will be considered.</description>
+          <datatype>boolean</datatype>
+      </column>
+      <column columnName="CurrentLocation">
+          <description>The ID of the current location of the vial.  Current location is determined by the most recent event for each vial, and may be null if the most recent specimen event indicates that the vial has been shipped.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>Site</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="AtRepository">
+          <description>Whether each vial is currently at a repository.</description>
+          <datatype>boolean</datatype>
+      </column>
+      <column columnName="LockedInRequest">
+          <description>Whether each vial is currently locked in a specimen request.</description>
+          <datatype>boolean</datatype>
+      </column>
+      <column columnName="Available">
+          <description>Whether each vial is currently available for request.  Calculated from the Requestable, AtRepository, and LockedInRequest columns.</description>
+          <datatype>boolean</datatype>
+      </column>
+      <column columnName="ProcessingLocation">
+          <description>The ID of the processing location of each vial.</description>
+          <datatype>int</datatype>
+          <fk>
+              <fkColumnName>RowId</fkColumnName>
+              <fkTable>Site</fkTable>
+              <fkDbSchema>study</fkDbSchema>
+          </fk>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="FirstProcessedByInitials">
+          <description>The value of the ProcessedByInitials from the first recorded event for this vial.</description>
+          <datatype>Varchar</datatype>
+          <scale>32</scale>
+      </column>
+      <column columnName="AvailabilityReason">
+          <description>Text explanation for why each vial is or is not available for request.  May be null if the vial is available and no special circumstances apply.</description>
+          <datatype>Varchar</datatype>
+          <scale>256</scale>
+          <isReadOnly>true</isReadOnly>
+      </column>
+      <column columnName="TotalCellCount">
+          <description>The total cell count for each vial.</description>
+          <datatype>double</datatype>
+          <formatString>0.####</formatString>
+      </column>
+      <column columnName="TubeType">
+          <description>The type of vial.</description>
+          <datatype>Varchar</datatype>
+          <scale>64</scale>
+      </column>
+      <column columnName="LatestComments">
+          <description>Additional comments on processing quality from latest event.</description>
+          <datatype>Varchar</datatype>
+          <inputType>text</inputType>
+          <scale>500</scale>
+      </column>
+      <column columnName="LatestQualityComments">
+          <description>Additional comments on processing quality from latest event.</description>
+          <datatype>Varchar</datatype>
+          <inputType>text</inputType>
+          <scale>500</scale>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenSummary" tableDbType="NOT_IN_DB">
+    <description>Contains one row per primary specimen collection/draw.</description>
+    <columns>
+      <column columnName="Container">
+          <datatype>Varchar</datatype>
+      </column>
+      <column columnName="RowId">
+          <description>The unique identifier of each specimen.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="Ptid">
+          <description>The ID of the subject providing each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>32</scale>
+      </column>
+      <column columnName="ParticipantSequenceNum">
+          <description>A string value uniquely identifying the subject/visit combination for each specimensummary row.</description>
+          <datatype>Varchar</datatype>
+          <scale>200</scale>
+      </column>
+      <column columnName="DrawTimestamp">
+          <description>The timestamp of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>DateTime</formatString>
+      </column>
+      <column columnName="DrawDate">
+          <description>The date of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>Date</formatString>
+      </column>
+      <column columnName="DrawTime">
+          <description>The time of specimen collection.</description>
+          <datatype>date</datatype>
+          <formatString>Time</formatString>
+      </column>
+      <column columnName="SalReceiptDate">
+          <description>The timestamp of specimen receipt at the site-affiliated laboratory.</description>
+          <datatype>date</datatype>
+      </column>
+      <column columnName="SpecimenHash">
+          <description>A string value that uniquely identifies the specimen/draw-level properties of the vial, including subject, visit, and specimen type.</description>
+          <datatype>Varchar</datatype>
+          <scale>256</scale>
+      </column>
+      <column columnName="ProtocolNumber">
+          <description>The protocol associated with each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="ClassId">
+          <description>The class, network, or study associated with each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="VisitValue">
+          <description>The visit value (sequence num) of specimen collection.</description>
+          <datatype>numeric</datatype>
+          <formatString>0.####</formatString>
+      </column>
+      <column columnName="VisitDescription">
+          <description>A description of the visit type for each specimen.  For example, "visit", "day", or "week".</description>
+          <datatype>Varchar</datatype>
+          <scale>10</scale>
+      </column>
+      <column columnName="TotalVolume">
+          <description>The total volume of all vials from each specimen.</description>
+          <datatype>double</datatype>
+          <formatString>#,###.0#</formatString>
+      </column>
+      <column columnName="VolumeUnits">
+          <description>The units of volume for each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>20</scale>
+      </column>
+      <column columnName="PrimaryTypeId">
+          <description>The ID of the primary type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+            <fkColumnName>RowId</fkColumnName>
+            <fkTable>SpecimenPrimaryType</fkTable>
+            <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="DerivativeTypeId">
+          <description>The ID of the derivative type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+            <fkColumnName>RowId</fkColumnName>
+            <fkTable>SpecimenDerivative</fkTable>
+            <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="AdditiveTypeId">
+          <description>The ID of the additive type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+            <fkColumnName>RowId</fkColumnName>
+            <fkTable>SpecimenAdditive</fkTable>
+            <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="SubAdditiveDerivative">
+          <description>The sub-additive/derivative type of each specimen.</description>
+          <datatype>Varchar</datatype>
+          <scale>50</scale>
+      </column>
+      <column columnName="LockedInRequestCount">
+          <description>The number of vials from each specimen that are currently locked in requests.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="AtRepositoryCount">
+          <description>The number of vials from each specimen that are currently at a repository.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="AvailableCount">
+          <description>The number of vials from each specimen that are currently available for request.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="ExpectedAvailableCount">
+          <description>The total volume of all vials from each specimen that are expected to become available for request.  This includes vials currently available as well as those not available but not yet requested.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="VialCount">
+          <description>The total number of vials from each specimen.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="AvailableVolume">
+          <description>The total volume of all vials from each specimen that are currently available for request.</description>
+          <datatype>double</datatype>
+          <formatString>#,##0.0#</formatString>
+      </column>
+      <column columnName="originatinglocationid">
+          <description>The ID of the originating (collection) location of each specimen.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="DerivativeTypeId2">
+          <description>The ID of the second derivative type of each specimen.</description>
+          <datatype>int</datatype>
+          <fk>
+            <fkColumnName>RowId</fkColumnName>
+            <fkTable>SpecimenDerivative</fkTable>
+            <fkDbSchema>study</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="ProcessingLocation">
+          <description>The ID of the processing location of each vial.</description>
+          <datatype>int</datatype>
+      </column>
+      <column columnName="FirstProcessedByInitials">
+          <description>The common FirstProcessedByInitials value for all vials in this specimen.  Will be null if all vials do not share a common FirstProcessedByInitials values.</description>
+          <datatype>Varchar</datatype>
+          <scale>32</scale>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenAdditive" tableDbType="NOT_IN_DB">
+    <description>Contains one row per specimen additive.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of each specimen additive.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="ExternalId">
+        <description>The external identifier for each additive, if imported from an external data source.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="LdmsAdditiveCode">
+        <description>The LDMS additive code.</description>
+        <datatype>Varchar</datatype>
+        <scale>30</scale>
+      </column>
+      <column columnName="LabwareAdditiveCode">
+        <description>The Labware additive code.</description>
+        <datatype>Varchar</datatype>
+        <scale>20</scale>
+      </column>
+      <column columnName="Additive">
+        <description>The name/label of each additive.</description>
+        <datatype>Varchar</datatype>
+        <scale>100</scale>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenDerivative" tableDbType="NOT_IN_DB">
+    <description>Contains one row per specimen derivative.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of each derivative.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="ExternalId">
+        <description>The external identifier for each derivative, if imported from an external data source.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="LdmsDerivativeCode">
+        <description>The LDMS derivative code.</description>
+        <datatype>Varchar</datatype>
+        <scale>30</scale>
+      </column>
+      <column columnName="LabwareDerivativeCode">
+        <description>The Labware derivative code.</description>
+        <datatype>Varchar</datatype>
+        <scale>20</scale>
+      </column>
+      <column columnName="Derivative">
+        <description>The name/label of each additive.</description>
+        <datatype>Varchar</datatype>
+        <scale>100</scale>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenEvent" tableDbType="NOT_IN_DB">
+    <description>Contains one row per specimen event.  An event is a logged storage location for a vial, generally corresponding to one event per clinic, repository, and/or laboratory.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of each event.</description>
+      </column>
+      <column columnName="ExternalId">
+          <description>The external identifier for each event, if imported from an external data source.</description>
+      </column>
+      <column columnName="VialId">
+        <description>The ID of the vial.</description>
+      </column>
+      <column columnName="LabId">
+        <description>The ID of the location associated with each event.</description>
+      </column>
+      <column columnName="UniqueSpecimenId">
+        <description>The unique specimen ID provided by the LIMS at the storage location.</description>
+      </column>
+      <column columnName="ParentSpecimenId">
+        <description>The parent specimen ID provided by the LIMS at the storage location.</description>
+      </column>
+      <column columnName="Stored">
+        <description>The location-specific storage code.</description>
+      </column>
+      <column columnName="StorageFlag">
+        <description>The location-specific storage flag.</description>
+      </column>
+      <column columnName="StorageDate">
+        <description>The date/time of vial storage.</description>
+      </column>
+      <column columnName="ShipFlag">
+        <description>The location-specific shipment flag.</description>
+      </column>
+      <column columnName="ShipBatchNumber">
+        <description>The shipment batch number, if the vial/specimen has left this location.</description>
+      </column>
+      <column columnName="ShipDate">
+        <description>The date/time of shipment, if the vial has left this location.</description>
+      </column>
+      <column columnName="ImportedBatchNumber">
+        <description>The ID of the import batch that included this vial/specimen.</description>
+      </column>
+      <column columnName="LabReceiptDate">
+        <description>The date/time of vial receipt.</description>
+      </column>
+      <column columnName="Comments">
+        <description>Location-specific comments associated with each vial.</description>
+      </column>
+      <column columnName="SpecimenCondition">
+        <description>The condition code for the vial.</description>
+      </column>
+      <column columnName="SampleNumber">
+        <description>A text identifier of the collection/draw.  This value may vary by location/LIMS, so it should not be used to group events cross-location.</description>
+      </column>
+      <column columnName="XSampleOrigin">
+        <description>The LIMS-provided sample origin.</description>
+      </column>
+      <column columnName="ExternalLocation">
+        <description>The LIMS-provided external location.</description>
+      </column>
+      <column columnName="UpdateTimestamp">
+        <description>The date/time of last record modification in the external LIMS.</description>
+        <formatString>DateTime</formatString>
+      </column>
+      <column columnName="OtherSpecimenId">
+        <description>Alternate specimen ID, if needed.</description>
+      </column>
+      <column columnName="ExpectedTimeValue">
+        <description>The LIMS-provided expected time value.</description>
+      </column>
+      <column columnName="ExpectedTimeUnit">
+        <description>The LIMS-provided expected time units.</description>
+      </column>
+      <column columnName="GroupProtocol">
+        <description>The group/protocol of each vial.</description>
+      </column>
+      <column columnName="RecordSource">
+        <description>The LIMS system responsible for each event.  Generally used when multiple LIMS (LDMS and Labware, for example) are providing loading data into a single repository.</description>
+      </column>
+      <column columnName="SpecimenNumber">
+          <description>A text identifier of the collection/draw.  This value may vary by location/LIMS, so it should not be used to group events cross-location.</description>
+      </column>
+      <column columnName="ShippedFromLab">
+        <description>The date/time each vial was shipped from the lab.</description>
+      </column>
+      <column columnName="ShippedToLab">
+        <description>The date/time each vial was shipped to the lab.</description>
+      </column>
+      <column columnName="Ptid">
+          <description>The ID of the subject providing each specimen.</description>
+      </column>
+      <column columnName="DrawTimestamp">
+          <description>The timestamp of specimen collection.</description>
+          <formatString>DateTime</formatString>
+      </column>
+      <column columnName="SalReceiptDate">
+          <description>The timestamp of specimen receipt at the site-affiliated laboratory.</description>
+      </column>
+      <column columnName="ClassId">
+          <description>The class, network, or study associated with each specimen.</description>
+      </column>
+      <column columnName="VisitValue">
+          <description>The visit value (sequence num) of specimen collection.</description>
+      </column>
+      <column columnName="ProtocolNumber">
+          <description>The protocol associated with each specimen.</description>
+      </column>
+      <column columnName="VisitDescription">
+          <description>A description of the visit type for each specimen.  For example, "visit", "day", or "week".</description>
+      </column>
+      <column columnName="Volume">
+          <description>The volume of each vial.</description>
+      </column>
+      <column columnName="VolumeUnits">
+          <description>The units of volume for each specimen.</description>
+      </column>
+      <column columnName="SubAdditiveDerivative">
+          <description>The sub-additive/derivative type of each specimen.</description>
+      </column>
+      <column columnName="PrimaryTypeId">
+          <description>The ID of the primary type of each specimen.</description>
+      </column>
+      <column columnName="DerivativeTypeId">
+          <description>The ID of the derivative type of each specimen.</description>
+      </column>
+      <column columnName="AdditiveTypeId">
+          <description>The ID of the additive type of each specimen.</description>
+      </column>
+      <column columnName="DerivativeTypeId2">
+          <description>The ID of the second derivative type of each specimen.</description>
+      </column>
+      <column columnName="OriginatingLocationId">
+          <description>The ID of the originating (collection) location of each specimen.</description>
+      </column>
+      <column columnName="FrozenTime">
+        <description>The duration of the freezing process.</description>
+        <formatString>H:mm:ss</formatString>
+      </column>
+      <column columnName="ProcessingTime">
+        <description>The duration of the processing process.</description>
+        <formatString>H:mm:ss</formatString>
+      </column>
+      <column columnName="PrimaryVolume">
+          <description>The primary/original volume of each vial. This value is passed through from the specimen data feed, so the provided data determines whether this is primary volume per vial or primary volume per collection/draw.</description>
+      </column>
+      <column columnName="PrimaryVolumeUnits">
+          <description>The units of the primary volume value of each vial.  For example, cells or milliliters.</description>
+      </column>
+      <column columnName="ProcessedByInitials">
+        <description>The initials of the vial's processor.</description>
+      </column>
+      <column columnName="ProcessingDate">
+        <description>The date/time of vial processing.</description>
+      </column>
+      <column columnName="TotalCellCount">
+        <description>The total cell count for each vial.</description>
+        <formatString>0.####</formatString>
+      </column>
+      <column columnName="TubeType">
+        <description>The type of vial.</description>
+      </column>
+      <column columnName="InputHash"/>
+      <column columnName="Obsolete">
+        <description>Indicates the event precedes the last edit of the vial.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenPrimaryType" tableDbType="NOT_IN_DB">
+    <description>Contains one row per primary specimen type.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of each primary type.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="ExternalId">
+        <description>The external identifier for each primary type, if imported from an external data source.</description>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="PrimaryTypeLdmsCode">
+        <description>The LDMS code for each primary type.</description>
+        <datatype>Varchar</datatype>
+          <scale>5</scale>
+      </column>
+      <column columnName="PrimaryTypeLabwareCode">
+        <description>The Labware code for each primary type.</description>
+        <datatype>Varchar</datatype>
+          <scale>5</scale>
+      </column>
+      <column columnName="PrimaryType">
+        <description>The name/label of each primary type.</description>
+        <datatype>Varchar</datatype>
+          <scale>100</scale>
+      </column>
+    </columns>
+  </table>
+  <table tableName="LockedSpecimens" tableDbType="VIEW">
+    <columns>
+      <column columnName="GlobalUniqueId"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="UploadLog" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Description"/>
+      <column columnName="FilePath"/>
+      <column columnName="DatasetId"/>
+      <column columnName="Status"/>
+    </columns>
+  </table>
+  <table tableName="ParticipantVisit" tableDbType="TABLE">
+    <description>Contains one row per subject/visit combination in the study.  Note that this table is populated dynamically as specimen, assay, and dataset data are loaded, and is guaranteed to always be complete.</description>
+    <columns>
+      <column columnName="ParticipantId">
+          <description>Subject identifier</description>
+      </column>
+      <column columnName="VisitDate">
+        <description>The date of the visit.  Primarily used in date-based studies.</description>
+      </column>
+      <column columnName="ParticipantSequenceNum">
+        <description>A string value uniquely identifying the subject/visit combination for each subject/visit row.</description>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="visitrowid">
+        <description>The ID of the visit.</description>
+      </column>
+      <column columnName="sequencenum">
+        <description>The sequence number of the visit.  Primarily used in visit-based studies.</description>
+      </column>
+      <column columnName="Day">
+        <description>The day of the visit.  Primarily used in date-based studies.</description>
+      </column>
+      <column columnName="CohortID">
+        <description>The ID of the subject's cohort during each visit.  Useful only when advanced cohort assignment is enabled.</description>
+        <columnTitle>Visit Cohort</columnTitle>
+      </column>
+    </columns>
+  </table>
+  <table tableName="participantview" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="container"/>
+      <column columnName="createdby"/>
+      <column columnName="created"/>
+      <column columnName="modifiedby"/>
+      <column columnName="modified"/>
+      <column columnName="body"/>
+      <column columnName="active"/>
+    </columns>
+  </table>
+  <table tableName="StudyDesign" tableDbType="TABLE">
+    <columns>
+      <column columnName="_ts"/>
+      <column columnName="StudyId"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Created"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="Container"/>
+      <column columnName="PublicRevision"/>
+      <column columnName="DraftRevision"/>
+      <column columnName="Label"/>
+      <column columnName="Active"/>
+      <column columnName="SourceContainer"/>
+    </columns>
+  </table>
+  <table tableName="StudyDesignAssays" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+          <column columnName="Description">
+              <description>Description of the assay.</description>
+          </column>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="Type">
+              <description>Target of this specific assay. For example, "Antibody", "T-Cell", or "Humoral".</description>
+          </column>
+          <column columnName="TargetType">
+              <description>Target object of the assay. For example, "T-Cell".</description>
+          </column>
+          <column columnName="TargetSubtype">
+              <description>Subtype of the target type. For example, "CD4" or "CD8".</description>
+          </column>
+          <column columnName="Platform">
+              <description>Platform on which the assay was performed. For example, "ELISpot", "ELISA", "Luminex" or "Flow Cytometry".</description>
+          </column>
+          <column columnName="Category">
+              <description>Type of experiment that the assay represents.  For example, "Immunogenicity", "Epidemiology", or "Cell Engineering".</description>
+          </column>
+          <column columnName="TargetFunction">
+              <description>What is being measured.  For example, "Neutralization", "Activation", or "Inhibition".</description>
+          </column>
+          <column columnName="LeadContributor"/>
+          <column columnName="Contact">
+              <description>Email address for the main point of contact for questions about this assay.</description>
+          </column>
+          <column columnName="Summary">
+              <description>Shorter version of the full description, usable in a table of contents view.</description>
+          </column>
+          <column columnName="Keywords">
+              <description>The set of key words submitted with the associated paper.</description>
+          </column>
+          <column columnName="Editorial">
+              <description>Description of why this assay is important to the dataspace.</description>
+          </column>
+          <column columnName="AlternateName">
+              <description>An alternate way of referring to the assay.</description>
+          </column>
+          <column columnName="Lab">
+              <description>The lab responsible for creating this assay.</description>
+          </column>
+          <column columnName="LabPI">
+              <description>The principal investigator for the lab.</description>
+          </column>
+      </columns>
+  </table>
+  <table tableName="StudyDesignChallengeTypes" tableDbType="TABLE">
+    <columns>
+      <column columnName="Name"/>
+      <column columnName="Label"/>
+      <column columnName="Inactive">
+        <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+      </column>
+      <column columnName="CreatedBy"/>
+      <column columnName="Created"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="StudyDesignGenes" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignImmunogenTypes" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignLabs" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+          <column columnName="Description">
+              <description>Description of the lab, primary goals, focus, notable discoveries.</description>
+          </column>
+          <column columnName="PI">
+              <description>Email address for the principal investigator for the lab.</description>
+          </column>
+          <column columnName="Summary">
+              <description>Shorter version of the full description, usable in a table of contents view.</description>
+          </column>
+          <column columnName="Institution">
+              <description>The institution at which the lab is based and/or affiliated with.</description>
+          </column>
+      </columns>
+  </table>
+  <table tableName="StudyDesignRoutes" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignSampleTypes" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="PrimaryType"/>
+          <column columnName="ShortSampleCode"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignSubTypes" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignUnits" tableDbType="TABLE">
+      <columns>
+          <column columnName="Name"/>
+          <column columnName="Label"/>
+          <column columnName="Inactive">
+              <description>Whether or not to show this records in the lookup drop-down for newly created study designs.</description>
+          </column>
+          <column columnName="CreatedBy"/>
+          <column columnName="Created"/>
+          <column columnName="ModifiedBy"/>
+          <column columnName="Modified"/>
+          <column columnName="Container"/>
+      </columns>
+  </table>
+  <table tableName="StudyDesignVersion" tableDbType="TABLE">
+    <columns>
+      <column columnName="_ts"/>
+      <column columnName="RowId"/>
+      <column columnName="StudyId"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Created"/>
+      <column columnName="Container"/>
+      <column columnName="Revision"/>
+      <column columnName="Draft"/>
+      <column columnName="Label"/>
+      <column columnName="Description"/>
+      <column columnName="XML"/>
+    </columns>
+  </table>
+  <table tableName="Cohort" tableDbType="TABLE">
+    <description>Contains one row per defined cohort.</description>
+    <columns>
+      <column columnName="rowid">
+        <description>The unique ID of the cohort.</description>
+      </column>
+      <column columnName="label">
+        <description>The friendly name/label of the cohort.</description>
+      </column>
+      <column columnName="container"/>
+      <column columnName="LSID"/>
+      <column columnName="enrolled">
+          <description>Determines whether participants belonging to this cohort are considered enrolled in the study.</description>
+      </column>
+      <column columnName="subjectCount">
+          <description>The expected or target number of subjects for a given cohorts in the study.</description>
+      </column>
+      <column columnName="description">
+          <description>A short description for the cohort.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SpecimenComment" tableDbType="TABLE">
+    <description>Contains one row per vial-level specimen comment.</description>
+    <columns>
+      <column columnName="RowId">
+        <description>The unique ID of the specimen comment.</description>
+      </column>
+      <column columnName="Container"/>
+      <column columnName="SpecimenHash">
+        <description>A string value that uniquely identifies the specimen/draw-level properties of the vial, including subject, visit, and specimen type.</description>
+      </column>
+      <column columnName="GlobalUniqueId">
+        <description>The global unique ID of each vial.  Assumed to be globally unique within a study, but duplicates can exist cross-study.</description>
+      </column>
+      <column columnName="Created">
+        <description>The date/time of comment creation.</description>
+      </column>
+      <column columnName="CreatedBy">
+        <description>The ID of the user who created each comment.</description>
+        <datatype>int</datatype>
+        <columnTitle>Modified By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <fk>
+          <fkColumnName>UserId</fkColumnName>
+          <fkTable>Users</fkTable>
+          <fkDbSchema>core</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Modified">
+        <description>The date/time of the most recent comment modification.</description>
+      </column>
+      <column columnName="ModifiedBy">
+          <description>The ID of the user who last modified each comment.</description>
+          <datatype>int</datatype>
+          <columnTitle>Modified By</columnTitle>
+          <inputType>text</inputType>
+          <inputLength>10</inputLength>
+          <isReadOnly>true</isReadOnly>
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkTable>Users</fkTable>
+            <fkDbSchema>core</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="Comment">
+        <description>The text of each comment.</description>
+      </column>
+      <column columnName="QualityControlFlag">
+        <description>Whether this comment is associated with a quality control alert.</description>
+      </column>
+      <column columnName="QualityControlFlagForced">
+        <description>Whether the quality control flag of this comment was forced by a specimen administrator.  Forced comments will not be changed during specimen import, even if quality control issues come or go.</description>
+      </column>
+      <column columnName="QualityControlComments">
+        <description>Quality control-associated comments.  Set by the system to indicate which fields are causing quality control alerts.</description>
+      </column>
+      </columns>
+  </table>
+  <table tableName="VialCounts" tableDbType="NOT_IN_DB">
+    <description>Contains one row per primary specimen, allowing dynamic (non-cached) calculation of typical vial counts.</description>
+    <columns>
+      <column columnName="Container"/>
+      <column columnName="SpecimenHash">
+        <description>A string value that uniquely identifies the specimen/draw-level properties of the vial, including subject, visit, and specimen type.</description>
+      </column>
+      <column columnName="AvailableVolume">
+          <description>The total volume of all vials from each specimen that are currently available for request.</description>
+      </column>
+      <column columnName="TotalVolume">
+          <description>The total volume of all vials from each specimen.</description>
+      </column>
+      <column columnName="LockedInRequestCount">
+          <description>The number of vials from each specimen that are currently locked in requests.</description>
+      </column>
+      <column columnName="AtRepositoryCount">
+          <description>The number of vials from each specimen that are currently at a repository.</description>
+      </column>
+      <column columnName="AvailableCount">
+          <description>The number of vials from each specimen that are currently available for request.</description>
+      </column>
+      <column columnName="VialCount">
+          <description>The total number of vials from each specimen.</description>
+      </column>
+      <column columnName="ExpectedAvailableCount">
+          <description>The total volume of all vials from each specimen that are expected to become available for request.  This includes vials currently available as well as those not available but not yet requested.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="SampleAvailabilityRule" tableDbType="TABLE">
+    <description>Contains one row per defined sample availability rule.  Containers without defined rules will use a default set.</description>
+    <columns>
+      <column columnName="rowid">
+        <description>The unique ID of the availablility rule.</description>
+      </column>
+      <column columnName="container"/>
+      <column columnName="SortOrder">
+        <description>The order in which this availablility rule is run within its container.</description>
+      </column>
+      <column columnName="RuleType">
+        <description>The type the availablility rule.</description>
+      </column>
+      <column columnName="RuleData">
+        <description>The data specifying how the availablility rule should be run.</description>
+      </column>
+      <column columnName="MarkType">
+        <description>The unique ID of the availablility rule.</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="ParticipantCategory" tableDbType="TABLE">
+    <columns>
+        <column columnName="RowId"/>
+        <column columnName="EntityId"/>
+        <column columnName="CreatedBy"/>
+        <column columnName="Created"/>
+        <column columnName="ModifiedBy"/>
+        <column columnName="Modified"/>
+        <column columnName="Container"/>
+        <column columnName="Label"/>
+        <column columnName="Type"/>
+        <column columnName="OwnerId"/>
+        <column columnName="AutoUpdate"/>
+        <column columnName="SchemaName"/>
+        <column columnName="QueryName"/>
+        <column columnName="ViewName"/>
+        <column columnName="DatasetId"/>
+        <column columnName="GroupProperty"/>
+    </columns>
+  </table>
+  <table tableName="ParticipantGroup" tableDbType="TABLE">
+    <columns>
+        <column columnName="RowId"/>
+        <column columnName="Container"/>
+        <column columnName="CreatedBy"/>
+        <column columnName="Created"/>
+        <column columnName="ModifiedBy"/>
+        <column columnName="Modified"/>
+        <column columnName="Label"/>
+        <column columnName="CategoryId"/>
+        <column columnName="Filters"/>
+        <column columnName="Description"/>
+    </columns>
+  </table>
+  <table tableName="ParticipantGroupMap" tableDbType="TABLE">
+    <columns>
+        <column columnName="GroupId"/>
+        <column columnName="ParticipantId"/>
+        <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="ParticipantGroupCohortUnion" tableDbType="VIEW">
+    <columns>
+        <column columnName="UniqueId">
+            <isHidden>true</isHidden>
+        </column>
+        <column columnName="ParticipantId"/>
+        <column columnName="Container"/>
+        <column columnName="GroupId"/>
+        <column columnName="CohortId"/>
+    </columns>
+  </table>
+  <table tableName="StudySnapshot" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Source"/>
+      <column columnName="Type"/>
+      <column columnName="Destination"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Created"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="Refresh">
+          <description>Refresh specimens from the source study on a nightly basis</description>
+      </column>
+      <column columnName="Settings">
+          <description>Settings used to create this snapshot study</description>
+      </column>
+    </columns>
+  </table>
+  <table tableName="AssaySpecimen" tableDbType="TABLE">
+    <description>Contains one row per expected assay in the study, describing which lab will run the assay and which specimen type will be used.</description>
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="AssayName"/>
+      <column columnName="DataSet"/>
+      <column columnName="Description"/>
+      <column columnName="LocationId">
+        <fk>
+          <fkDbSchema>study</fkDbSchema>
+          <fkTable>Site</fkTable>
+          <fkColumnName>RowId</fkColumnName>
+        </fk>
+      </column>
+      <column columnName="Source"/>
+      <column columnName="TubeType"/>
+      <column columnName="PrimaryTypeId">
+        <fk>
+          <fkColumnName>RowId</fkColumnName>
+          <fkTable>SpecimenPrimaryType</fkTable>
+          <fkDbSchema>study</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="DerivativeTypeId">
+        <fk>
+          <fkColumnName>RowId</fkColumnName>
+          <fkTable>SpecimenDerivative</fkTable>
+          <fkDbSchema>study</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="Lab"/>
+      <column columnName="SampleType"/>
+      <column columnName="SampleQuantity"/>
+      <column columnName="SampleUnits"/>
+    </columns>
+  </table>
+  <table tableName="AssaySpecimenVisit" tableDbType="TABLE">
+    <description>Contains one row per assay/visit combination, used to define the assay expectations for this study.</description>
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Container"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="VisitId">
+        <fk>
+          <fkDbSchema>study</fkDbSchema>
+          <fkTable>Visit</fkTable>
+          <fkColumnName>RowId</fkColumnName>
+        </fk>
+      </column>
+      <column columnName="AssaySpecimenId">
+        <fk>
+          <fkDbSchema>study</fkDbSchema>
+          <fkTable>AssaySpecimen</fkTable>
+          <fkColumnName>RowId</fkColumnName>
+        </fk>
+      </column>
+    </columns>
+  </table>
+  <table tableName="TreatmentVisitMap" tableDbType="TABLE">
+    <columns>
+      <column columnName="CohortId"/>
+      <column columnName="TreatmentId"/>
+      <column columnName="VisitId"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="Objective" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Label"/>
+      <column columnName="Type"/>
+      <column columnName="Description"/>
+      <column columnName="DescriptionRendererType"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="VisitTag" tableDbType="TABLE">
+    <columns>
+      <column columnName="Name"/>
+      <column columnName="Caption"/>
+      <column columnName="Description"/>
+      <column columnName="Category"/>
+      <column columnName="SingleUse">
+          <description>Indicates that this tag can be used for only one visit for each study/cohort combination.</description>
+      </column>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+  <table tableName="DoseAndRoute" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="Dose"/>
+      <column columnName="Route"/>
+      <column columnName="ProductId"/>
+      <column columnName="Created"/>
+      <column columnName="CreatedBy"/>
+      <column columnName="Modified"/>
+      <column columnName="ModifiedBy"/>
+      <column columnName="Container"/>
+    </columns>
+  </table>
+</tables>

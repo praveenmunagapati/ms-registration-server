@@ -1,0 +1,110 @@
+import org.labkey.gradle.task.CreateModule
+import org.labkey.gradle.util.BuildUtils
+
+BuildUtils.addLabKeyDependency(project: project, config: 'tomcatJars', depProjectPath: BuildUtils.getBootstrapProjectPath(gradle))
+dependencies
+        {
+            tomcatJars  "com.sun.mail:jakarta.mail:${javaMailVersion}"
+            tomcatJars  "com.sun.activation:jakarta.activation:${activationVersion}" // JavaMail dependency (starting with Java 10), so it must be copied to <tomcat>/lib
+
+            remotePipelineJars "javax.servlet:servlet-api:${servletApiVersion}"
+        }
+
+apply plugin: 'org.labkey.jsdoc'
+apply plugin: 'org.labkey.xsddoc'
+apply plugin: 'org.labkey.npmRun'
+
+dependencies
+{
+   xsdDoc "xml-apis:xml-apis:${xmlApisVersion}"
+   xsdDoc "xerces:xercesImpl:${xercesImplVersion}"
+   xsdDoc "docflex:docflex-xml-re:${docflexXmlReVersion}"
+}
+
+apply plugin: 'org.labkey.tomcat'
+apply plugin: 'org.labkey.serverDeploy'
+apply plugin: 'org.labkey.database'
+
+// This a subset of the XSDs because dependencies get pulled in.
+
+String schemasProjectPath = BuildUtils.getSchemasProjectPath(project.gradle)
+List<File> xsdFiles = []
+
+if (project.findProject(schemasProjectPath))
+{
+    xsdFiles += [
+        project.project(schemasProjectPath).file("schemas/clientLibrary.xsd"),
+        project.project(schemasProjectPath).file("schemas/apiTest.xsd"),
+        project.project(schemasProjectPath).file("schemas/cohorts.xsd"),
+        project.project(schemasProjectPath).file("schemas/datasets.xsd"),
+        project.project(schemasProjectPath).file("schemas/domainTemplate.xsd"),
+        project.project(schemasProjectPath).file("schemas/externalSchema.xsd"),
+        project.project(schemasProjectPath).file("schemas/folder.xsd"),
+        project.project(schemasProjectPath).file("schemas/folderType.xsd"),
+        project.project(schemasProjectPath).file("schemas/module.xsd"),
+        project.project(schemasProjectPath).file("schemas/pages.xsd"),
+        project.project(schemasProjectPath).file("schemas/participantGroups.xsd"),
+        project.project(schemasProjectPath).file("schemas/pipelineOptions.xsd"),
+        project.project(schemasProjectPath).file("schemas/pipelineProtocolProps.xsd"),
+        project.project(schemasProjectPath).file("schemas/qcStates.xsd"),
+        project.project(schemasProjectPath).file("schemas/query.xsd"),
+        project.project(schemasProjectPath).file("schemas/report.xsd"),
+        project.project(schemasProjectPath).file("schemas/reportProps.xsd"),
+        project.project(schemasProjectPath).file("schemas/studyDesign.xsd"),
+        project.project(schemasProjectPath).file("schemas/studyViews.xsd"),
+        project.project(schemasProjectPath).file("schemas/view.xsd"),
+        project.project(schemasProjectPath).file("schemas/viewCategory.xsd"),
+        project.project(schemasProjectPath).file("schemas/visitMap.xsd")
+    ]
+}
+
+if (project.findProject( BuildUtils.getPlatformModuleProjectPath(project.gradle, "assay")) != null)
+{
+    xsdFiles += [project.project( BuildUtils.getPlatformModuleProjectPath(project.gradle, "assay")).file("schemas/assayProvider.xsd"),
+                 project.project( BuildUtils.getPlatformModuleProjectPath(project.gradle, "assay")).file("schemas/assayPipelineTasks.xsd")]
+}
+if (project.findProject( BuildUtils.getPlatformModuleProjectPath(project.gradle, "list")) != null)
+    xsdFiles += project.project( BuildUtils.getPlatformModuleProjectPath(project.gradle, "list")).file("schemas/lists.xsd")
+if (project.findProject( BuildUtils.getPlatformModuleProjectPath(project.gradle, "pipeline"))  != null)
+    xsdFiles += project.project( BuildUtils.getPlatformModuleProjectPath(project.gradle, "pipeline")).file("schemas/pipelineTasks.xsd")
+if (project.findProject(":server:optionalModules:dataintegration")  != null)
+    xsdFiles += project.project(":server:optionalModules:dataintegration").file("schemas/etl.xsd")
+if (project.findProject(":server:optionalModules:redcap") != null)
+    xsdFiles += project.project(":server:optionalModules:redcap").file("schemas/redcapExport.xsd")
+if (project.findProject(":server:optionalModules:cdisc_ODM") != null)
+    xsdFiles += project.project(":server:optionalModules:cdisc_ODM").file("schemas/cdiscExport.xsd")
+if (project.findProject(":server:optionalModules:freezerpro") != null)
+    xsdFiles += project.project(":server:optionalModules:freezerpro").file("schemas/freezerProExport.xsd")
+
+project.xsdDoc.xsdFiles=xsdFiles
+
+project.jsDoc.paths = [
+    "modules/platform/api/webapp/clientapi",
+    "modules/platform/api/webapp/clientapi/dom",
+    "modules/platform/api/webapp/clientapi/core",
+    "modules/platform/api/webapp/clientapi/ext3",
+    "modules/platform/api/webapp/clientapi/ext4",
+    "modules/platform/api/webapp/clientapi/ext4/data",
+    "modules/platform/internal/webapp/labkey.js",
+    "modules/platform/visualization/resources/web/vis/genericChart/genericChartHelper.js",
+    "modules/platform/visualization/resources/web/vis/timeChart/timeChartHelper.js",
+    "modules/platform/internal/webapp/vis/src"
+]
+
+task('createModule', type: CreateModule, group: "Module",
+        description: "Creates a new module. Use moduleName property to specify the name of the module to be created. " +
+                "Use moduleDestination to specify the full path to destination" +
+                "Use createFiles to control which subdirectories are created.  Include some subset of api, test, and/or schema " +
+                    "in a comma delimited list to create those subdirectories in the new module. If none are required, still " +
+                    "include -PcreateFiles with no value to avoid being prompted." )
+
+// We add this configuration here so we have a single location to link to for the npm and node executables.
+// Each project that requires node will have its own downloaded version of node and npm, but for the symlinkNode
+// task we need a single location, and one that works even when not building from source
+// (https://www.labkey.org/Rochester/support%20tickets/issues-details.view?issueId=35207)
+project.node {
+    workDir = project.file("${project.rootProject.buildDir}/.node")
+    npmWorkDir = project.file("${project.rootProject.buildDir}/.node")
+    yarnWorkDir = project.file("${project.rootProject.buildDir}/.node")
+}
+project.tasks.deployApp.dependsOn(project.tasks.npmSetup)

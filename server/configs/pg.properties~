@@ -1,0 +1,25 @@
+# Properties that tend to change between machines and system instances
+
+smtpHost=localhost
+smtpUser=Anonymous
+smtpPort=${RS_PORT:25}
+
+# Use the PostgreSQL jdbc driver on localhost
+databaseDefault=${RS_DB_NAME:labkey}
+databaseBootstrap=labkey2
+databaseMaster=template1
+databaseDefaultHost=defaultDB
+databaseDefaultPort=5432
+
+# database type and version are used by the test harness
+databaseType=pg
+databaseVersion=9.1
+
+jdbcDriverClassName=org.postgresql.Driver
+jdbcURL=jdbc:postgresql://${jdbcHost}:${jdbcPort}/${jdbcDatabase}${jdbcURLParameters}
+jdbcUser=postgres
+jdbcPassword=${RS_DB_PASSWD:sasa}
+
+# key for the encrypted property store
+masterEncryptionKey=defaultKey
+

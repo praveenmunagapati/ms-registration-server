@@ -1,0 +1,70 @@
+<project name="flowjo-plugin" default="build" basedir=".">
+
+    <property environment="env"/>
+
+    <condition property="flowjo.home" value="${env.FLOWJO_HOME}" else="${flowjo.home}">
+        <and>
+            <isset property="env.FLOWJO_HOME"/>
+            <not><isset property="flowjo.home"/></not>
+        </and>
+    </condition>
+
+    <fail message="FlowJo directory '${flowjo.home}' not found. Set FLOWJO_HOME environment variable or set the flowjo.home ant property.">
+        <condition>
+            <not><available file="${flowjo.home}" type="dir"/></not>
+        </condition>
+    </fail>
+
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="dist.dir" value="${build.dir}/dist"/>
+    <property name="deploy.dir" value="${flowjo.home}/labkey"/>
+    <property name="labkey.root" value="../.."/>
+
+    <path id="fj.jars">
+        <pathelement location="${flowjo.home}/fjlib.jar" />
+        <pathelement location="${flowjo.home}/engine.jar" />
+    </path>
+
+    <path id="clientapi.jars">
+        <fileset dir="${labkey.root}/remoteapi/java/lib">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${labkey.root}/build/client-api/java/jar">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <path id="build.classpath">
+        <path refid="fj.jars"/>
+        <path refid="clientapi.jars"/>
+    </path>
+
+    <target name="build">
+        <mkdir dir="${classes.dir}" />
+        <javac
+            source="1.6"
+            target="1.6"
+            classpathref="build.classpath"
+            srcdir="src"
+            destdir="${classes.dir}"
+            debug="true"
+            fork="true"
+            includeantruntime="false">
+        </javac>
+    </target>
+
+    <target name="jar" depends="build">
+        <mkdir dir="${dist.dir}"/>
+        <jar jarfile="${dist.dir}/LabKeyPlugin.jar" basedir="${classes.dir}" />
+    </target>
+
+    <target name="deploy" depends="jar">
+        <mkdir dir="${deploy.dir}"/>
+        <copy file="${dist.dir}/LabKeyPlugin.jar" todir="${deploy.dir}" overwrite="true" />
+        <copy todir="${deploy.dir}" overwrite="true">
+            <path refid="clientapi.jars" />
+        </copy>
+    </target>
+
+</project>

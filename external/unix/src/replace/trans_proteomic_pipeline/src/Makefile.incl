@@ -1,0 +1,18 @@
+#
+# Makefile.incl
+#  version 0.1
+
+# only change the TPP_ROOT TPP_WEB and XSLT_PROC variables
+
+TPP_ROOT=../../../deploy/
+TPP_WEB=/tpp/
+XSLT_PROC=/usr/bin/xsltproc
+
+BIN_DIR=${TPP_ROOT}bin/
+HTML_DIR=${TPP_ROOT}html/
+CGI_DIR=${TPP_ROOT}cgi-bin/
+CGI_WEB=${TPP_WEB}cgi-bin/
+ETC_DIR=${TPP_ROOT}etc/
+HELP_DIR=${TPP_ROOT}html/
+SCHEMA_DIR=${TPP_ROOT}schema/
+XML_ONLY=1

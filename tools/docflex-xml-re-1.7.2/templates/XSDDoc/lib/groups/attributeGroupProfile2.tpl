@@ -1,0 +1,731 @@
+<DOCFLEX_TEMPLATE VER='1.12'>
+CREATED='2005-10-13 03:37:00'
+LAST_UPDATE='2009-02-07 01:37:16'
+DESIGNER_TOOL='DocFlex SDK 1.x'
+DESIGNER_LICENSE_TYPE='Filigris Works Team'
+APP_ID='docflex-xml-xsddoc2'
+APP_NAME='DocFlex/XML XSDDoc'
+APP_VER='2.1.0'
+APP_AUTHOR='Copyright \u00a9 2005-2009 Filigris Works,\nLeonid Rudy Softwareprodukte. All rights reserved.'
+TEMPLATE_TYPE='DocumentTemplate'
+DSM_TYPE_ID='xsddoc'
+ROOT_ET='xs:attributeGroup'
+<TEMPLATE_PARAMS>
+	PARAM={
+		param.name='nsURI';
+		param.title='group\'s namespace URI';
+		param.description='The namespace to which this attributeGroup belongs';
+		param.type='string';
+	}
+	PARAM={
+		param.name='scope';
+		param.description='Indicates the scope of the main document for which this template is called:\n"any" - unspecified;\n"namespace" - namespace overview;\n"schema" - schema overview';
+		param.type='enum';
+		param.enum.values='any;namespace;schema';
+	}
+	PARAM={
+		param.name='usageCount';
+		param.description='number of locations where this element group is used';
+		param.type='integer';
+		param.default.expr='countElementsByKey (\n  "attributeGroup-usage",\n  QName (getStringParam("nsURI"), getAttrStringValue("name"))\n)';
+		param.hidden='true';
+	}
+	PARAM={
+		param.name='contentModelKey';
+		param.title='"content-model-attributes" map key';
+		param.description='The key for "content-model-attributes" map to find items associated with this component';
+		param.type='Object';
+		param.default.expr='contextElement.id';
+	}
+	PARAM={
+		param.name='attributeCount';
+		param.title='number of all attributes';
+		param.description='total number of attributes declared for this component';
+		param.type='integer';
+		param.default.expr='countElementsByKey (\n  "content-model-attributes", \n  getParam("contentModelKey"),\n  BooleanQuery (! instanceOf ("xs:anyAttribute"))\n)';
+		param.hidden='true';
+	}
+	PARAM={
+		param.name='anyAttribute';
+		param.title='component has any-attribute';
+		param.description='indicates that the component allows any attributes';
+		param.type='boolean';
+		param.default.expr='checkElementsByKey (\n  "content-model-attributes", \n  getParam("contentModelKey"),\n  BooleanQuery (instanceOf ("xs:anyAttribute"))\n)';
+		param.hidden='true';
+	}
+	PARAM={
+		param.name='ownAttributeCount';
+		param.title='number of component\'s own attributes';
+		param.description='number of attributes defined within this component';
+		param.type='integer';
+		param.default.expr='countElementsByKey (\n  "content-model-attributes", \n  getParam("contentModelKey"),\n  BooleanQuery (\n    ! instanceOf ("xs:anyAttribute") &&\n    findPredecessorByType("xs:%element;xs:complexType;xs:attributeGroup").id \n    == rootElement.id\n  )\n)';
+		param.hidden='true';
+	}
+	PARAM={
+		param.name='ownAnyAttribute';
+		param.title='any-attribute is defined in this component';
+		param.description='indicates that this component contains the wildcard attribute definition';
+		param.type='boolean';
+		param.default.expr='checkElementsByKey (\n  "content-model-attributes", \n  getParam("contentModelKey"),\n  BooleanQuery (\n    instanceOf ("xs:anyAttribute") &&\n    findPredecessorByType("xs:%element;xs:complexType;xs:attributeGroup").id \n    == rootElement.id\n  )\n)';
+		param.hidden='true';
+	}
+	PARAM={
+		param.name='fmt.page.refs';
+		param.title='Generate page references';
+		param.type='boolean';
+		param.default.value='true';
+	}
+	PARAM={
+		param.name='doc.comp.profile.namespace';
+		param.title='Namespace';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.content';
+		param.title='Content';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.defined';
+		param.title='Defined';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.includes';
+		param.title='Includes';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.redefines';
+		param.title='Redefines';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.redefined';
+		param.title='Redefined';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.profile.used';
+		param.title='Used';
+		param.type='boolean';
+	}
+	PARAM={
+		param.name='doc.comp.attributes';
+		param.title='Attribute Detail';
+		param.type='enum';
+		param.enum.values='all;own;none';
+	}
+</TEMPLATE_PARAMS>
+FMT={
+	doc.lengthUnits='pt';
+	doc.hlink.style.link='cs4';
+}
+<STYLES>
+	CHAR_STYLE={
+		style.name='Code';
+		style.id='cs1';
+		text.font.name='Courier New';
+		text.font.size='9';
+	}
+	CHAR_STYLE={
+		style.name='Code Smaller';
+		style.id='cs2';
+		text.font.name='Courier New';
+		text.font.size='8';
+	}
+	CHAR_STYLE={
+		style.name='Default Paragraph Font';
+		style.id='cs3';
+		style.default='true';
+	}
+	CHAR_STYLE={
+		style.name='Hyperlink';
+		style.id='cs4';
+		text.decor.underline='true';
+		text.color.foreground='#0000FF';
+	}
+	PAR_STYLE={
+		style.name='Normal';
+		style.id='s1';
+		style.default='true';
+	}
+	CHAR_STYLE={
+		style.name='Page Number Small';
+		style.id='cs5';
+		text.font.name='Courier New';
+		text.font.size='8';
+	}
+	CHAR_STYLE={
+		style.name='Property Title Font';
+		style.id='cs6';
+		text.font.size='8';
+		text.font.style.bold='true';
+		par.lineHeight='11';
+		par.margin.right='7';
+	}
+	CHAR_STYLE={
+		style.name='Property Value Font';
+		style.id='cs7';
+		text.font.name='Verdana';
+		text.font.size='8';
+		par.lineHeight='11';
+	}
+</STYLES>
+<ROOT>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.namespace")'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Namespace:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<DATA_CTRL>
+						FMT={
+							text.style='cs2';
+						}
+						<DOC_HLINK>
+							HKEYS={
+								'getStringParam("nsURI")';
+								'"detail"';
+							}
+						</DOC_HLINK>
+						<URL_HLINK>
+							COND='getStringParam("nsURI") != ""'
+							ALT_HLINK
+							TARGET_FRAME_EXPR='"_blank"'
+							URL_EXPR='getStringParam("nsURI")'
+						</URL_HLINK>
+						FORMULA='(ns = getParam("nsURI")) != "" ? ns : "{global namespace}"'
+					</DATA_CTRL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.content") &&\n{\n  count = getIntParam("attributeCount") + \n          getBooleanParam("anyAttribute").toInt();\n\n  count > 0 ? { setVar ("count", count); true } : false\n}'
+		<AREA>
+			<CTRL_GROUP>
+				FMT={
+					text.style='cs7';
+				}
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Content:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<PANEL>
+						FMT={
+							ctrl.size.width='281.3';
+							ctrl.size.height='38.3';
+							txtfl.delimiter.type='text';
+							txtfl.delimiter.text=', ';
+						}
+						<AREA>
+							<CTRL_GROUP>
+								<CTRLS>
+									<DATA_CTRL>
+										COND='getIntParam("attributeCount") > 0'
+										FORMULA='getIntParam("attributeCount")'
+									</DATA_CTRL>
+									<DELIMITER>
+										FMT={
+											txtfl.delimiter.type='text';
+											txtfl.delimiter.text='+';
+											txtfl.delimiter.override='false';
+										}
+									</DELIMITER>
+									<LABEL>
+										COND='getBooleanParam("anyAttribute")'
+										TEXT='any'
+									</LABEL>
+									<DELIMITER>
+										FMT={
+											txtfl.delimiter.type='nbsp';
+										}
+									</DELIMITER>
+									<LABEL>
+										COND='getIntParam("attributeCount") == 1'
+										<DOC_HLINK>
+											HKEYS={
+												'contextElement.id';
+												'"attribute-detail"';
+											}
+										</DOC_HLINK>
+										TEXT='attribute'
+									</LABEL>
+									<LABEL>
+										COND='getIntParam("attributeCount") > 1'
+										<DOC_HLINK>
+											HKEYS={
+												'contextElement.id';
+												'"attribute-detail"';
+											}
+										</DOC_HLINK>
+										TEXT='attributes'
+									</LABEL>
+								</CTRLS>
+							</CTRL_GROUP>
+						</AREA>
+					</PANEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.defined")'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Defined:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<PANEL>
+						FMT={
+							ctrl.size.width='321.8';
+							text.style='cs7';
+						}
+						<AREA>
+							<CTRL_GROUP>
+								<CTRLS>
+									<LABEL>
+										TEXT='globally'
+									</LABEL>
+									<PANEL>
+										COND='! hasParamValue("scope", "schema")'
+										FMT={
+											ctrl.size.width='205.5';
+											ctrl.size.height='38.3';
+										}
+										<AREA>
+											<CTRL_GROUP>
+												<CTRLS>
+													<LABEL>
+														TEXT='in'
+													</LABEL>
+													<DATA_CTRL>
+														<DOC_HLINK>
+															HKEYS={
+																'getXMLDocument().id';
+																'"detail"';
+															}
+														</DOC_HLINK>
+														FORMULA='getXMLDocument().getAttrStringValue("xmlName")'
+													</DATA_CTRL>
+												</CTRLS>
+											</CTRL_GROUP>
+										</AREA>
+									</PANEL>
+									<PANEL>
+										COND='hyperTargetExists (Array (contextElement.id, "xml-source"))'
+										FMT={
+											ctrl.size.width='288.8';
+											ctrl.size.height='59.3';
+										}
+										<AREA>
+											<CTRL_GROUP>
+												<CTRLS>
+													<DELIMITER>
+														FMT={
+															txtfl.delimiter.type='text';
+															txtfl.delimiter.text=', ';
+														}
+													</DELIMITER>
+													<LABEL>
+														TEXT='see'
+													</LABEL>
+													<LABEL>
+														<DOC_HLINK>
+															HKEYS={
+																'contextElement.id';
+																'"xml-source"';
+															}
+														</DOC_HLINK>
+														TEXT='XML source'
+													</LABEL>
+													<PANEL>
+														COND='output.format.supportsPagination && \ngetBooleanParam("fmt.page.refs")'
+														FMT={
+															ctrl.size.width='186';
+															ctrl.size.height='38.3';
+															txtfl.delimiter.type='none';
+														}
+														<AREA>
+															<CTRL_GROUP>
+																<CTRLS>
+																	<DELIMITER>
+																		FMT={
+																			txtfl.delimiter.type='nbsp';
+																		}
+																	</DELIMITER>
+																	<LABEL>
+																		FMT={
+																			text.style='cs5';
+																		}
+																		TEXT='['
+																	</LABEL>
+																	<DATA_CTRL>
+																		FMT={
+																			ctrl.option.noHLinkFmt='true';
+																			text.style='cs5';
+																			text.hlink.fmt='none';
+																		}
+																		<DOC_HLINK>
+																			HKEYS={
+																				'contextElement.id';
+																				'"xml-source"';
+																			}
+																		</DOC_HLINK>
+																		DOCFIELD='page-htarget'
+																	</DATA_CTRL>
+																	<LABEL>
+																		FMT={
+																			text.style='cs5';
+																		}
+																		TEXT=']'
+																	</LABEL>
+																</CTRLS>
+															</CTRL_GROUP>
+														</AREA>
+													</PANEL>
+												</CTRLS>
+											</CTRL_GROUP>
+										</AREA>
+									</PANEL>
+								</CTRLS>
+							</CTRL_GROUP>
+						</AREA>
+					</PANEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.includes") &&\n{\n  count = getIntParam("ownAttributeCount") + \n          getBooleanParam("ownAnyAttribute").toInt();\n\n  count > 0 ? { setVar ("count", count); true } : false\n}'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Includes:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<PANEL>
+						FMT={
+							ctrl.size.width='386.3';
+							ctrl.size.height='38.3';
+							text.style='cs7';
+						}
+						<AREA>
+							<CTRL_GROUP>
+								<CTRLS>
+									<LABEL>
+										COND='getVar("count").toInt() == 1'
+										TEXT='definition'
+									</LABEL>
+									<LABEL>
+										COND='getVar("count").toInt() > 1'
+										TEXT='definitions'
+									</LABEL>
+									<LABEL>
+										TEXT='of'
+									</LABEL>
+									<DATA_CTRL>
+										COND='getIntParam("ownAttributeCount") > 0'
+										FORMULA='getIntParam("ownAttributeCount")'
+									</DATA_CTRL>
+									<DELIMITER>
+										COND='getIntParam("ownAttributeCount") > 0'
+										FMT={
+											txtfl.delimiter.type='text';
+											txtfl.delimiter.text='+';
+										}
+									</DELIMITER>
+									<LABEL>
+										COND='getBooleanParam("ownAnyAttribute")'
+										TEXT='any'
+									</LABEL>
+									<DELIMITER>
+										FMT={
+											txtfl.delimiter.type='nbsp';
+										}
+									</DELIMITER>
+									<LABEL>
+										COND='getVar("count").toInt() == 1'
+										<DOC_HLINK>
+											COND='hasParamValue("doc.comp.attributes", "own")'
+											HKEYS={
+												'contextElement.id';
+												'"attribute-defs"';
+											}
+										</DOC_HLINK>
+										TEXT='attribute'
+									</LABEL>
+									<LABEL>
+										COND='getVar("count").toInt() > 1'
+										<DOC_HLINK>
+											COND='hasParamValue("doc.comp.attributes", "own")'
+											HKEYS={
+												'contextElement.id';
+												'"attribute-defs"';
+											}
+										</DOC_HLINK>
+										TEXT='attributes'
+									</LABEL>
+								</CTRLS>
+							</CTRL_GROUP>
+						</AREA>
+					</PANEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.redefines")\n\n// see also "Context Element" tab'
+		CONTEXT_ELEMENT_EXPR='findElementByKey ("redefined-component", contextElement.id)'
+		MATCHING_ET='<ANY>'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Redefines:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<PANEL>
+						FMT={
+							ctrl.size.width='421.5';
+							ctrl.size.height='38.3';
+							text.style='cs7';
+						}
+						<AREA>
+							<CTRL_GROUP>
+								<CTRLS>
+									<DATA_CTRL>
+										<DOC_HLINK>
+											HKEYS={
+												'contextElement.id';
+												'"detail"';
+											}
+										</DOC_HLINK>
+										FORMULA='toXMLName (getStringParam("nsURI"), getAttrStringValue("name"))'
+									</DATA_CTRL>
+									<LABEL>
+										TEXT='in'
+									</LABEL>
+									<DATA_CTRL>
+										<DOC_HLINK>
+											HKEYS={
+												'getXMLDocument().id';
+												'"detail"';
+											}
+										</DOC_HLINK>
+										FORMULA='getXMLDocument().getAttrStringValue("xmlName")'
+									</DATA_CTRL>
+								</CTRLS>
+							</CTRL_GROUP>
+						</AREA>
+					</PANEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.redefined")\n&&\ncheckElementsByKey ("redefining-components", contextElement.id)'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Redefined:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<SS_CALL_CTRL>
+						FMT={
+							text.style='cs7';
+						}
+						SS_NAME='Redefining Components'
+					</SS_CALL_CTRL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.used") &&\ngetIntParam("usageCount") == 0'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Used:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<LABEL>
+						FMT={
+							text.style='cs7';
+						}
+						TEXT='never'
+					</LABEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+	<AREA_SEC>
+		COND='getBooleanParam("doc.comp.profile.used") &&\ngetIntParam("usageCount") > 0'
+		<AREA>
+			<CTRL_GROUP>
+				<CTRLS>
+					<LABEL>
+						FMT={
+							text.style='cs6';
+						}
+						TEXT='Used:'
+					</LABEL>
+					<DELIMITER>
+						FMT={
+							text.style='cs1';
+						}
+					</DELIMITER>
+					<PANEL>
+						FMT={
+							ctrl.size.width='210';
+							text.style='cs7';
+						}
+						<AREA>
+							<CTRL_GROUP>
+								<CTRLS>
+									<LABEL>
+										TEXT='at'
+									</LABEL>
+									<DATA_CTRL>
+										FORMULA='getIntParam("usageCount")'
+									</DATA_CTRL>
+									<LABEL>
+										COND='getIntParam("usageCount") == 1'
+										<DOC_HLINK>
+											HKEYS={
+												'contextElement.id';
+												'"usage-locations"';
+											}
+										</DOC_HLINK>
+										TEXT='location'
+									</LABEL>
+									<LABEL>
+										COND='getIntParam("usageCount") > 1'
+										<DOC_HLINK>
+											HKEYS={
+												'contextElement.id';
+												'"usage-locations"';
+											}
+										</DOC_HLINK>
+										TEXT='locations'
+									</LABEL>
+								</CTRLS>
+							</CTRL_GROUP>
+						</AREA>
+					</PANEL>
+				</CTRLS>
+			</CTRL_GROUP>
+		</AREA>
+	</AREA_SEC>
+</ROOT>
+<STOCK_SECTIONS>
+	<ELEMENT_ITER>
+		FMT={
+			sec.outputStyle='text-par';
+			txtfl.delimiter.type='text';
+			txtfl.delimiter.text=', ';
+		}
+		TARGET_ET='<ANY>'
+		SCOPE='custom'
+		ELEMENT_ENUM_EXPR='findElementsByKey ("redefining-components", contextElement.id)'
+		SS_NAME='Redefining Components'
+		<BODY>
+			<AREA_SEC>
+				<AREA>
+					<CTRL_GROUP>
+						FMT={
+							txtfl.delimiter.type='space';
+						}
+						<CTRLS>
+							<LABEL>
+								TEXT='with'
+							</LABEL>
+							<DATA_CTRL>
+								<DOC_HLINK>
+									HKEYS={
+										'contextElement.id';
+										'"detail"';
+									}
+								</DOC_HLINK>
+								FORMULA='toXMLName (getStringParam("nsURI"), getAttrStringValue("name"))'
+							</DATA_CTRL>
+							<LABEL>
+								TEXT='in'
+							</LABEL>
+							<DATA_CTRL>
+								<DOC_HLINK>
+									HKEYS={
+										'getXMLDocument().id';
+										'"detail"';
+									}
+								</DOC_HLINK>
+								FORMULA='getXMLDocument().getAttrStringValue("xmlName")'
+							</DATA_CTRL>
+						</CTRLS>
+					</CTRL_GROUP>
+				</AREA>
+			</AREA_SEC>
+		</BODY>
+	</ELEMENT_ITER>
+</STOCK_SECTIONS>
+CHECKSUM='QJHYofZj0BZV5DQom38vq3qrc?AJnWvo0sJJgHY6K4w'
+</DOCFLEX_TEMPLATE>

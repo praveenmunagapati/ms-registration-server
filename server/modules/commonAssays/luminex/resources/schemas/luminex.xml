@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ * Copyright (c) 2009-2019 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <table tableName="Analyte" tableDbType="TABLE">
+        <description>Contains one row per analyte/antigen within a Luminex assay run</description>
+        <columns>
+            <column columnName="RowId"/>
+            <column columnName="LSID"/>
+            <column columnName="Name"/>
+            <column columnName="BeadNumber"/>
+            <column columnName="DataId"/>
+            <column columnName="FitProb"/>
+            <column columnName="ResVar"/>
+            <column columnName="RegressionType"/>
+            <column columnName="StdCurve"/>
+            <column columnName="MinStandardRecovery"/>
+            <column columnName="MaxStandardRecovery"/>
+            <column columnName="PositivityThreshold"/>
+            <column columnName="NegativeBead"/>
+        </columns>
+    </table>
+    
+    <table tableName="Titration" tableDbType="TABLE">
+        <description>Contains one row per titration (Standard, QC control, etc.). A single Luminex run may have more than one titration.</description>
+        <columns>
+            <column columnName="RowId" />
+            <column columnName="RunId" />
+            <column columnName="Name" />
+            <column columnName="Standard" />
+            <column columnName="QCControl" />
+            <column columnName="unknown" />
+            <column columnName="OtherControl" />
+        </columns>
+    </table>
+
+    <table tableName="CurveFit" tableDbType="TABLE">
+        <description>Contains EC50, area-under-the curve, curve fit parameters and other values per titration/analyte combination</description>
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="AnalyteId" />
+            <column columnName="TitrationId" />
+            <column columnName="EC50" />
+            <column columnName="AUC">
+                <description>Area under the curve</description>
+            </column>
+            <column columnName="CurveType" />
+            <column columnName="MinAsymptote" />
+            <column columnName="MaxAsymptote" />
+            <column columnName="Asymmetry" />
+            <column columnName="Inflection" />
+            <column columnName="Slope" />
+            <column columnName="FailureFlag">
+                <description>Flag indicating that the curve fit has failed or the EC50 value was over the acceptable threshold</description>
+            </column>
+        </columns>
+    </table>
+
+    <table tableName="GuideSet" tableDbType="TABLE">
+        <description>Contains one row per guide set that has been established to calculate historical ranges for the assay results</description>
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="ProtocolId" />
+            <column columnName="AnalyteName" />
+            <column columnName="CurrentGuideSet" />
+            <column columnName="Conjugate" />
+            <column columnName="Isotype" />
+            <column columnName="IsTitration">
+                <description>Determines the control type for this guide set (i.e. Titration vs SinglePoint)</description>
+            </column>
+            <column columnName="ControlName" />
+            <column columnName="ValueBased">
+                <description>True to designate this guide set as value-based. False indicates a run-based guide set.</description>
+            </column>
+            <column columnName="EC504PLEnabled">
+                <columnTitle>Use EC50 4PL for QC</columnTitle>
+                <description>4PL EC50 metric run-based flag for enabling/disabling QC flagging</description>
+            </column>
+            <column columnName="EC504PLAverage">
+                <description>4PL EC50 metric average value for value-based guide set</description>
+            </column>
+            <column columnName="EC504PLStdDev">
+                <description>4PL EC50 metric standard deviation value for value-based guide set</description>
+            </column>
+            <column columnName="EC505PLEnabled">
+                <columnTitle>Use EC50 5PL for QC</columnTitle>
+                <description>5PL EC50 metric run-based flag for enabling/disabling QC flagging</description>
+            </column>
+            <column columnName="EC505PLAverage">
+                <description>5PL EC50 metric average value for value-based guide set</description>
+            </column>
+            <column columnName="EC505PLStdDev">
+                <description>5PL EC50 metric standard deviation value for value-based guide set</description>
+            </column>
+            <column columnName="AUCEnabled">
+                <columnTitle>Use AUC for QC</columnTitle>
+                <description>AUC metric run-based flag for enabling/disabling QC flagging</description>
+            </column>
+            <column columnName="AUCAverage">
+                <description>AUC metric average value for value-based guide set</description>
+            </column>
+            <column columnName="AUCStdDev">
+                <description>AUC metric standard deviation value for value-based guide set</description>
+            </column>
+            <column columnName="MaxFIEnabled">
+                <columnTitle>Use MaxFI for QC</columnTitle>
+                <description>MFI metric run-based flag for enabling/disabling QC flagging</description>
+            </column>
+            <column columnName="MaxFIAverage">
+                <description>MFI metric average value for value-based guide set</description>
+            </column>
+            <column columnName="MaxFIStdDev">
+                <description>MFI metric standard deviation value for value-based guide set</description>
+            </column>
+            <column columnName="Comment" />
+            <column columnName="Created" />
+            <column columnName="CreatedBy" />
+            <column columnName="Modified" />
+            <column columnName="ModifiedBy" />
+        </columns>
+    </table>
+
+    <table tableName="AnalyteTitration" tableDbType="TABLE">
+        <description>Contains one row per analyte/titration combination within a run</description>
+        <columns>
+            <column columnName="AnalyteId" />
+            <column columnName="TitrationId" />
+            <column columnName="MaxFI" />
+            <column columnName="GuideSetId"/>
+            <column columnName="IncludeInGuideSetCalculation"/>
+        </columns>
+    </table>
+
+    <table tableName="WellExclusion" tableDbType="TABLE">
+        <description>Contains one row per well-level exclusion, which is associated with all wells for the same replicate, and may consist of one or more analytes</description>
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="Description" />
+            <column columnName="Dilution" />
+            <column columnName="Type" />
+            <column columnName="DataId" />
+            <column columnName="Well" />
+            <column columnName="Comment" />
+            <column columnName="CreatedBy" />
+            <column columnName="Created" />
+            <column columnName="ModifiedBy" />
+            <column columnName="Modified" />
+        </columns>
+    </table>
+
+    <table tableName="WellExclusionAnalyte" tableDbType="TABLE">
+        <columns>
+            <column columnName="AnalyteId" />
+            <column columnName="WellExclusionId" />
+        </columns>
+    </table>
+
+    <table tableName="RunExclusion" tableDbType="TABLE">
+        <description>Contains one row per run-level exclusion, which may consist of one or more analytes</description>
+        <columns>
+            <column columnName="RunId" />
+            <column columnName="Comment" />
+            <column columnName="CreatedBy" />
+            <column columnName="Created" />
+            <column columnName="ModifiedBy" />
+            <column columnName="Modified" />
+        </columns>
+    </table>
+
+    <table tableName="RunExclusionAnalyte" tableDbType="TABLE">
+        <columns>
+            <column columnName="RunId" />
+            <column columnName="AnalyteId" />
+        </columns>
+    </table>
+
+    <table tableName="DataRow" tableDbType="TABLE">
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="LSID">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="DataId"/>
+            <column columnName="AnalyteId"/>
+            <column columnName="Type"/>
+            <column columnName="Well"/>
+            <column columnName="Outlier"/>
+            <column columnName="Description"/>
+            <column columnName="PTID"/>
+            <column columnName="VisitID"/>
+            <column columnName="Date">
+                <formatString>Date</formatString>
+            </column>
+            <column columnName="FIString"/>
+            <column columnName="FI">
+                <formatString>0.0</formatString>
+            </column>
+            <column columnName="FIOORIndicator"/>
+            <column columnName="FIBackgroundString"/>
+            <column columnName="FIBackground">
+                <formatString>0.0</formatString>
+                <columnTitle>FI - Bkgd</columnTitle>
+            </column>
+            <column columnName="FIBackgroundOORIndicator"/>
+            <column columnName="StdDevString"/>
+            <column columnName="StdDev">
+                <formatString>0.00</formatString>
+            </column>
+            <column columnName="StdDevOORIndicator"/>
+            <column columnName="ObsConcString"/>
+            <column columnName="ObsConc">
+                <formatString>0.00</formatString>
+            </column>
+            <column columnName="ObsConcOORIndicator"/>
+            <column columnName="ExpConc">
+                <formatString>0.00</formatString>
+            </column>
+            <column columnName="ObsOverExp">
+                <formatString>0</formatString>
+                <columnTitle>(Obs/Exp) * 100</columnTitle>
+            </column>
+            <column columnName="ConcInRangeString"/>
+            <column columnName="ConcInRange">
+                <formatString>0.00</formatString>
+            </column>
+            <column columnName="ConcInRangeOORIndicator"/>
+            <column columnName="Dilution"/>
+            <column columnName="DataRowGroup"/>
+            <column columnName="Ratio"/>
+            <column columnName="SamplingErrors"/>
+            <column columnName="ExtraSpecimenInfo"/>
+            <column columnName="SpecimenID"/>
+            <column columnName="BeadCount"/>
+            <column columnName="Container"/>
+            <column columnName="ProtocolID"/>
+            <column columnName="TitrationID"/>
+            <column columnName="SinglePointControlID"/>
+            <column columnName="WellRole"/>
+            <column columnName="Summary"/>
+            <column columnName="CV">
+                <columnTitle>%CV</columnTitle>
+                <description>Coefficient of variation</description>
+                <formatString>0.00%</formatString>
+            </column>
+        </columns>
+    </table>
+
+    <table tableName="SinglePointControl" tableDbType="TABLE">
+        <description>Contains one row per analyte/single point control combination within a run</description>
+        <columns>
+            <column columnName="RowId" />
+            <column columnName="RunId" />
+            <column columnName="Name" />
+        </columns>
+    </table>
+
+    <table tableName="AnalyteSinglePointControl" tableDbType="TABLE">
+        <description>Contains one row per analyte/single point control combination within a run</description>
+        <columns>
+            <column columnName="AnalyteId" />
+            <column columnName="SinglePointControlId" />
+            <column columnName="GuideSetId" />
+            <column columnName="IncludeInGuideSetCalculation" />
+        </columns>
+    </table>
+
+</tables>

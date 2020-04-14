@@ -1,0 +1,24 @@
+<script type="text/javascript">
+
+    Ext4.onReady(function(){
+
+    var params = {};
+    var paramNames = LABKEY.ActionURL.getParameter('paramNames');
+    if(paramNames){
+        paramNames = paramNames.split(',');
+        Ext4.each(paramNames, function(p){
+            params[p] = LABKEY.ActionURL.getParameter(p);
+        })
+    };
+
+    var webpart = <%=webpartContext%>;
+    Ext4.create('LABKEY.ext.ImportWizard', {
+        renderTo: webpart.wrapperDivId,
+        action: LABKEY.ActionURL.getParameter('action'),
+        urlParams: params,
+        controller: LABKEY.ActionURL.getParameter('controller')
+    });
+
+});
+
+</script>

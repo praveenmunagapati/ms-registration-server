@@ -1,0 +1,228 @@
+import org.labkey.gradle.plugin.LabKey
+import org.labkey.gradle.util.BuildUtils
+import org.labkey.gradle.util.GroupNames
+
+plugins {
+    id 'java-library'
+    id 'java'
+    id 'maven-publish'
+}
+
+buildDir = new File(project.rootProject.buildDir, "/remoteapi/java")
+
+def artifactPrefix = 'labkey-client-api'
+
+group "org.labkey.api"
+//Issue #39336 (comment 4): Updating to use SNAPSHOT until migration to git
+version "1.1.1-SNAPSHOT"
+
+dependencies {
+    api "org.apache.httpcomponents:httpmime:${httpmimeVersion}"
+    api ("com.googlecode.json-simple:json-simple:${jsonSimpleVersion}")
+            {
+                // exclude this because it gets in the way of our own JSON object implementations from server/api
+                exclude group: "org.json", module:"json"
+            }
+    api "net.sf.opencsv:opencsv:${opencsvVersion}"
+}
+
+jar {
+    archiveBaseName.set(artifactPrefix)
+
+    sourceCompatibility = project.sourceCompatibility
+    targetCompatibility = project.targetCompatibility
+
+    sourceSets
+            {
+                main {
+                    java {
+                        srcDirs = ['src']
+                    }
+                }
+            }
+
+    libsDirName = "jar"
+}
+
+project.tasks.withType(JavaCompile) {
+    sourceCompatibility = project.ext.sourceCompatibility
+    targetCompatibility = project.ext.targetCompatibility
+}
+
+// The maven-publish plugin will, by default, publish a metadata file alongside the other
+// artifacts.  Its extension is .module, which might get confused with our own .module files.
+// We could publish these files for everything but .module files, but for now we disable always
+// https://docs.gradle.org/current/userguide/publishing_gradle_module_metadata.html
+project.tasks.withType(GenerateModuleMetadata) {
+    enabled = false
+}
+
+project.task("fatJar",
+        description: "Generate single jar file containing the api and all its dependent classes",
+        group: GroupNames.BUILD,
+        type: Jar,
+        {
+            Jar jar ->
+                jar.from sourceSets.main.output
+                jar.duplicatesStrategy = 'exclude'
+                jar.from { configurations.default.collect { it.isDirectory() ? it : zipTree(it) }}
+                jar.archiveBaseName.set(artifactPrefix)
+                jar.setArchiveVersion(project.version)
+                jar.classifier LabKey.FAT_JAR_CLASSIFIER
+                jar.dependsOn project.tasks.jar
+                jar.into('lib') {
+                    from tasks.jar
+                    from configurations.default
+                }
+        }
+)
+
+if (project.hasProperty('javaClientDir'))
+{
+    project.task('deployFatJar', description: "Generate java client 'all' jar file and deploy to a given directory. For example, a host app other than LabKey Server",
+            type: Copy) {
+        from fatJar
+        into project.javaClientDir
+    }
+}
+
+project.task('javadocJar', description: "Generate jar file of javadoc files", type: Jar) {Jar jar ->
+            jar.from project.tasks.javadoc.destinationDir
+            jar.group GroupNames.DISTRIBUTION
+            jar.archiveBaseName.set(artifactPrefix)
+            jar.archiveClassifier.set(LabKey.JAVADOC_CLASSIFIER)
+            jar.dependsOn project.tasks.javadoc
+        }
+
+project.task('sourcesJar', description: "Generate jar file of source files", type: Jar) {Jar jar ->
+            jar.from project.sourceSets.main.allJava
+
+            jar.group GroupNames.DISTRIBUTION
+            jar.archiveBaseName.set(artifactPrefix)
+            jar.classifier LabKey.SOURCES_CLASSIFIER
+}
+
+project.artifacts {
+    archives project.tasks.sourcesJar
+    archives project.tasks.javadocJar
+    archives project.tasks.fatJar
+}
+
+def description = "The client-side library for Java developers is a separate JAR from the LabKey Server code base. It can be used by any Java program, including another Java web application."
+def orgUrl = "http://www.labkey.org"
+
+project.afterEvaluate {
+    project.publishing {
+        publications {
+            libs(MavenPublication) {
+                groupId = project.group
+                from components.java
+                artifactId = artifactPrefix
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+                pom {
+                    name = "LabKey Server Java Client API"
+                    description = "The client-side library for Java developers is a separate JAR from the LabKey Server code base. It can be used by any Java program, including another Java web application."
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    organization {
+                        name = "LabKey"
+                        url = orgUrl
+                    }
+                    scm {
+                        connection = 'http://svn.mgt.labkey.host/stedi/trunk'
+                        developerConnection = 'http://svn.mgt.labkey.host/stedi/trunk'
+                        url = 'http://svn.mgt.labkey.host/stedi/trunk'
+                    }
+                }
+
+                project.tasks.each {
+                    if (it instanceof Jar)
+                    {
+                        artifactId artifactPrefix
+                        artifact it
+                    }
+                }
+            }
+        }
+
+        // Comment this out for now as we don't need to publish snapshot versions of the remoteapi jar file all the time since
+        // we are referencing the release version in our builds and this code changes infrequently.  Without a modification
+        // to this file. this publishing fails when the LabKey version is a release version because the repository set for
+        // publishing is a release repository, but the version set in this file will be a SNAPSHOT version.  Could probalby be fixed
+        // with some configuration work, but it will be easier once this is moved to its own git repository.
+//        if (BuildUtils.shouldPublish(project))
+//        {
+//            project.artifactoryPublish {
+//                project.tasks.each {
+//                    if (it instanceof Jar)
+//                    {
+//                        dependsOn it
+//                    }
+//                }
+////                dependsOn pomFileTask
+//                publications('libs')
+//            }
+//        }
+
+    }
+    project.model {
+        tasks.publishLibsPublicationToMavenLocal {
+            enabled = false
+        }
+    }
+}
+
+// This section is used for publishing the jar files to bintray and then on to maven central.
+if (project.hasProperty('bintray_user')
+        && project.hasProperty('bintray_api_key')
+        && project.hasProperty('gpg_passphrase')
+        && project.hasProperty('sonatype_username')
+        && project.hasProperty('sonatype_password'))
+{
+    apply plugin: 'com.jfrog.bintray'
+    bintray {
+        user = project.bintray_user
+        key = project.bintray_api_key
+        publications = ['libs']
+        publish = true
+        pkg {
+            repo = project.version.endsWith('SNAPSHOT') ? 'libs-snapshot' : 'libs-release'
+            desc = description
+            websiteUrl = orgUrl
+            name = artifactPrefix
+            userOrg = 'labkey'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'https://svn.mgt.labkey.host/stedi/'
+            version {
+                name = project.version
+                desc = "LabKey Java Client API ${project.version}"
+                released = new Date()
+                gpg {
+                    sign = true
+                    passphrase = project.gpg_passphrase
+                }
+
+                mavenCentralSync {
+                    sync = true //[Default: true] Determines whether to sync the version to Maven Central.
+                    user = project.sonatype_username //OSS user token: mandatory
+                    password = project.sonatype_password //OSS user password: mandatory
+                    close = '1'
+                    //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. 
+                    //You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+                }
+            }
+        }
+    }
+}
+

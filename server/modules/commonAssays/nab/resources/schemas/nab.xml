@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Copyright (c) 2013-2018 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table tableName="CutoffValue" tableDbType="TABLE">
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="NAbSpecimenId">
+                <columnTitle>NAB Specimen</columnTitle>
+            </column>
+            <column columnName="Cutoff"/>
+            <column columnName="Point"/>
+            <column columnName="PointOORIndicator"/>
+            <column columnName="IC_Poly"/>
+            <column columnName="IC_PolyOORIndicator"/>
+            <column columnName="IC_4pl"/>
+            <column columnName="IC_4plOORIndicator"/>
+            <column columnName="IC_5pl"/>
+            <column columnName="IC_5plOORIndicator"/>
+        </columns>
+    </table>
+    <table tableName="NAbSpecimen" tableDbType="TABLE">
+        <titleColumn>WellGroupName</titleColumn>
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="DataId"/>
+            <column columnName="RunId"/>
+            <column columnName="SpecimenLSID"/>
+            <column columnName="WellGroupName"/>
+            <column columnName="FitError"/>
+            <column columnName="AUC_Poly"/>
+            <column columnName="PositiveAUC_Poly"/>
+            <column columnName="AUC_4pl"/>
+            <column columnName="PositiveAUC_4pl"/>
+            <column columnName="AUC_5pl"/>
+            <column columnName="PositiveAUC_5pl"/>
+            <column columnName="ObjectUri"/>
+            <column columnName="ObjectId"/>
+            <column columnName="ProtocolId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="VirusLsid"/>
+        </columns>
+    </table>
+    <table tableName="WellData" tableDbType="TABLE">
+        <titleColumn>WellName</titleColumn>
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="RunId"/>
+            <column columnName="SpecimenLSID"/>
+            <column columnName="RunDataId">
+                <url>executeQuery.view?schemaName=${schemaPath}&amp;query.queryName=Data&amp;query.RowId~eq=${RunDataId}</url>
+            </column>
+            <column columnName="DilutionDataId">
+                <url>executeQuery.view?schemaName=${schemaPath}&amp;query.queryName=DilutionData&amp;query.RowId~eq=${DilutionDataId}</url>
+            </column>
+            <column columnName="Row"/>
+            <column columnName="Column"/>
+            <column columnName="Value"/>
+            <column columnName="ControlWellgroup"/>
+            <column columnName="VirusWellgroup"/>
+            <column columnName="SpecimenWellgroup"/>
+            <column columnName="ReplicateWellgroup"/>
+            <column columnName="ReplicateNumber"/>
+            <column columnName="PlateNumber"/>
+            <column columnName="PlateVirusName"/>
+            <column columnName="ProtocolId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="Container">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="Excluded"/>
+        </columns>
+    </table>
+    <table tableName="DilutionData" tableDbType="TABLE">
+        <columns>
+            <column columnName="RowId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="RunId"/>
+            <column columnName="RunDataId">
+                <url>executeQuery.view?schemaName=${schemaPath}&amp;query.queryName=Data&amp;query.RowId~eq=${RunDataId}</url>
+            </column>
+            <column columnName="Dilution"/>
+            <column columnName="DilutionOrder"/>
+            <column columnName="PercentNeutralization">
+                <formatString>0.00%</formatString>
+            </column>
+            <column columnName="NeutralizationPlusMinus">
+                <formatString>0.000000</formatString>
+            </column>
+            <column columnName="Min"/>
+            <column columnName="Max"/>
+            <column columnName="Mean"/>
+            <column columnName="StdDev">
+                <formatString>0.0000</formatString>
+            </column>
+            <column columnName="MinDilution"/>
+            <column columnName="MaxDilution"/>
+            <column columnName="WellgroupName"/>
+            <column columnName="ReplicateName"/>
+            <column columnName="PlateNumber"/>
+            <column columnName="ProtocolId">
+                <isHidden>true</isHidden>
+            </column>
+            <column columnName="Container">
+                <isHidden>true</isHidden>
+            </column>
+        </columns>
+    </table>
+</tables>

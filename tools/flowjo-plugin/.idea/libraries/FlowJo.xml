@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="FlowJo">
+    <CLASSES>
+      <root url="jar://$FLOWJO_HOME$/fjlib.jar!/" />
+      <root url="jar://$FLOWJO_HOME$/engine.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,164 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ap="http://labkey.org/study/assay/xml"
+           xmlns:exp="http://cpas.fhcrc.org/exp/xml"
+           targetNamespace="http://labkey.org/study/assay/xml"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://cpas.fhcrc.org/exp/xml" schemaLocation="../../api/schemas/expTypes.xsd"/>
+
+    <xs:element name="provider" type="ap:ProviderType"/>
+
+    <xs:complexType name="ProviderType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+            <xs:element name="requiredModules" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        If provided, this set of modules will always be active in a given folder when an instance of this assay is present.
+                        This could be useful if the assay depends on a user schema or other resources present in the module.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="moduleName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="inputDataFileSuffix" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Deprecated (use inputDataFile/fileSuffixes instead). File extension that should be offered the option to import into designs of this type</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="primaryDataFileType" minOccurs="0" maxOccurs="1" type="ap:AssayDataType">
+                <xs:annotation>
+                    <xs:documentation>Information about the files to be used as inputs to this assay.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="relatedDataFileType" minOccurs="0" maxOccurs="unbounded" type="ap:AssayDataType">
+                <xs:annotation>
+                    <xs:documentation>
+                        If there are related data files available on the server's file system
+                        (ones that share the same base file name, with different suffixes/file extensions), they are
+                        attached to the run at import time. If they happen to match up with a &lt;relatedDataFile&gt;
+                        element, they will be added using the associated namespace prefix and role.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="fieldKeys" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Contains field keys (column names, potentially with lookups) used to resolve various values</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="participantId" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Field key relative to the data/results table that gives the ParticipantID for a given row of data</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="visitId" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Field key relative to the data/results table that gives the VisitID for a given row of data</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="date" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Field key relative to the data/results table that gives the date for a given row of data</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="specimenId" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation>
+                                <xs:documentation>Field key relative to the data/results table that gives the SpecimenID for a given row of data</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="transformScripts" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Ordered list of transformation/validation scripts that must be run as data is
+                        imported. The scripts themselves should be in the assay's ./scripts subdirectory.
+                        Scripts will be executed in the order given here. Any scripts in the ./script subdirectory
+                        that are not listed here will be executed in alphabetical order after all of the scripts
+                        listed here.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="transformScript" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Simple file name (no path) of the script. If a script engine associated
+                                                with the script's file extension isn't registered in the Admin Console,
+                                                the import attempt will fail.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveHandler" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Class name of the custom save handler for this assay type.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="plateBased" type="xs:boolean" default="false">
+            <xs:annotation>
+                <xs:documentation>Not used.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="canCopyToStudy" type="xs:boolean" default="true">
+            <xs:annotation>
+                <xs:documentation>Deprecated. Not used anymore.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+    </xs:complexType>
+
+    <xs:element name="domain" type="exp:DomainDescriptorType" />
+
+    <xs:complexType name="AssayDataType">
+        <xs:sequence>
+            <xs:element name="namespacePrefix" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Namespace prefix to be used when creating the LSID for the input data file</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="role" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The role name to be used for the file when it is used as the input to an assay run</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="fileSuffix" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:annotation>
+                            <xs:documentation>
+                                The file name suffixes (such as file extensions) to be matched for potential input files to the assay. Typical usages include ".tsv" or ".jpg"
+                            </xs:documentation>
+                        </xs:annotation>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="default" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>Indicates which of the file suffixes should be used as the default. If multiple are set, the one will be used.</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

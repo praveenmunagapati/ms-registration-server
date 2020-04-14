@@ -1,0 +1,16 @@
+.thumbnail-remove div, .icon-remove div {
+    color: #555555;
+}
+.thumbnail-remove , .icon-remove {
+    cursor: pointer;
+}
+.thumbnail-remove , .icon-remove {
+    opacity: .5;
+}
+.thumbnail-remove:hover, .icon-remove:hover {
+    opacity: 1;
+}
+dataview-props-images .x4-fieldset {
+    padding-left:1px;
+    padding-right:1px;
+}

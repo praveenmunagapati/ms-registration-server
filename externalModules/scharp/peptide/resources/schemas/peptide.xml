@@ -1,0 +1,494 @@
+<!--
+* Copyright (c) 2003-2012 Fred Hutchinson Cancer Research Center * * Licensed under the Apache License, Version 2.0 (the "License"); * you may not use this file except in compliance with the License. * You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by applicable law or agreed to in writing, software * distributed under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. * See the License for the specific language governing permissions and * limitations under the License.
+-->
+<tables xmlns="http://labkey.org/data/xml">
+    <table tableName="protein_category" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="protein_cat_id"/>
+            <column columnName="protein_cat_desc"/>
+            <column columnName="protein_cat_mnem"/>
+            <column columnName="protein_sort_value"/>
+        </columns>
+    </table>
+    <table tableName="group_type" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="group_type_id"/>
+            <column columnName="group_type_desc"/>
+        </columns>
+    </table>
+    <table tableName="temp_pool_1" tableDbType="TABLE">
+        <columns>
+            <column columnName="peptide_id"/>
+            <column columnName="peptide_group_id"/>
+        </columns>
+    </table>
+    <table tableName="group_patient" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby">
+                <columnTitle>Created By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="modifiedby">
+                <columnTitle>Modified By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="modified">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="peptide_group_id">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="ptid">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="draw_date"/>
+            <column columnName="study">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="visit_no"/>
+        </columns>
+    </table>
+    <table tableName="pathogen" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="pathogen_id"/>
+            <column columnName="pathogen_desc"/>
+        </columns>
+    </table>
+    <table tableName="peptide_pool_assignment" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="peptide_pool_id"/>
+            <column columnName="peptide_id"/>
+            <column columnName="peptide_in_pool"/>
+            <column columnName="history_id"/>
+        </columns>
+    </table>
+    <table tableName="matrices" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="matrix_id"/>
+            <column columnName="peptide_count"/>
+            <column columnName="peptides_per_pool"/>
+            <column columnName="dimension"/>
+            <column columnName="pools_per_dimension"/>
+            <column columnName="pool_count"/>
+            <column columnName="plate_count"/>
+            <column columnName="comment"/>
+        </columns>
+    </table>
+    <table tableName="temp_pool" tableDbType="TABLE">
+        <columns>
+            <column columnName="peptide_reference"/>
+            <column columnName="peptide_id"/>
+            <column columnName="peptide_group_id"/>
+        </columns>
+    </table>
+    <table tableName="peptide_status" tableDbType="TABLE">
+        <columns>
+            <column columnName="qc_passed"/>
+            <column columnName="description"/>
+        </columns>
+    </table>
+    <table tableName="matrix_pool" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="matrix_pool_id"/>
+            <column columnName="matrix_id"/>
+        </columns>
+    </table>
+    <table tableName="matrix_pool_peptide" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="matrix_pool_pep_id"/>
+            <column columnName="matrix_pool_id"/>
+            <column columnName="peptide_reference"/>
+        </columns>
+    </table>
+    <table tableName="peptide_group" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby">
+                <columnTitle>Created By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="modifiedby">
+                <columnTitle>Modified By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="modified">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="peptide_group_id">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="pathogen_id">
+                <fk>
+                    <fkColumnName>pathogen_id</fkColumnName>
+                    <fkTable>pathogen</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="seq_ref">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="seq_source">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="clade_id">
+                <fk>
+                    <fkColumnName>clade_id</fkColumnName>
+                    <fkTable>clade</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="pep_align_ref">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="pep_align_source">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="peptide_set">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="group_type_id">
+                <fk>
+                    <fkColumnName>group_type_id</fkColumnName>
+                    <fkTable>group_type</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+        </columns>
+        <pkColumnName>peptide_group_id</pkColumnName>
+    </table>
+    <table tableName="group_matrix_peptides" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="peptide_group_id"/>
+            <column columnName="matrix_pool_pep_id"/>
+            <column columnName="peptide_id"/>
+            <column columnName="version"/>
+            <column columnName="history_id"/>
+        </columns>
+    </table>
+    <table tableName="peptide_pool" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby">
+                <columnTitle>Created By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="modified">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="peptide_pool_id"/>
+            <column columnName="pool_type"/>
+            <column columnName="description"/>
+            <column columnName="comment"/>
+            <column columnName="exists">
+                <fk>
+                    <fkColumnName>qc_passed</fkColumnName>
+                    <fkTable>peptide_status</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="create_date">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+        </columns>
+    </table>
+    <table tableName="group_peptides" tableDbType="VIEW">
+        <columns>
+            <column columnName="peptide_id">
+                <columnTitle>Peptide Id</columnTitle>
+            </column>
+            <column columnName="peptide_group_id">
+                <columnTitle>Peptide Group Id</columnTitle>
+            </column>
+            <column columnName="btk_code">
+                <columnTitle>BTK Code</columnTitle>
+            </column>
+            <column columnName="transmitted_status">
+                <columnTitle>Transmitted Status</columnTitle>
+                <fk>
+                    <fkColumnName>transmitted_status</fkColumnName>
+                    <fkTable>transmitted_status</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="history_id"/>
+            <column columnName="pathogen_id">
+                <columnTitle>Pathogen</columnTitle>
+                <fk>
+                    <fkColumnName>pathogen_id</fkColumnName>
+                    <fkTable>pathogen</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="peptide_sequence">
+                <columnTitle>Peptide Sequence</columnTitle>
+            </column>
+            <column columnName="sort_sequence">
+                <columnTitle>Sort Sequence</columnTitle>
+            </column>
+            <column columnName="protein_cat_id">
+                <columnTitle>Protein Category</columnTitle>
+                <fk>
+                    <fkColumnName>protein_cat_id</fkColumnName>
+                    <fkTable>protein_category</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="protein_align_pep">
+                <columnTitle>Protein Align Pep</columnTitle>
+            </column>
+            <column columnName="qc_passed">
+                <columnTitle>Status</columnTitle>
+                <fk>
+                    <fkColumnName>qc_passed</fkColumnName>
+                    <fkTable>peptide_status</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="child">
+                <columnTitle>Is Child</columnTitle>
+            </column>
+            <column columnName="parent">
+                <columnTitle>Is Parent</columnTitle>
+            </column>
+        </columns>
+    </table>
+    <table tableName="pool_details" tableDbType="VIEW">
+        <columns>
+            <column columnName="peptide_pool_id"/>
+            <column columnName="pool_type"/>
+            <column columnName="description"/>
+            <column columnName="peptide_group_id"/>
+            <column columnName="matrix_pool_id"/>
+            <column columnName="matrix_id"/>
+        </columns>
+    </table>
+    <table tableName="replicate_history" tableDbType="TABLE">
+        <columns>
+            <column columnName="history_id"/>
+            <column columnName="peptide_id"/>
+            <column columnName="btk_code"/>
+            <column columnName="protein_align_pep"/>
+            <column columnName="peptide_sequence"/>
+            <column columnName="sort_sequence"/>
+            <column columnName="protein_cat_id"/>
+            <column columnName="child"/>
+            <column columnName="qc_passed"/>
+            <column columnName="date_added"/>
+            <column columnName="parent"/>
+            <column columnName="master_peptide_id"/>
+        </columns>
+    </table>
+    <table tableName="parent" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="peptide_id"/>
+            <column columnName="linked_parent"/>
+            <column columnName="parent_position"/>
+            <column columnName="history_id"/>
+        </columns>
+    </table>
+    <table tableName="transmitted_status" tableDbType="TABLE">
+        <columns>
+            <column columnName="transmitted_status"/>
+            <column columnName="description"/>
+        </columns>
+    </table>
+    <table tableName="lanl_input_error" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="record_id"/>
+            <column columnName="input_row"/>
+            <column columnName="reason"/>
+        </columns>
+    </table>
+    <table tableName="pool_matrix_group" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="peptide_pool_id"/>
+            <column columnName="matrix_pool_id"/>
+            <column columnName="peptide_group_id"/>
+        </columns>
+    </table>
+    <table tableName="source" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="peptide_id"/>
+            <column columnName="peptide_group_id"/>
+            <column columnName="btk_code"/>
+            <column columnName="history_id"/>
+            <column columnName="transmitted_status"/>
+            <column columnName="modifiedby"/>
+        </columns>
+    </table>
+    <table tableName="peptide_view" tableDbType="VIEW">
+        <columns>
+            <column columnName="peptide_id">
+                <datatype>int identity</datatype>
+                <columnTitle>Peptide Id</columnTitle>
+            </column>
+            <column columnName="protein_align_pep"/>
+            <column columnName="peptide_sequence"/>
+            <column columnName="sort_sequence"/>
+            <column columnName="protein_cat_id"/>
+            <column columnName="protein_cat_desc"/>
+            <column columnName="child"/>
+            <column columnName="qc_passed"/>
+            <column columnName="lanl_date"/>
+            <column columnName="parent"/>
+        </columns>
+        <tableTitle>Peptide</tableTitle>
+        <pkColumnName>peptide_id</pkColumnName>
+    </table>
+    <table tableName="peptides" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby">
+                <columnTitle>Created By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="modified">
+                <formatString>dd-MMM-yy</formatString>
+            </column>
+            <column columnName="peptide_id"/>
+            <column columnName="protein_align_pep">
+                <columnTitle>Protein Align Pep</columnTitle>
+            </column>
+            <column columnName="peptide_sequence"/>
+            <column columnName="sort_sequence"/>
+            <column columnName="protein_cat_id">
+                <columnTitle>Protein Category</columnTitle>
+                <fk>
+                    <fkColumnName>protein_cat_id</fkColumnName>
+                    <fkTable>protein_category</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="child">
+                <columnTitle>Is Child</columnTitle>
+            </column>
+            <column columnName="qc_passed">
+                <columnTitle>Peptide Status</columnTitle>
+                <fk>
+                    <fkColumnName>qc_passed</fkColumnName>
+                    <fkTable>peptide_status</fkTable>
+                    <fkDbSchema>peptide</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="lanl_date"/>
+            <column columnName="parent">
+                <columnTitle>Is Parent</columnTitle>
+            </column>
+            <column columnName="src_file_name">
+                <columnTitle>Source File Name</columnTitle>
+            </column>
+            <column columnName="modifiedby">
+                <columnTitle>Modified By</columnTitle>
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+        </columns>
+    </table>
+    <table tableName="pool_peptides" tableDbType="VIEW">
+        <columns>
+            <column columnName="peptide_id"/>
+            <column columnName="peptide_sequence"/>
+            <column columnName="peptide_pool_id"/>
+            <column columnName="peptide_in_pool"/>
+            <column columnName="history_id"/>
+        </columns>
+    </table>
+    <table tableName="clade" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modified"/>
+            <column columnName="clade_id"/>
+            <column columnName="clade_desc"/>
+        </columns>
+    </table>
+</tables>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="pipelineRegistry" class="org.labkey.api.pipeline.TaskPipelineRegistrar">
+        <property name="factoryImpls">
+            <list>
+                <bean class="org.labkey.pipeline.analysis.CommandTaskImpl$Factory"/>
+                <bean class="org.labkey.pipeline.analysis.ConvertTaskFactory"/>
+                <bean class="org.labkey.pipeline.importer.FolderImportTask$Factory"/>
+
+                <!-- For unit-testing purposes -->
+                <bean class="org.labkey.pipeline.mule.test.DummyTaskFactory"/>
+            </list>
+        </property>
+        <property name="pipelineImpls">
+            <list>
+                <bean class="org.labkey.pipeline.api.TaskPipelineImpl"/>
+                <bean class="org.labkey.pipeline.analysis.FileAnalysisTaskPipelineImpl"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="corePipelineRegistry" class="org.labkey.api.pipeline.TaskPipelineRegistrar">
+        <property name="factoryImpls">
+            <list>
+                <bean class="org.labkey.pipeline.importer.FolderImportTask$Factory"/>
+            </list>
+        </property>
+
+        <property name="pipelines">
+            <list>
+                <!-- Folder import job pipeline -->
+                <bean class="org.labkey.api.pipeline.TaskPipelineSettings">
+                    <constructor-arg type="java.lang.Class" value="org.labkey.pipeline.importer.FolderImportJob"/>
+                    <property name="taskProgressionSpec">
+                        <list>
+                            <bean id="initialTask" class="org.labkey.api.pipeline.TaskId">
+                                <constructor-arg><value type="java.lang.Class">org.labkey.pipeline.importer.FolderImportTask</value></constructor-arg>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+
+                <!-- Folder reload pipeline trigger task -->
+                <bean class="org.labkey.api.pipeline.file.FileAnalysisTaskPipelineSettings">
+                    <constructor-arg value="FolderReloadTask"/>
+                    <property name="description" value="Reload folder archive"/>
+                    <property name="protocolObjectId" value="folder.folderArchiveReload"/>
+                    <property name="protocolName" value="Folder Archive Reload"/>
+                    <property name="protocolFactoryName" value="folderReload"/>
+                    <property name="defaultDisplayState" value="hidden"/>
+                    <property name="allowForTriggerConfiguration" value="true"/>
+                    <property name="moveAvailable" value="false"/>
+                    <property name="initialInputExts">
+                        <list>
+                            <ref bean="xmlFileType"/>
+                        </list>
+                    </property>
+                    <property name="taskProgressionSpec">
+                        <list>
+                            <bean id="folderReloadTask" class="org.labkey.api.pipeline.TaskId">
+                                <constructor-arg><value type="java.lang.Class">org.labkey.pipeline.importer.FolderImportTask</value></constructor-arg>
+                            </bean>
+                        </list>
+                    </property>
+                    <property name="helpText" value="The selected Pipeline task should only be initiated on a folder.xml file underneath a pipeline root. It will not accept compressed (.zip) folder archives." />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="xmlFileType" class="org.labkey.api.util.FileType">
+        <constructor-arg value=".xml"/>
+    </bean>
+</beans>
+

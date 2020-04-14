@@ -1,0 +1,2253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ * Copyright (c) 2005-2016 Fred Hutchinson Cancer Research Center
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <table tableName="Fractions" tableDbType="TABLE">
+    <columns>
+      <column columnName="Fraction"/>
+      <column columnName="Run">
+          <fk>
+              <fkColumnName>Run</fkColumnName>
+              <fkTable>Runs</fkTable>
+              <fkDbSchema>ms2</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="Description"/>
+      <column columnName="FileName"/>
+      <column columnName="HydroB0"/>
+      <column columnName="HydroB1"/>
+      <column columnName="HydroR2"/>
+      <column columnName="HydroSigma"/>
+      <column columnName="PepXMLDataLSID"/>
+      <column columnName="MzXMLURL"/>
+      <column columnName="ScanCount"/>
+      <column columnName="MS1ScanCount"/>
+      <column columnName="MS2ScanCount"/>
+      <column columnName="MS3ScanCount"/>
+      <column columnName="MS4ScanCount"/>
+    </columns>
+    <description>Contains a row for every fraction in a loaded MS2 search result.</description>
+    <titleColumn>Fraction</titleColumn>
+  </table>
+  <table tableName="Modifications" tableDbType="TABLE">
+    <columns>
+      <column columnName="Run"/>
+      <column columnName="AminoAcid"/>
+      <column columnName="MassDiff"/>
+      <column columnName="Variable"/>
+      <column columnName="Symbol"/>
+    </columns>
+    <description>Contains a row for every type of amino acid modification loaded in an MS2 run.</description>
+  </table>
+  <table tableName="PeptidesData" tableDbType="TABLE">
+    <columns>
+      <column columnName="Fraction">
+          <columnTitle>Fraction</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>65</displayWidth>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+      </column>
+        <column columnName="Scan">
+          <columnTitle>Scan</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>45</displayWidth>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>false</isUserEditable>
+        </column>
+        <column columnName="EndScan">
+          <columnTitle>EndScan</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>65</displayWidth>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>false</isUserEditable>
+        </column>
+        <column columnName="RetentionTime">
+          <columnTitle>RetTime</columnTitle>
+          <description>The peptide's retention time, in seconds</description>
+          <formatString>0.00</formatString>
+          <inputType>text</inputType>
+          <displayWidth>65</displayWidth>
+          <inputLength>10</inputLength>
+          <nullable>true</nullable>
+        </column>
+        <column columnName="Charge">
+          <columnTitle>Z</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0+</formatString>
+          <displayWidth>25</displayWidth>
+          <inputLength>3</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="Score1">
+          <columnTitle>Score1</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0</formatString>
+          <displayWidth>40</displayWidth>
+          <scale>10</scale>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Score2">
+          <columnTitle>Score2</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.000</formatString>
+          <displayWidth>60</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Score3">
+          <columnTitle>Score3</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.000</formatString>
+          <displayWidth>60</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Score4">
+          <columnTitle>Score4</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0</formatString>
+          <displayWidth>60</displayWidth>
+          <scale>10</scale>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Score5">
+          <columnTitle>Score5</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.0000</formatString>
+          <displayWidth>55</displayWidth>
+          <scale>10</scale>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Score6">
+          <columnTitle>Score6</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.0000</formatString>
+          <displayWidth>55</displayWidth>
+          <scale>10</scale>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="IonPercent">
+          <columnTitle>Ion%</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0%</formatString>
+          <tsvFormatString>0.00</tsvFormatString>
+          <displayWidth>50</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Mass">
+          <datatype>real</datatype>
+          <columnTitle>CalcMH+</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.0000</formatString>
+          <displayWidth>70</displayWidth>
+          <scale>24</scale>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="DeltaMass">
+          <columnTitle>dMass</columnTitle>
+          <inputType>text</inputType>
+          <formatString>+0.0000;-0.0000</formatString>
+          <displayWidth>55</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="PeptideProphet">
+          <columnTitle>PepProphet</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.0000</formatString>
+          <displayWidth>85</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+          <sortDescending>true</sortDescending>
+        </column>
+        <column columnName="Peptide">
+          <columnTitle>Peptide</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>320</displayWidth>
+          <scale>300</scale>
+          <inputLength>40</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="PrevAA">
+          <inputType>text</inputType>
+          <displayWidth>65</displayWidth>
+          <scale>20</scale>
+          <inputLength>1</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="TrimmedPeptide">
+          <inputType>text</inputType>
+          <displayWidth>320</displayWidth>
+          <scale>300</scale>
+          <inputLength>40</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="NextAA">
+          <inputType>text</inputType>
+          <displayWidth>65</displayWidth>
+          <scale>20</scale>
+          <inputLength>1</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="ProteinHits">
+          <columnTitle>SeqHits</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>60</displayWidth>
+          <inputLength>5</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="SequencePosition">
+          <columnTitle>SeqPos</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0</formatString>
+          <displayWidth>60</displayWidth>
+          <inputLength>10</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+        <column columnName="Protein">
+          <columnTitle>Protein</columnTitle>
+          <inputType>text</inputType>
+          <displayWidth>220</displayWidth>
+          <scale>200</scale>
+          <inputLength>40</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+      <column columnName="SeqId">
+          <fk>
+              <fkColumnName>SeqId</fkColumnName>
+              <fkTable>Sequences</fkTable>
+              <fkDbSchema>prot</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="RowId">
+        <isAutoInc>true</isAutoInc>
+      </column>
+        <column columnName="PeptideProphetErrorRate">
+          <columnTitle>PPErrorRate</columnTitle>
+          <inputType>text</inputType>
+          <formatString>0.00</formatString>
+          <displayWidth>70</displayWidth>
+          <inputLength>24</inputLength>
+          <nullable>false</nullable>
+          <isReadOnly>false</isReadOnly>
+          <isUserEditable>true</isUserEditable>
+        </column>
+       <column columnName="QueryNumber"/>
+       <column columnName="HitRank"/>
+       <column columnName="Decoy"/>
+    </columns>
+    <description>Contains a row for every peptide loaded in an MS2 run.</description>
+  </table>
+  <table tableName="Runs" tableDbType="TABLE">
+    <titleColumn>Name</titleColumn>
+    <columns>
+      <column columnName="_ts">
+        <columnTitle>_ts</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>8</inputLength>
+        <isHidden>true</isHidden>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Run">
+        <columnTitle>Run</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="CreatedBy">
+        <columnTitle>Created By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Created">
+        <columnTitle>Created</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>90</displayWidth>
+        <inputLength>23</inputLength>
+        <formatString>Date</formatString>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="ModifiedBy">
+        <columnTitle>Modified By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Modified">
+        <columnTitle>Modified</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>23</inputLength>
+        <formatString>Date</formatString>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Owner">
+        <columnTitle>Owner</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Container">
+        <columnTitle>Container</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>36</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <fk>
+            <fkColumnName>EntityId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>containers</fkTable>
+        </fk>
+      </column>
+      <column columnName="EntityId">
+        <columnTitle>Entity Id</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>36</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isHidden>true</isHidden>
+      </column>
+      <column columnName="Description">
+        <columnTitle>Description</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Path">
+        <columnTitle>Path</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FileName">
+        <columnTitle>File Name</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Status">
+        <columnTitle>Status</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>220</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="StatusId">
+        <isHidden>true</isHidden>
+      </column>
+      <column columnName="Type"/>
+      <column columnName="SearchEngine"/>
+      <column columnName="MassSpecType"/>
+      <column columnName="SearchEnzyme"/>
+      <column columnName="Deleted"/>
+      <column columnName="ExperimentRunLSID">
+          <fk>
+              <fkColumnName>lsid</fkColumnName>
+              <fkTable>ExperimentRun</fkTable>
+              <fkDbSchema>exp</fkDbSchema>
+          </fk>
+      </column>
+      <column columnName="HasPeptideProphet"/>
+      <column columnName="PeptideCount">
+        <columnTitle>Peptides</columnTitle>
+        <formatString>#,##0</formatString>
+      </column>
+      <column columnName="SpectrumCount">
+        <columnTitle>Spectra</columnTitle>
+        <formatString>#,##0</formatString>
+      </column>
+      <column columnName="NegativeHitCount">
+        <columnTitle>NegativeHits</columnTitle>
+        <formatString>#,##0</formatString>
+      </column>
+      <column columnName="MascotFile"/>
+      <column columnName="DistillerRawFile"/>
+    </columns>
+    <tableTitle>MS2Runs</tableTitle>
+    <versionColumnName>_ts</versionColumnName>
+    <description>Contains a row for every MS2 run loaded in this folder.</description>
+  </table>
+  <table tableName="ExperimentRuns" tableDbType="VIEW">
+    <columns>
+      <column columnName="_ts">
+        <columnTitle>_ts</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>8</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Run">
+        <columnTitle>Run</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="CreatedBy">
+        <columnTitle>Created By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Created">
+        <columnTitle>Created</columnTitle>
+        <inputType>text</inputType>
+        <formatString>Date</formatString>
+        <displayWidth>120</displayWidth>
+        <inputLength>23</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="ModifiedBy">
+        <columnTitle>Modified By</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Modified">
+        <columnTitle>Modified</columnTitle>
+        <inputType>text</inputType>
+        <formatString>Date</formatString>
+        <inputLength>23</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Owner">
+        <columnTitle>Owner</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Container">
+        <columnTitle>Container</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>36</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="EntityId">
+        <columnTitle>Entity Id</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>36</inputLength>
+        <isReadOnly>false</isReadOnly>
+      </column>
+      <column columnName="Description">
+        <columnTitle>Description</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Path">
+        <columnTitle>Path</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FileName">
+        <columnTitle>File Name</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>250</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Status">
+        <columnTitle>Status</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>220</displayWidth>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="StatusId"/>
+      <column columnName="Type"/>
+      <column columnName="SearchEngine"/>
+      <column columnName="MassSpecType"/>
+      <column columnName="SearchEnzyme"/>
+      <column columnName="Deleted"/>
+      <column columnName="ExperimentRunLSID"/>
+      <column columnName="ExperimentRunRowId"/>
+      <column columnName="ProtocolName"/>
+      <column columnName="HasPeptideProphet"/>
+      <column columnName="PeptideCount"/>
+      <column columnName="SpectrumCount"/>
+      <column columnName="NegativeHitCount"/>
+      <column columnName="MascotFile"/>
+      <column columnName="DistillerRawFile"/>
+    </columns>
+    <tableTitle>MS2Runs</tableTitle>
+    <pkColumnName>Run</pkColumnName>
+    <versionColumnName>_ts</versionColumnName>
+    <titleColumn>Description</titleColumn>
+    <description>Contains a row for every MS2 run in this folder, including links to experimental metadata.</description>
+  </table>
+  <table tableName="SpectraData" tableDbType="TABLE">
+    <columns>
+      <column columnName="Fraction"/>
+      <column columnName="Scan"/>
+      <column columnName="Spectrum"/>
+    </columns>
+    <description>Contains a row for every spectra loaded in this folder.</description>
+  </table>
+  <table tableName="Peptides" tableDbType="VIEW">
+    <columns>
+      <column columnName="Run">
+        <columnTitle>Run</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>45</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+
+        <fk>
+            <fkColumnName>Run</fkColumnName>
+            <fkTable>Runs</fkTable>
+            <fkDbSchema>ms2</fkDbSchema>
+        </fk>
+      </column>
+      <column columnName="RunDescription">
+        <columnTitle>Run Description</columnTitle>
+      </column>
+      <column columnName="Fraction">
+        <columnTitle>Fraction</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionName">
+        <displayWidth>200</displayWidth>
+      </column>
+      <column columnName="Scan">
+        <columnTitle>Scan</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>45</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="EndScan">
+        <columnTitle>EndScan</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="RetentionTime">
+        <columnTitle>RetTime</columnTitle>
+        <formatString>0.00</formatString>
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>true</nullable>
+      </column>
+      <column columnName="Charge">
+        <columnTitle>Z</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0+</formatString>
+        <displayWidth>25</displayWidth>
+        <inputLength>3</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="RawScore">
+        <columnTitle>Raw</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>40</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="DiffScore">
+        <columnTitle>dScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="ZScore">
+        <columnTitle>ZScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="SpScore">
+        <columnTitle>SpScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>65</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="DeltaCn">
+        <columnTitle>DeltaCn</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>65</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="XCorr">
+        <columnTitle>XCorr</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>50</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="SpRank">
+        <columnTitle>SpRank</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>60</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Hyper">
+        <columnTitle>Hyper</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>50</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Next">
+        <columnTitle>Next</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>45</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="B">
+        <columnTitle>B</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>35</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Y">
+        <columnTitle>Y</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>35</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Expect">
+        <columnTitle>Expect</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Ion">
+        <columnTitle>Ion</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>35</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Identity">
+        <columnTitle>Identity</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>60</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Homology">
+        <columnTitle>Homology</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>75</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="OrigScore">
+        <columnTitle>OrigScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>75</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="IonPercent">
+        <columnTitle>Ion%</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0%</formatString>
+        <tsvFormatString>0.00</tsvFormatString>
+        <displayWidth>50</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="Mass">
+        <datatype>real</datatype>
+        <columnTitle>CalcMH+</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>70</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PrecursorMass">
+        <datatype>real</datatype>
+        <columnTitle>ObsMH+</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>65</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="MZ">
+        <datatype>real</datatype>
+        <columnTitle>ObsMZ</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DeltaMass">
+        <columnTitle>dMass</columnTitle>
+        <inputType>text</inputType>
+        <formatString>+0.0000;-0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DeltaMassPPM">
+        <datatype>real</datatype>
+        <columnTitle>dMassPPM</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>75</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionalDeltaMass">
+        <columnTitle>fdMass</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionalDeltaMassPPM">
+        <columnTitle>fdMassPPM</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>80</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PeptideProphet">
+        <columnTitle>PepProphet</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>85</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="PeptideProphetErrorRate">
+        <columnTitle>PPErrorRate</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>70</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Peptide">
+        <columnTitle>Peptide</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="ProteinHits">
+        <columnTitle>SeqHits</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>60</displayWidth>
+        <inputLength>5</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Protein">
+        <columnTitle>Protein</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>220</displayWidth>
+        <scale>200</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PrevAA">
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <scale>20</scale>
+        <inputLength>1</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="TrimmedPeptide">
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="NextAA">
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <scale>20</scale>
+        <inputLength>1</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="StrippedPeptide">
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="SequencePosition">
+        <columnTitle>SeqPos</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Description"/>
+      <column columnName="GeneName"/>
+      <column columnName="SeqId">
+        <columnTitle>SeqId</columnTitle>
+        <displayWidth>50</displayWidth>
+      </column>
+      <column columnName="DecimalRatio">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Heavy2LightRatio"/>
+      <column columnName="HeavyArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="HeavyFirstScan"/>
+      <column columnName="HeavyLastScan"/>
+      <column columnName="HeavyMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="LightArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="LightFirstScan"/>
+      <column columnName="LightLastScan"/>
+      <column columnName="LightMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Ratio"/>
+      <column columnName="Invalidated"/>
+      <column columnName="ProphetFVal"/>
+      <column columnName="ProphetDeltaMass"/>
+      <column columnName="ProphetNumTrypticTerm"/>
+      <column columnName="ProphetNumMissedCleav"/>
+      <column columnName="RowId"/>
+      <column columnName="QueryNumber"/>
+      <column columnName="HitRank"/>
+      <column columnName="Decoy"/>
+    </columns>
+    <tableTitle>MS2Peptides</tableTitle>
+    <pkColumnName>Run,RowId</pkColumnName>
+    <titleColumn>Peptide</titleColumn>
+    <description>Contains a row for every peptide loaded in this folder, including additional data about the run and protein.</description>
+  </table>
+  <table tableName="SimplePeptides" tableDbType="VIEW">
+    <columns>
+      <column columnName="Run">
+        <columnTitle>Run</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>45</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="RunDescription">
+        <columnTitle>Run Description</columnTitle>
+      </column>
+      <column columnName="Fraction">
+        <columnTitle>Fraction</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionName">
+        <displayWidth>200</displayWidth>
+      </column>
+      <column columnName="Scan">
+        <columnTitle>Scan</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>45</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="EndScan">
+        <columnTitle>EndScan</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="RetentionTime">
+        <columnTitle>RetTime</columnTitle>
+        <formatString>0.00</formatString>
+        <inputType>text</inputType>
+        <displayWidth>45</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>true</nullable>
+      </column>
+      <column columnName="Charge">
+        <columnTitle>Charge</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0+</formatString>
+        <displayWidth>65</displayWidth>
+        <inputLength>3</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="RawScore">
+        <columnTitle>Raw</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>40</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DiffScore">
+        <columnTitle>dScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="ZScore">
+        <columnTitle>ZScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="SpScore">
+        <columnTitle>SpScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>65</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DeltaCn">
+        <columnTitle>DeltaCn</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>65</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="XCorr">
+        <columnTitle>XCorr</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.000</formatString>
+        <displayWidth>50</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="SpRank">
+        <columnTitle>SpRank</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>60</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Hyper">
+        <columnTitle>Hyper</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>50</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Next">
+        <columnTitle>Next</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>45</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="B">
+        <columnTitle>B</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>35</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Y">
+        <columnTitle>Y</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>35</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Expect">
+        <columnTitle>Expect</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Ion">
+        <columnTitle>Ion</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Identity">
+        <columnTitle>Identity</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Homology">
+        <columnTitle>Homology</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="OrigScore">
+        <columnTitle>OrigScore</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>10</scale>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="IonPercent">
+        <columnTitle>Ion%</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0%</formatString>
+        <displayWidth>50</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Mass">
+        <datatype>real</datatype>
+        <columnTitle>CalcMH+</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>70</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PrecursorMass">
+        <datatype>real</datatype>
+        <columnTitle>ObsMH+</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>65</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>false</isUserEditable>
+      </column>
+      <column columnName="MZ">
+        <datatype>real</datatype>
+        <columnTitle>ObsMZ</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DeltaMass">
+        <columnTitle>dMass</columnTitle>
+        <inputType>text</inputType>
+        <formatString>+0.0000;-0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="DeltaMassPPM">
+        <datatype>real</datatype>
+        <columnTitle>dMassPPM</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>75</displayWidth>
+        <scale>24</scale>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionalDeltaMass">
+        <columnTitle>fdMass</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>55</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="FractionalDeltaMassPPM">
+        <columnTitle>fdMassPPM</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0</formatString>
+        <displayWidth>80</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PeptideProphet">
+        <columnTitle>PProphet</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.0000</formatString>
+        <displayWidth>70</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PeptideProphetErrorRate">
+        <columnTitle>PPErrorRate</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0.00</formatString>
+        <displayWidth>70</displayWidth>
+        <inputLength>24</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Peptide">
+        <columnTitle>Peptide</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="ProteinHits">
+        <columnTitle>SeqHits</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>55</displayWidth>
+        <inputLength>5</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Protein">
+        <columnTitle>Protein</columnTitle>
+        <inputType>text</inputType>
+        <displayWidth>220</displayWidth>
+        <scale>200</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="PrevAA">
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <scale>20</scale>
+        <inputLength>1</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="TrimmedPeptide">
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="NextAA">
+        <inputType>text</inputType>
+        <displayWidth>65</displayWidth>
+        <scale>20</scale>
+        <inputLength>1</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="StrippedPeptide">
+        <inputType>text</inputType>
+        <displayWidth>320</displayWidth>
+        <scale>300</scale>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="SequencePosition">
+        <columnTitle>SeqPos</columnTitle>
+        <inputType>text</inputType>
+        <formatString>0</formatString>
+        <displayWidth>60</displayWidth>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="SeqId">
+        <columnTitle>SeqId</columnTitle>
+        <displayWidth>50</displayWidth>
+      </column>
+      <column columnName="DecimalRatio">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Heavy2LightRatio"/>
+      <column columnName="HeavyArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="HeavyFirstScan"/>
+      <column columnName="HeavyLastScan"/>
+      <column columnName="HeavyMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="LightArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="LightFirstScan"/>
+      <column columnName="LightLastScan"/>
+      <column columnName="LightMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Ratio"/>
+      <column columnName="Invalidated"/>
+      <column columnName="ProphetFVal"/>
+      <column columnName="ProphetDeltaMass"/>
+      <column columnName="ProphetNumTrypticTerm"/>
+      <column columnName="ProphetNumMissedCleav"/>
+      <column columnName="RowId"/>
+      <column columnName="QueryNumber"/>
+      <column columnName="HitRank"/>
+      <column columnName="Decoy"/>
+    </columns>
+    <tableTitle>MS2Peptides</tableTitle>
+    <pkColumnName>Run,RowId</pkColumnName>
+    <titleColumn>Peptide</titleColumn>
+    <description>Contains a row for every peptide loaded in this folder, including a smaller amount of related data.</description>
+  </table>
+  <table tableName="Spectra" tableDbType="VIEW">
+    <columns>
+      <column columnName="Run">
+        <columnTitle>Run</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Fraction">
+        <columnTitle>Fraction</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Scan">
+        <columnTitle>Scan</columnTitle>
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+      <column columnName="Spectrum">
+        <columnTitle>Spectrum</columnTitle>
+        <inputType>file</inputType>
+        <inputLength>40</inputLength>
+        <nullable>false</nullable>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+      </column>
+    </columns>
+    <tableTitle>MS2Spectra</tableTitle>
+    <pkColumnName>Fraction,Scan</pkColumnName>
+    <titleColumn>Run</titleColumn>
+    <description>Contains a row for every spectrum loaded from this folder, including some run and fraction data.</description>
+  </table>
+  <table tableName="Compare" tableDbType="NOT_IN_DB">
+    <tableTitle>MS2Compare</tableTitle>
+    <columns>
+      <column columnName="Protein">
+        <inputType>text</inputType>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Protein</columnTitle>
+        <columnIndex>1</columnIndex>
+        <nullable>false</nullable>
+        <datatype>varchar</datatype>
+        <scale>200</scale>
+        <displayWidth>220</displayWidth>
+      </column>
+      <column columnName="Peptide">
+        <inputType>text</inputType>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Peptide</columnTitle>
+        <columnIndex>2</columnIndex>
+        <nullable>false</nullable>
+        <datatype>varchar</datatype>
+        <displayWidth>200</displayWidth>
+        <scale>300</scale>
+      </column>
+      <column columnName="RunCount">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Run Count</columnTitle>
+        <columnIndex>3</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <displayWidth>75</displayWidth>
+        <scale>10</scale>
+      </column>
+      <column columnName="Pattern">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>true</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Pattern</columnTitle>
+        <columnIndex>4</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <displayWidth>65</displayWidth>
+        <scale>10</scale>
+      </column>
+    </columns>
+    <description>Contains a row for every comparison result</description>
+  </table>
+  <table tableName="Proteins" tableDbType="NOT_IN_DB">
+    <tableTitle>MS2Proteins</tableTitle>
+    <pkColumnName>Protein</pkColumnName>
+    <titleColumn>Protein</titleColumn>
+    <columns>
+      <column columnName="Run">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Run</columnTitle>
+        <columnIndex>1</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <scale>10</scale>
+      </column>
+      <column columnName="Fraction">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Fraction</columnTitle>
+        <columnIndex>2</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <scale>10</scale>
+      </column>
+      <column columnName="Protein">
+        <inputType>text</inputType>
+        <inputLength>40</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Protein</columnTitle>
+        <columnIndex>3</columnIndex>
+        <nullable>false</nullable>
+        <datatype>varchar</datatype>
+        <scale>200</scale>
+        <displayWidth>220</displayWidth>
+      </column>
+      <column columnName="SequenceMass">
+        <inputType>text</inputType>
+        <inputLength>24</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Sequence Mass</columnTitle>
+        <columnIndex>4</columnIndex>
+        <nullable>false</nullable>
+        <datatype>real</datatype>
+        <scale>24</scale>
+        <displayWidth>100</displayWidth>
+        <formatString>#,##0</formatString>
+      </column>
+      <column columnName="Peptides">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Peptides</columnTitle>
+        <columnIndex>5</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <scale>10</scale>
+        <displayWidth>75</displayWidth>
+        <formatString>Peptides: 0</formatString>
+        <excelFormatString>0</excelFormatString>
+        <tsvFormatString>0</tsvFormatString>
+        <textAlign>left</textAlign>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="UniquePeptides">
+        <inputType>text</inputType>
+        <inputLength>10</inputLength>
+        <isReadOnly>false</isReadOnly>
+        <isUserEditable>true</isUserEditable>
+        <columnTitle>Unique</columnTitle>
+        <columnIndex>6</columnIndex>
+        <nullable>false</nullable>
+        <datatype>int</datatype>
+        <scale>10</scale>
+        <displayWidth>75</displayWidth>
+        <formatString>Unique: 0</formatString>
+        <excelFormatString>0</excelFormatString>
+        <tsvFormatString>0</tsvFormatString>
+        <textAlign>left</textAlign>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="SeqId">
+        <inputType>text</inputType>
+        <columnTitle>SeqId</columnTitle>
+        <datatype>int</datatype>
+      </column>
+      <column columnName="Description">
+        <inputType>text</inputType>
+        <columnTitle>Description</columnTitle>
+        <datatype>varchar</datatype>
+      </column>
+      <column columnName="BestName">
+        <inputType>text</inputType>
+        <columnTitle>Best Name</columnTitle>
+        <datatype>varchar</datatype>
+      </column>
+      <column columnName="BestGeneName">
+        <inputType>text</inputType>
+        <columnTitle>Best Gene Name</columnTitle>
+        <datatype>varchar</datatype>
+      </column>
+    </columns>
+    <description>Contains a row for every protein known by the entire system.</description>
+  </table>
+  <table tableName="ProteinProphetFiles" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="FilePath"/>
+      <column columnName="Run"/>
+      <column columnName="UploadCompleted"/>
+      <column columnName="ErrorSeries">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="MinProbSeries">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="PredictedNumberCorrectSeries">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="PredictedNumberIncorrectSeries">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="SensitivitySeries"/>
+    </columns>
+    <tableTitle>ProteinProphetFiles</tableTitle>
+    <pkColumnName>RowId</pkColumnName>
+    <description>Contains a row for every ProteinProphet result loaded in this folder.</description>
+  </table>
+  <table tableName="ProteinGroups" tableDbType="TABLE">
+    <columns>
+      <column columnName="RowId">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="GroupProbability">
+        <columnTitle>Prob</columnTitle>
+      </column>
+      <column columnName="ProteinProbability">
+        <columnTitle>Protein Prob</columnTitle>
+      </column>
+      <column columnName="ProteinProphetFileId">
+          <columnTitle>Protein Prophet File</columnTitle>
+      </column>
+      <column columnName="GroupNumber">
+        <columnTitle>Group</columnTitle>
+        <isHidden>true</isHidden>
+      </column>
+      <column columnName="IndistinguishableCollectionId">
+        <isHidden>true</isHidden>
+      </column>
+      <column columnName="UniquePeptidesCount">
+        <columnTitle>Unique</columnTitle>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="TotalNumberPeptides">
+        <columnTitle>Peptides</columnTitle>
+        <sortDescending>true</sortDescending>
+      </column>
+      <column columnName="PctSpectrumIds">
+        <columnTitle>Spectrum Ids%</columnTitle>
+        <formatString>0.0000</formatString>
+      </column>
+      <column columnName="PercentCoverage">
+        <columnTitle>AACoverage</columnTitle>
+        <formatString>0.000</formatString>
+      </column>
+      <column columnName="ErrorRate">
+        <columnTitle>Error</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+    </columns>
+    <tableTitle>MS2ProteinGroups</tableTitle>
+    <pkColumnName>RowId</pkColumnName>
+    <description>Contains a row for every ProteinProphet protein group loaded in this folder.</description>
+  </table>
+  <table tableName="ProteinGroupMemberships" tableDbType="TABLE">
+    <columns>
+      <column columnName="ProteinGroupId"/>
+      <column columnName="SeqId"/>
+      <column columnName="Probability"/>
+    </columns>
+    <tableTitle>ProteinGroupMembership</tableTitle>
+    <pkColumnName>RowId, SeqId</pkColumnName>
+    <description>Contains a row for every protein membership in every protein group in this folder, as assigned by ProteinProphet.</description>
+  </table>
+  <table tableName="PeptideMemberships" tableDbType="TABLE">
+    <columns>
+      <column columnName="PeptideId">
+          <columnTitle>Peptide</columnTitle>
+      </column>
+      <column columnName="ProteinGroupId">
+          <columnTitle>Protein Group</columnTitle>
+      </column>
+      <column columnName="NSPAdjustedProbability">
+        <columnTitle>NSPAdjProb</columnTitle>
+      </column>
+      <column columnName="Weight">
+        <columnTitle>Weight</columnTitle>
+      </column>
+      <column columnName="NonDegenerateEvidence">
+        <columnTitle>NonDegenEvid</columnTitle>
+      </column>
+      <column columnName="EnzymaticTermini">
+        <columnTitle>EnzymaticTermini</columnTitle>
+      </column>
+      <column columnName="SiblingPeptides">
+        <columnTitle>SiblingPeps</columnTitle>
+      </column>
+      <column columnName="SiblingPeptidesBin">
+        <columnTitle>SiblingPepsBin</columnTitle>
+      </column>
+      <column columnName="Instances">
+        <columnTitle>Instances</columnTitle>
+      </column>
+      <column columnName="ContributingEvidence">
+        <columnTitle>ContribEvid</columnTitle>
+      </column>
+      <column columnName="CalcNeutralPepMass">
+        <columnTitle>CalcNeutralPepMass</columnTitle>
+      </column>
+    </columns>
+    <tableTitle>PeptideMembership</tableTitle>
+    <pkColumnName>PeptideId, ProteinGroupId</pkColumnName>
+    <description>Contains a row for every peptide membership in a protein group in this folder, as assigned by ProteinProphet.</description>
+  </table>
+  <table tableName="ProteinGroupsWithQuantitation" tableDbType="VIEW">
+    <columns>
+      <column columnName="RowId"/>
+      <column columnName="GroupProbability">
+        <columnTitle>Prob</columnTitle>
+      </column>
+      <column columnName="ErrorRate">
+        <columnTitle>Error</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+      <column columnName="ProteinProbability">
+        <columnTitle>Prot Prob</columnTitle>
+      </column>
+      <column columnName="ProteinProphetFileId"/>
+      <column columnName="GroupNumber">
+        <columnTitle>Group</columnTitle>
+      </column>
+      <column columnName="IndistinguishableCollectionId"/>
+      <column columnName="UniquePeptidesCount">
+        <columnTitle>PP Unique</columnTitle>
+        <formatString>Unique:&amp;nbsp';'0</formatString>
+        <excelFormatString>0</excelFormatString>
+        <tsvFormatString>0</tsvFormatString>
+      </column>
+      <column columnName="TotalNumberPeptides">
+        <columnTitle>PP Peps</columnTitle>
+        <formatString>Peps:&amp;nbsp';'0</formatString>
+        <excelFormatString>0</excelFormatString>
+        <tsvFormatString>0</tsvFormatString>
+      </column>
+      <column columnName="PctSpectrumIds">
+        <columnTitle>Spectrum Ids</columnTitle>
+        <formatString>0.00%</formatString>
+        <tsvFormatString>0.0000</tsvFormatString>
+      </column>
+      <column columnName="PercentCoverage">
+        <columnTitle>AACoverage</columnTitle>
+        <formatString>0.00%</formatString>
+        <tsvFormatString>0.0000</tsvFormatString>
+      </column>
+      <column columnName="RatioMean">
+        <columnTitle>L2H Mean</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+      <column columnName="RatioStandardDev">
+        <columnTitle>L2H StdDev</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+      <column columnName="RatioNumberPeptides">
+        <columnTitle>Ratio Peps</columnTitle>
+      </column>
+      <column columnName="Heavy2LightRatioMean">
+        <columnTitle>H2L Mean</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+      <column columnName="Heavy2LightRatioStandardDev">
+        <columnTitle>H2L StdDev</columnTitle>
+        <formatString>0.00</formatString>
+      </column>
+      <column columnName="ProteinGroupId"/>
+    </columns>
+    <tableTitle>MS2ProteinGroups</tableTitle>
+    <pkColumnName>RowId</pkColumnName>
+    <description>Contains a row for every ProteinProphet protein group in this folder, and includes quantitation data, if available.</description>
+  </table>
+  <table tableName="PeptideProphetData" tableDbType="TABLE">
+    <columns>
+      <column columnName="PeptideId"/>
+      <column columnName="ProphetFVal"/>
+      <column columnName="ProphetDeltaMass"/>
+      <column columnName="ProphetNumTrypticTerm"/>
+      <column columnName="ProphetNumMissedCleav"/>
+    </columns>
+    <description>Contains a row for every peptide with ProteinProphet data in this folder.</description>
+  </table>
+  <table tableName="PeptideProphetSummaries" tableDbType="TABLE">
+    <columns>
+      <column columnName="ErrorSeries"/>
+      <column columnName="FValSeries"/>
+      <column columnName="minprobSeries"/>
+      <column columnName="ModelNegSeries1"/>
+      <column columnName="ModelNegSeries2"/>
+      <column columnName="ModelNegSeries3"/>
+      <column columnName="ModelPosSeries1"/>
+      <column columnName="ModelPosSeries2"/>
+      <column columnName="ModelPosSeries3"/>
+      <column columnName="ObsSeries1"/>
+      <column columnName="ObsSeries2"/>
+      <column columnName="ObsSeries3"/>
+      <column columnName="Run"/>
+      <column columnName="SensitivitySeries"/>
+    </columns>
+    <description>Contains a row for every </description>
+  </table>
+  <table tableName="ProteinQuantitation" tableDbType="TABLE">
+    <columns>
+      <column columnName="ProteinGroupId">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="RatioMean"/>
+      <column columnName="RatioStandardDev"/>
+      <column columnName="RatioNumberPeptides"/>
+      <column columnName="Heavy2LightRatioMean"/>
+      <column columnName="Heavy2LightRatioStandardDev"/>
+    </columns>
+    <description>Contains a row for every protein with quantitation data in this folder.</description>
+  </table>
+  <table tableName="iTRAQProteinQuantitation" tableDbType="TABLE">
+    <columns>
+      <column columnName="ProteinGroupId">
+          <isHidden>true</isHidden>
+      </column>
+      <column columnName="Ratio1">
+          <columnTitle>Ratio 1</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error1">
+          <columnTitle>Error 1</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio2">
+          <columnTitle>Ratio 2</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error2">
+          <columnTitle>Error 2</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio3">
+          <columnTitle>Ratio 3</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error3">
+          <columnTitle>Error 3</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio4">
+          <columnTitle>Ratio 4</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error4">
+          <columnTitle>Error 4</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio5">
+          <columnTitle>Ratio 5</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error5">
+          <columnTitle>Error 5</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio6">
+          <columnTitle>Ratio 6</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error6">
+          <columnTitle>Error 6</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio7">
+          <columnTitle>Ratio 7</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error7">
+          <columnTitle>Error 7</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio8">
+          <columnTitle>Ratio 8</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error8">
+          <columnTitle>Error 8</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio9">
+          <columnTitle>Ratio 9</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error9">
+          <columnTitle>Error 9</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+
+      <column columnName="Ratio10">
+          <columnTitle>Ratio 10</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Error10">
+          <columnTitle>Error 10</columnTitle>
+          <formatString>0.00</formatString>
+      </column>
+    </columns>
+    <description>Contains a row for every protein with quantitation data in this folder.</description>
+  </table>
+  <table tableName="Quantitation" tableDbType="TABLE">
+    <columns>
+      <column columnName="PeptideId"/>
+      <column columnName="QuantId"/>
+      <column columnName="LightFirstScan"/>
+      <column columnName="LightLastScan"/>
+      <column columnName="LightMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="HeavyFirstScan"/>
+      <column columnName="HeavyLastScan"/>
+      <column columnName="HeavyMass">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Ratio"/>
+      <column columnName="Heavy2LightRatio"/>
+      <column columnName="LightArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="HeavyArea">
+          <formatString>0.##</formatString>
+      </column>
+      <column columnName="DecimalRatio">
+          <formatString>0.00</formatString>
+      </column>
+      <column columnName="Invalidated" />
+    </columns>
+    <description>Contains a row for every peptide with XPRESS or Q3 quantitation data in this folder.</description>
+  </table>
+  <table tableName="iTRAQPeptideQuantitation" tableDbType="TABLE">
+    <columns>
+      <column columnName="PeptideId"/>
+      <column columnName="TargetMass1">
+          <columnTitle>Target Mass 1</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity1">
+          <columnTitle>Absolute Intensity 1</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized1">
+          <columnTitle>Normalized 1</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass2">
+          <columnTitle>Target Mass 2</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity2">
+          <columnTitle>Absolute Intensity 2</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized2">
+          <columnTitle>Normalized 2</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass3">
+          <columnTitle>Target Mass 3</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity3">
+          <columnTitle>Absolute Intensity 3</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized3">
+          <columnTitle>Normalized 3</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass4">
+          <columnTitle>Target Mass 4</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity4">
+          <columnTitle>Absolute Intensity 4</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized4">
+          <columnTitle>Normalized 4</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass5">
+          <columnTitle>Target Mass 5</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity5">
+          <columnTitle>Absolute Intensity 5</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized5">
+          <columnTitle>Normalized 5</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass6">
+          <columnTitle>Target Mass 6</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity6">
+          <columnTitle>Absolute Intensity 6</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized6">
+          <columnTitle>Normalized 6</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass7">
+          <columnTitle>Target Mass 7</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity7">
+          <columnTitle>Absolute Intensity 7</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized7">
+          <columnTitle>Normalized 7</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass8">
+          <columnTitle>Target Mass 8</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity8">
+          <columnTitle>Absolute Intensity 8</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized8">
+          <columnTitle>Normalized 8</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass9">
+          <columnTitle>Target Mass 9</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity9">
+          <columnTitle>Absolute Intensity 9</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized9">
+          <columnTitle>Normalized 9</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+
+      <column columnName="TargetMass10">
+          <columnTitle>Target Mass 10</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="AbsoluteIntensity10">
+          <columnTitle>Absolute Intensity 10</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+      <column columnName="Normalized10">
+          <columnTitle>Normalized 10</columnTitle>
+          <formatString>0.000</formatString>
+      </column>
+    </columns>
+    <description>Contains a row for every peptide with iTRAQ quantitation data in this folder.</description>
+  </table>
+  <table tableName="QuantSummaries" tableDbType="TABLE">
+    <columns>
+      <column columnName="QuantId"/>
+      <column columnName="Run"/>
+      <column columnName="AnalysisType"/>
+      <column columnName="AnalysisTime"/>
+      <column columnName="Version"/>
+      <column columnName="LabeledResidues"/>
+      <column columnName="MassDiff"/>
+      <column columnName="MassTol"/>
+      <column columnName="SameScanRange"/>
+      <column columnName="XpressLight"/>
+    </columns>
+    <description>Contains a row for every MS2 run with quantitation data in this folder.</description>
+  </table>
+
+  <table tableName="ExpressionData" tableDbType="TABLE" hidden="true">
+    <pkColumnName>RowId</pkColumnName>
+    <tableUrl></tableUrl>
+    <deleteUrl></deleteUrl>
+    <insertUrl></insertUrl>
+    <importUrl></importUrl>
+    <updateUrl></updateUrl>
+    <columns>
+      <column columnName="RowId">
+        <isHidden>true</isHidden>
+        <isKeyField>true</isKeyField>
+      </column>
+      <column columnName="Value"/>
+      <column columnName="SeqId"/>
+      <column columnName="SampleId"/>
+      <column columnName="DataId"/>
+    </columns>
+  </table>
+
+  <table tableName="FastaRunMapping" tableDbType="TABLE" hidden="true">
+    <columns>
+      <column columnName="Run" />
+      <column columnName="FastaId" />
+    </columns>
+  </table>
+
+</tables>

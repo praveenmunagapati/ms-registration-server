@@ -1,0 +1,15 @@
+<script type="text/javascript">
+
+    Ext4.onReady(function(){
+    var webpart = <%=webpartContext%>;
+
+    Ext4.create('LABKEY.ext.ImportPanel', {
+        renderTo: webpart.wrapperDivId,
+        schemaName: LABKEY.ActionURL.getParameter('schemaName'),
+        queryName: LABKEY.ActionURL.getParameter('query.queryName') || LABKEY.ActionURL.getParameter('queryName'),
+        viewName: LABKEY.ActionURL.getParameter('query.viewName') || LABKEY.ActionURL.getParameter('viewName'),
+        activeTab: LABKEY.ActionURL.getParameter('bulkImport') && JSON.parse(LABKEY.ActionURL.getParameter('bulkImport')) ? 1 : 0,
+    });
+});
+
+</script>

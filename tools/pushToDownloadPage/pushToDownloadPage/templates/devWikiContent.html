@@ -1,0 +1,101 @@
+<script language="javaScript">
+function expandCollapse(id,showClassName){
+    var imgId = 'img_'+ id;
+    if(document.getElementById(id).className == 'hide1'){
+       document.getElementById(id).className=showClassName;
+       document.getElementById(imgId).src='https://www.labkey.org/_images/minus.gif';
+       }
+    else{
+      document.getElementById(id).className='hide1';
+      document.getElementById(imgId).src='https://www.labkey.org/_images/plus.gif';
+     }
+     }
+</script>
+
+<style type="text/css">
+.hide1 {
+    display:none;
+}
+.nohide1 {
+    display:block;
+}
+
+</style>
+
+<h3>%(wikiTitle)s</h3>
+
+<p><strong>%(buildMessage)s</strong></p>
+
+<p>Information about this %(releaseOrBuild)s and links to download the distribution files are below.</p>
+
+<div style="display:block; margin-top:30px"></div>
+<h3>Current Binaries</h3>
+<table class="labkey-data-region labkey-show-borders">
+    <colgroup>
+        <col style="text-align:left"/>
+        <col style="text-align:left"/>
+        <col width="70" style="text-align:left"/>
+    </colgroup>
+    <tbody>
+        <tr>
+            <td class="labkey-data-region-header-container">Type</td>
+            <td class="labkey-data-region-header-container">Link</td>
+            <td class="labkey-data-region-header-container">Size</td>
+        </tr>
+        %(wikiBinaryTableRows)s
+    </tbody>
+</table>
+<div style="display:block; margin-top:30px"></div>
+<h4>Build Information</h4>
+<ul>
+    <li>Build Date=%(buildDate)s </li>
+    <li>TeamCity Project=%(buildType)s</li>
+</ul>
+
+</div>
+
+<div style="display:block; margin-top:30px"></div>
+<div id="seeMore" style="display:block;">
+<a href="javascript:expandCollapse('moreInformationDev','nohide1');">
+    <img style="padding-top:4px;padding-right:5px" class="expandIcon" border="0" align="left" id="img_moreInformationDev" src="https://www.labkey.org/_images/plus.gif"> 
+</a>
+<h3>Related Products, Source Code and Previous %(releaseOrBuild2)ss</h3>
+</div>
+<br style="clear:both">
+<div id="moreInformationDev" style="margin-top:-10px" class="hide1">
+<h4 style="margin-bottom:10px;">Toolkits, APIs and files</h4>
+<table class="labkey-data-region labkey-show-borders">
+    <colgroup>
+        <col style="text-align:left"/>
+        <col style="text-align:left"/>
+        <col width="70" style="text-align:left"/>
+    </colgroup>
+    <tbody>
+        <tr>
+            <td class="labkey-data-region-header-container">File</td>
+            <td class="labkey-data-region-header-container">Link</td>
+            <td class="labkey-data-region-header-container">Size</td>
+        </tr>
+        %(wikiRelatedTableRows)s
+    </tbody>
+</table>
+
+
+<div style="display:block; margin-top:30px"></div>
+<h4>Previous %(releaseOrBuild2)ss</h4>
+
+<p>You can find links to previous %(releaseOrBuild)ss on your <a href="%(slashContextPath)s/announcements/%(buildInfoRoot)s%(project)s/%(folder)s/begin.view?">downloads message board</a>.</p>
+
+<div style="display:block; margin-top:30px"></div>
+
+<br><a href="https://github.com/LabKey/labkey-api-python">LabKey Python API - GitHub Repository</a></br>
+<br><a href="https://www.labkey.org/Premium/Maintenance%20Release%20Change%20Logs/project-begin.view">Maintenance Release Change Logs</a></br>
+
+    <div style="display:block; margin-top:30px"></div>
+<h4>Build Information</h4>
+<ul>
+  <li>Build Date=%(buildDate)s </li>
+  <li>TeamCity Project=%(buildType)s</li>
+</ul>
+
+</div>

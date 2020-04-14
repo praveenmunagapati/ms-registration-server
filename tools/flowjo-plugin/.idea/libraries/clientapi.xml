@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="clientapi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../build/client-api/java/jar/labkey-client-api-DevBuild.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../remoteapi/java/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../remoteapi/java/src" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../remoteapi/java/lib" recursive="false" />
+  </library>
+</component>

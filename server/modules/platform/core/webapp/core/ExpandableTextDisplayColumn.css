@@ -1,0 +1,54 @@
+
+.expandable-text-container {
+    font-family: monospace;
+}
+
+.expandable-text-collapsed .expandable-text-container {
+    max-height: 155px;
+    overflow-y: hidden;
+}
+
+.expandable-text-showmore a,
+.expandable-text-showless a {
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+}
+
+.expandable-text-expanded .expandable-text-showmore,
+.expandable-text-collapsed .expandable-text-showless,
+.expandable-text-expanded .expandable-text-overflow
+{
+    display: none;
+}
+
+.expandable-text-collapsed {
+    position: relative;
+}
+
+.expandable-text-overflow
+{
+    display: inline-block;
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColoStr=white);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(255, 255, 255, 0)),to(rgba(255, 255, 255, 1.0)));
+    background-image: -moz-linear-gradient(top center,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 1.0) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColorStr=white);
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+}
+
+TR.labkey-alternate-row .expandable-text-overflow {
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColoStr=#F4F4F4);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(244, 244, 244, 0)),to(rgba(244, 244, 244, 1.0)));
+    background-image: -moz-linear-gradient(top center,rgba(244, 244, 244, 0) 20%,rgba(244, 244, 244, 1.0) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColorStr=#F4F4F4);
+}
+
+TABLE.lk-details-table .expandable-text-overflow {
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColoStr=#F8F8F8);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(248, 248, 248, 0)),to(rgba(248, 248, 248, 1.0)));
+    background-image: -moz-linear-gradient(top center,rgba(248, 248, 248, 0) 20%,rgba(248, 248, 248, 1.0) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColor=0,endColorStr=#F8F8F8);
+}

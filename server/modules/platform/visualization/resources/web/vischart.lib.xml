@@ -1,0 +1,34 @@
+<libraries xmlns="http://labkey.org/clientLibrary/xml/">
+    <library compileInProductionMode="true">
+        <script path="vis/chartWizard/baseChartWizardPanel.js"/>
+        <script path="vis/chartWizard/chartWizardWindow.js"/>
+        <script path="vis/chartWizard/chartFilterPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutPanel.js"/>
+        <script path="vis/chartWizard/chartQueryPanel.js"/>
+        <script path="vis/chartWizard/chartTypePanel.js"/>
+        <script path="vis/chartWizard/genericChartPanel.js"/>
+        <script path="vis/chartWizard/saveOptionsPanel.js"/>
+        <script path="vis/chartWizard/timeChartDimensionFilterPanel.js"/>
+        <script path="vis/chartWizard/timeChartPanel.js"/>
+
+        <script path="vis/chartWizard/chartLayoutDialog/genericOptionsPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutDialog/developerOptionsPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutDialog/genericChartAxisPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutDialog/genericChartOptionsPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutDialog/genericChartScriptPanel.js"/>
+        <script path="vis/chartWizard/chartLayoutDialog/timeChartScriptPanel.js"/>
+
+        <script path="vis/chartWizard/chartTypeDialog/timeChartXAxisField.js"/>
+        <script path="vis/chartWizard/chartTypeDialog/timeChartYMeasureField.js"/>
+
+        <script path="vis/timeChart/timeChartHelper.js"/>
+        <script path="vis/genericChart/genericChartHelper.js"/>
+
+        <script path="vis/chartWizard/chartWizardPanel.css"/>
+    </library>
+    <dependencies>
+        <dependency path="Ext4"/>
+        <dependency path="vis/vis"/>
+        <dependency path="codemirror"/>
+    </dependencies>
+</libraries>

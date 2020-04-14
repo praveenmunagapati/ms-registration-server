@@ -1,0 +1,446 @@
+<tables xmlns="http://labkey.org/data/xml">
+    <table tableName="tblcryostatus" tableDbType="TABLE">
+        <columns>
+            <column columnName="cryostatus"/>
+            <column columnName="cryostatus_desc"/>
+        </columns>
+    </table>
+    <table tableName="tblplatedata" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="well_id"/>
+            <column columnName="text_sfu"/>
+            <column columnName="sfu"/>
+            <column columnName="plate_seq_id"/>
+            <column columnName="assayrun"/>
+            <column columnName="reliable"/>
+        </columns>
+    </table>
+    <table tableName="tblstudylabs" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="lab_study_seq_id"/>
+            <column columnName="lab_seq_id">
+                <columnTitle>Lab Name</columnTitle>
+                <fk>
+                    <fkColumnName>lab_seq_id</fkColumnName>
+                    <fkTable>tbllabs</fkTable>
+                    <fkDbSchema>elispot</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="study_seq_id">
+                <columnTitle>Study Name</columnTitle>
+                <fk>
+                    <fkColumnName>study_seq_id</fkColumnName>
+                    <fkTable>tblstudy</fkTable>
+                    <fkDbSchema>elispot</fkDbSchema>
+                </fk>
+            </column>
+        </columns>
+    </table>
+    <table tableName="tblsfutranslation" tableDbType="TABLE">
+        <columns>
+            <column columnName="text_sfu"/>
+            <column columnName="sfu"/>
+            <column columnName="reader_seq_id"/>
+        </columns>
+    </table>
+    <table tableName="tblbatchtype" tableDbType="TABLE">
+        <columns>
+            <column columnName="batch_type"/>
+            <column columnName="batch_type_desc"/>
+        </columns>
+    </table>
+    <table tableName="tblbatch" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby">
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="created"/>
+            <column columnName="modifiedby">
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="batch_seq_id"/>
+            <column columnName="batch_description">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="batch_type">
+                <fk>
+                    <fkColumnName>batch_type</fkColumnName>
+                    <fkTable>tblbatchtype</fkTable>
+                    <fkDbSchema>elispot</fkDbSchema>
+                </fk>
+            </column>
+            <column columnName="reader_seq_id">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="lab_study_seq_id"/>
+        </columns>
+    </table>
+    <table tableName="tblplatetemplatedetails" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="spec_well_group"/>
+            <column columnName="antigen_id"/>
+            <column columnName="friendly_name"/>
+            <column columnName="replicate"/>
+            <column columnName="pepconc"/>
+            <column columnName="pepunit"/>
+            <column columnName="stcl"/>
+            <column columnName="effector"/>
+            <column columnName="stimconc"/>
+            <column columnName="cellsperwell"/>
+            <column columnName="well_id"/>
+            <column columnName="template_seq_id"/>
+            <column columnName="blinded_name"/>
+        </columns>
+    </table>
+    <table tableName="elispotdataflatfile" tableDbType="VIEW">
+        <columns>
+            <column columnName="network_organization"/>
+            <column columnName="study_description"/>
+            <column columnName="study_identifier"/>
+            <column columnName="lab_desc"/>
+            <column columnName="batch_description"/>
+            <column columnName="batch_type"/>
+            <column columnName="reader_desc"/>
+            <column columnName="plate_name"/>
+            <column columnName="import_date"/>
+            <column columnName="test_date"/>
+            <column columnName="tech_id"/>
+            <column columnName="precoated"/>
+            <column columnName="substrate_desc"/>
+            <column columnName="platetype_desc"/>
+            <column columnName="readout"/>
+            <column columnName="incubate"/>
+            <column columnName="cryostatus_desc"/>
+            <column columnName="additive_desc"/>
+            <column columnName="counter_desc"/>
+            <column columnName="ptid"/>
+            <column columnName="visit_no"/>
+            <column columnName="draw_date"/>
+            <column columnName="runnum"/>
+            <column columnName="d1_cellcount"/>
+            <column columnName="d2_cellcount"/>
+            <column columnName="d1_viability"/>
+            <column columnName="d2_viability"/>
+            <column columnName="antigen_id"/>
+            <column columnName="friendly_name"/>
+            <column columnName="spec_well_group"/>
+            <column columnName="replicate"/>
+            <column columnName="final_well_id"/>
+            <column columnName="pepconc"/>
+            <column columnName="pepunit"/>
+            <column columnName="effector"/>
+            <column columnName="cellsperwell"/>
+            <column columnName="blinded_name"/>
+            <column columnName="text_sfu"/>
+            <column columnName="sfu"/>
+            <column columnName="assayrun"/>
+            <column columnName="reliable"/>
+            <column columnName="comment"/>
+        </columns>
+    </table>
+    <table tableName="tblplatemap" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="orig_well_id"/>
+            <column columnName="final_well_id"/>
+            <column columnName="spec_well_group"/>
+            <column columnName="antigen_id"/>
+            <column columnName="friendly_name"/>
+            <column columnName="replicate"/>
+            <column columnName="pepconc"/>
+            <column columnName="pepunit"/>
+            <column columnName="stcl"/>
+            <column columnName="effector"/>
+            <column columnName="stimconc"/>
+            <column columnName="cellsperwell"/>
+            <column columnName="plate_seq_id"/>
+            <column columnName="blinded_name"/>
+        </columns>
+    </table>
+    <table tableName="tblspecimen" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="specimen_seq_id"/>
+            <column columnName="ptid">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="visit_no"/>
+            <column columnName="draw_date"/>
+            <column columnName="study_seq_id"/>
+        </columns>
+    </table>
+    <table tableName="batchinformation" tableDbType="VIEW">
+        <columns>
+            <column columnName="batch_seq_id"/>
+            <column columnName="batch_description"/>
+            <column columnName="reader_seq_id"/>
+            <column columnName="lab_study_seq_id"/>
+            <column columnName="lab_seq_id"/>
+            <column columnName="lab_desc"/>
+            <column columnName="study_seq_id"/>
+            <column columnName="study_description"/>
+            <column columnName="study_identifier"/>
+            <column columnName="plateinfo_reqd"/>
+        </columns>
+    </table>
+    <table tableName="tbladditive" tableDbType="TABLE">
+        <columns>
+            <column columnName="additive_seq_id"/>
+            <column columnName="additive_desc"/>
+        </columns>
+    </table>
+    <table tableName="tblplatetype" tableDbType="TABLE">
+        <columns>
+            <column columnName="platetype_seq_id"/>
+            <column columnName="platetype_desc"/>
+        </columns>
+    </table>
+    <table tableName="tbldefault_rows_columns" tableDbType="TABLE">
+        <columns>
+            <column columnName="wellrow"/>
+            <column columnName="wellcol"/>
+            <column columnName="well_id"/>
+        </columns>
+    </table>
+    <table tableName="plateinformation" tableDbType="VIEW">
+        <columns>
+            <column columnName="plate_seq_id"/>
+            <column columnName="friendly_name"/>
+            <column columnName="blinded_name"/>
+            <column columnName="spec_well_group"/>
+            <column columnName="replicate"/>
+            <column columnName="final_well_id"/>
+            <column columnName="text_sfu"/>
+            <column columnName="bool_use_blinded_name"/>
+        </columns>
+    </table>
+    <table tableName="tblplatetemplate" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="template_seq_id"/>
+            <column columnName="template_description">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="num_well_groups_per_plate"/>
+            <column columnName="stimulated"/>
+            <column columnName="incubate"/>
+            <column columnName="readout">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="study_seq_id"/>
+            <column columnName="bool_use_blinded_name"/>
+        </columns>
+    </table>
+    <table tableName="tbllabs" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="lab_seq_id"/>
+            <column columnName="lab_desc">
+                <columnTitle>Lab Description</columnTitle>
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="permgroupname">
+                <columnTitle>Permission Group Name</columnTitle>
+                <inputRows>1</inputRows>
+            </column>
+        </columns>
+    </table>
+    <table tableName="tblplatespecimens" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="spec_well_group"/>
+            <column columnName="specimen_id">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="bool_report_specimen"/>
+            <column columnName="runnum"/>
+            <column columnName="additive_seq_id">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="cryostatus"/>
+            <column columnName="plate_seq_id"/>
+            <column columnName="d1_cellcount">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="d2_cellcount">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="d1_viability">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="d2_viability">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="counter_seq_id">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="specimen_seq_id">
+                <columnTitle>PTID</columnTitle>
+            </column>
+        </columns>
+    </table>
+    <table tableName="tblstudy" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified"/>
+            <column columnName="container"/>
+            <column columnName="study_seq_id"/>
+            <column columnName="study_description">
+                <columnTitle>Study Description</columnTitle>
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="network_organization">
+                <columnTitle>Network Organization</columnTitle>
+                <displayWidth>20</displayWidth>
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="study_identifier">
+                <columnTitle>Study Identifier</columnTitle>
+                <displayWidth>20</displayWidth>
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="protocol">
+                <inputRows>1</inputRows>
+                <displayWidth>25</displayWidth>
+            </column>
+            <column columnName="status">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="plateinfo_reqd"/>
+        </columns>
+    </table>
+    <table tableName="tblsubstrate" tableDbType="TABLE">
+        <columns>
+            <column columnName="substrate_seq_id"/>
+            <column columnName="substrate_desc"/>
+        </columns>
+    </table>
+    <table tableName="tblcellcounter" tableDbType="TABLE">
+        <columns>
+            <column columnName="counter_seq_id"/>
+            <column columnName="counter_desc"/>
+        </columns>
+    </table>
+    <table tableName="tblreaders" tableDbType="TABLE">
+        <columns>
+            <column columnName="reader_seq_id"/>
+            <column columnName="reader_desc"/>
+            <column columnName="reader_type"/>
+            <column columnName="file_ext"/>
+        </columns>
+    </table>
+    <table tableName="tblplate" tableDbType="TABLE">
+        <columns>
+            <column columnName="_ts"/>
+            <column columnName="createdby"/>
+            <column columnName="created"/>
+            <column columnName="modifiedby"/>
+            <column columnName="modified">
+                <inputType>text</inputType>
+                <formatString>dd-MMM-yyyy</formatString>
+                <inputLength>23</inputLength>
+            </column>
+            <column columnName="container"/>
+            <column columnName="plate_seq_id"/>
+            <column columnName="plate_name">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="template_seq_id"/>
+            <column columnName="batch_seq_id">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="import_date">
+                <isReadOnly>true</isReadOnly>
+                <inputType>text</inputType>
+                <formatString>dd-MMM-yyyy</formatString>
+                <inputLength>23</inputLength>
+            </column>
+            <column columnName="test_date">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="freezer_plate_id">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="tech_id">
+                <inputRows>1</inputRows>
+            </column>
+            <column columnName="plate_filename">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="bool_report_plate">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="approved_by">
+                <fk>
+                    <fkColumnName>UserId</fkColumnName>
+                    <fkTable>Users</fkTable>
+                    <fkDbSchema>core</fkDbSchema>
+                </fk>
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="comment">
+                <isReadOnly>true</isReadOnly>
+            </column>
+            <column columnName="substrate_seq_id"/>
+            <column columnName="platetype_seq_id"/>
+            <column columnName="isprecoated"/>
+        </columns>
+    </table>
+</tables>

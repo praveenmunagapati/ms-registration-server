@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2012-2015 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+table.run-summary {
+    width: 100%;
+}
+
+table.run-summary td,
+table.field-exclusions td {
+    padding: 3px 10px 0 10px;
+}
+
+table.plate-summary td {
+    padding: 2px 2px 0 2px;
+}
+
+table.plate-summary td.plate-columnlabel {
+    border-bottom: solid black 1px;
+}
+
+table.plate-summary td.plate-rowlabel {
+    border-right: solid black 1px;
+}
+
+td.prop-name {
+    font-weight: bold;
+}
+
+td.control-checkbox,
+table.dilution-summary td {
+    padding: 2px 20px 0 2px;
+}
+
+table.plate-summary td.excluded {
+    background-color: #ff5751;
+    cursor: pointer;
+}
+
+input:read-only {
+    background-color: #EFEFEF;
+}
+
+input:-moz-read-only {
+    background-color: #EFEFEF;
+}

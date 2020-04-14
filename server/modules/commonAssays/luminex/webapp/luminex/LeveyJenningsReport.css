@@ -1,0 +1,22 @@
+
+.leveljenningsreport .x-grid3-row td {
+    line-height: 20px;
+}
+
+.leveljenningsreport .x-grid3-cell-inner,
+.leveljenningsreport .x-grid3-hd-inner {
+    white-space:normal !important;
+}
+
+.leveljenningsreport .grid-cell-nowrap {
+    white-space:nowrap;
+}
+
+.leveljenningsreport .related-guidesets a {
+    background: none;
+}
+
+.xticktag {
+    fill: #FF0000 !important;
+    font-weight: bold !important;
+}

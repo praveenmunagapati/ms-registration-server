@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <!-- Created on Sat, 11 Feb 2012 22:11:46 GMT -->
+  <ShortName>LabKey Documentation</ShortName>
+  <Description>Searches the LabKey Server documentation on www.labkey.org</Description>
+  <Url type="text/html" method="get" template="https://www.labkey.org/search/home/search.view?q={searchTerms}&amp;category=Wiki"/>
+  <Image width="16" height="16">https://www.labkey.org/favicon.image</Image>
+  <Developer>Adam Rauch</Developer>
+  <InputEncoding>UTF-8</InputEncoding>
+  <moz:SearchForm>https://www.labkey.org/search/home/search.view?category=Wiki</moz:SearchForm>
+  <Url type="application/opensearchdescription+xml" rel="self" template="http://mycroft.mozdev.org/updateos.php/id0/labkey_documentation.xml"/>
+  <moz:UpdateUrl>http://mycroft.mozdev.org/updateos.php/id0/labkey_documentation.xml</moz:UpdateUrl>
+</OpenSearchDescription>

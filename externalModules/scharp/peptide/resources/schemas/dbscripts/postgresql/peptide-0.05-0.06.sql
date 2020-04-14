@@ -1,0 +1,1 @@
+INSERT INTO peptide.peptide_status (qc_passed, description) VALUES ('o', 'Ordered');

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Copyright (c) 2009-2019 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+ <tables xmlns="http://labkey.org/data/xml">
+
+  <table tableName="statistic" tableDbType="TABLE">
+    <columns>
+      <column columnName="objectid"/>
+      <column columnName="statisticid"/>
+      <column columnName="value"/>
+      <column columnName="originalstatisticid"/>
+    </columns>
+  </table>
+  <table tableName="statisticattr" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="container"/>
+      <column columnName="name"/>
+      <column columnName="id"/>
+    </columns>
+  </table>
+
+  <table tableName="graph" tableDbType="TABLE">
+    <columns>
+      <column columnName="objectid"/>
+      <column columnName="graphid"/>
+      <column columnName="data"/>
+      <column columnName="originalgraphid"/>
+    </columns>
+  </table>
+  <table tableName="graphattr" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="container"/>
+      <column columnName="name"/>
+      <column columnName="id"/>
+    </columns>
+  </table>
+
+  <table tableName="keyword" tableDbType="TABLE">
+    <columns>
+      <column columnName="objectid"/>
+      <column columnName="keywordid"/>
+      <column columnName="value"/>
+      <column columnName="originalkeywordid"/>
+    </columns>
+  </table>
+  <table tableName="keywordattr" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="container"/>
+      <column columnName="name"/>
+      <column columnName="id"/>
+    </columns>
+  </table>
+
+  <table tableName="object" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="container"/>
+      <column columnName="dataid"/>
+      <column columnName="typeid"/>
+      <column columnName="uri"/>
+      <column columnName="compid"/>
+      <column columnName="scriptid"/>
+      <column columnName="fcsid"/>
+    </columns>
+  </table>
+
+  <table tableName="script" tableDbType="TABLE">
+    <columns>
+      <column columnName="rowid"/>
+      <column columnName="objectid"/>
+      <column columnName="text"/>
+    </columns>
+  </table>
+
+</tables>

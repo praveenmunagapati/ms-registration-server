@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <Workspace version="1.7"  flowJoVersion="10.0.5"  modDate="Wed Jan 16 12:10:52 PST 2013"  drawRowBorders="1"  drawColumnBorders="1"  curGroup="All Samples"  groupPaneHeight="-1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:gating="http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/gating"  xmlns:transforms="http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/transformations"  xmlns:data-type="http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/datatypes"  xmlns:comp="http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/compensation"  xsi:schemaLocation="http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/gating ../../XML-schemas/Gating-ML.v1.5.xsd http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/transformations ../../XML-schemas/Transformations.v1.5.xsd http://flowcyt.sourceforge.net/std/Gating-ML/v1.5/datatypes ../../XML-schemas/DataTypes.v1.5.xsd" >
+   <WindowPosition x="20"  y="22"  width="600"  height="720"  displayed="1"  panelState="" />
+   <TextTraits font="SansSerif"  size="12"  name="Workspace"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+   <Columns wsSortOrder="$FIL"  wsSortAscending="1" >
+     <TColumn name="Name"  width="305" />
+     <TColumn name="Statistic"  width="146" />
+     <TColumn name="#Cells"  width="145" />
+   </Columns>
+   <Groups>
+     <GroupNode name="All Samples"  annotation=""  owningGroup="All Samples"  expanded="1"  sortPriority="10"  count="-1" >
+       <Graph smoothing="0"  backColor="#ffffff"  foreColor="#000000"  type="Pseudocolor"  fast="1"  lineWeight="Normal"  rowCount="0" >
+         <Axis dimension="x"  name=""  label="" />
+         <Axis dimension="y"  name=""  label=""  auto="auto" />
+         <GraphSettings level="5%"  smoothingHighResolution="1"  contourHighResolution="1"  histogramSmoothingCount="0"  graphResolution="256"  showOutliers="0"  drawLargeDots="0"  dotsToDraw="8000"  tint="None" />
+         <GraphEnvironment showGrid="0"  showAxes="tnlTNL"  showGates="1"  showFreqOnPlots="1"  showGateNameOnPlots="1"  showMedians="0"  showUncomped="0"  addEventParam="0"  lastYAxisName="" >
+           <TextTraits font="SansSerif"  size="12"  name="Labels"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="12"  name="LayoutGates"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="12"  name="Numbers"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="10"  name="Legend"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+         </GraphEnvironment>
+       </Graph>
+       <Group name="All Samples"  live="1"  role="ws.group.dlog.test"  key=""  synchronized="0"  foreground="#000000"  fontStyle="bold" >
+         <Criteria/>
+         <Keywords/>
+       </Group>
+     </GroupNode>
+     <GroupNode name="Compensation"  annotation=""  owningGroup="Compensation"  expanded="1"  sortPriority="10"  count="-1" >
+       <Graph smoothing="0"  backColor="#ffffff"  foreColor="#000000"  type="Pseudocolor"  fast="1"  lineWeight="Normal"  rowCount="0" >
+         <Axis dimension="x"  name=""  label="" />
+         <Axis dimension="y"  name=""  label=""  auto="auto" />
+         <GraphSettings level="5%"  smoothingHighResolution="1"  contourHighResolution="1"  histogramSmoothingCount="0"  graphResolution="256"  showOutliers="0"  drawLargeDots="0"  dotsToDraw="8000"  tint="None" />
+         <GraphEnvironment showGrid="0"  showAxes="tnlTNL"  showGates="1"  showFreqOnPlots="1"  showGateNameOnPlots="1"  showMedians="0"  showUncomped="0"  addEventParam="0"  lastYAxisName="" >
+           <TextTraits font="SansSerif"  size="12"  name="Labels"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="12"  name="LayoutGates"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="12"  name="Numbers"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+           <TextTraits font="SansSerif"  size="10"  name="Legend"  style="plain"  color="#000000"  background="#00ffffff"  just="left" />
+         </GraphEnvironment>
+       </Graph>
+       <Group name="Compensation"  live="1"  role="ws.group.dlog.compensation"  key=""  synchronized="0"  foreground="#ff00ff"  fontStyle="bold" >
+         <Criteria>
+           <Criterion connector="And"  keyword="$FIL"  function="Contains"  value="comp" />
+           <Criterion connector="Or"  keyword="$FIL"  function="Contains"  value="unstained" />
+         </Criteria>
+         <Keywords/>
+       </Group>
+     </GroupNode>
+   </Groups>
+   <TableEditor title="FlowJo Tables---20130116"  current="Untitled" >
+     <Table name="Untitled"  isBatch="0"  showHeader="0"  showFooter="0"  outputFile="file:/Users/kevink/Untitled"  quickclose="0"  outputFormat="fj.document.type.table" >
+       <Iteration iterationType="SAMPLE"  iterationValue=""  iterationKeyword=""  discriminator=""  panelSize="1"  groupName="workspaceSelection" />
+       <PrintLayout flipPattern0="0"  rows="1"  columns="1"  padding="36"  header=""  footer=""  headerActive="1"  footerActive="1"  scaleWidthToFit="0"  scaling="1"  orientation="1"  width="612"  height="792"  imageableX="72"  imageableY="72"  imageableWidth="468"  imageableHeight="648" />
+     </Table>
+   </TableEditor>
+   <LayoutEditor title=""  current="Untitled"  showGrid="0"  showPageBreaks="0"  showGuides="0"  showDebugOutput="0" >
+     <Layout name="Untitled"  isBatch="0"  showHeader="0"  showFooter="0"  outputFile="file:/Users/kevink/Untitled"  showGrid="0"  showRulers="1"  showDebugOutput="0"  showGuides="0"  showPageBreaks="1"  scale="1" >
+       <Iteration iterationType="OFF"  iterationValue=""  iterationKeyword=""  discriminator=""  panelSize="1"  groupName="workspaceSelection" />
+       <PrintLayout flipPattern0="0"  rows="1"  columns="1"  padding="36"  header=""  footer=""  headerActive="1"  footerActive="1"  scaleWidthToFit="0"  scaling="1"  orientation="1"  width="612"  height="792"  imageableX="72"  imageableY="72"  imageableWidth="468"  imageableHeight="648" />
+       <BatchSettings useCurrentGroup="1"  length="3"  name=""  order="ACROSS"  direction="COLUMNS"  append="0"  destination="toLayout"  separatePages="0"  launchApp="1"  header="0"  footer="0"  commandLineBatch="0" />
+       <FigList/>
+     </Layout>
+     <WindowPosition x="4"  y="22"  width="650"  height="231"  displayed="0" />
+   </LayoutEditor>
+   <Exports/>
+   <SOPS/>
+   <Metadata/>
+   <Servers>
+     <Server name="LabKey" serverURL="https://www.labkey.org/" javaClass="org.labkey.flow.flowjo.LabKeyServer">
+     </Server>
+   </Servers>
+ </Workspace>

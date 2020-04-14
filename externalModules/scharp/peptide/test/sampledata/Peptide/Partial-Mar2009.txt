@@ -1,0 +1,101 @@
+Nilu#	btkID	PeptideSequence	Peptide	Seqs	NumSeqs	DateLANL	700010423	703010256	705010198	705010162	700010607	700010470	R66201FCON	R18553FCON	270015CON	192018CON	191084CON	705010078	704010042	703010159	703010131	703010054	703010010	CAP228	CAP210	CAP63	CAP69	CAP45	MM45d22	MM43d21	MM42d22	700010077	700010058	700010040	CAP85	CAP239	CON_B	CON_C	CON_A	CON_D	MM33d12	MM39d11	C1mos	C2mos	C3mos	C4mos	B1mos	B2mos	B3mos	B4mos
+
+187	E1	MRVRGILRNCQQWWIWGI	E1	1	1	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_C	-	-	-	-								
+529	E2	MRVKGIRKNYQHLWRWGT	E1	2	1	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_B	-	-	-	-	-								
+-	E202	MRVMGIQRNCQHLLRWGT	E1	3	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-								
+-	E203	MRVRGIQRNYQHLWRWGI	E1	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-								
+-	E204	MTVMGIRKNYQHLWKWGT	E1	5	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM33d12	-								
+221	E66	IVHLNESVEIVCTRPNNN	E35	1	1	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_C	-	-	-	-
+564	E67	IVQLNESVEINCTRPNNN	E35	2	1	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_B	-	-	-	-	-
+-	E305	IVQLTKPVKINCTRPNNN	E35	3	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-
+-	E306	IVQLNESVTINCTRPYNN	E35	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-
+-	E307	IVQLKEAVQINCTRPNNN	E35	5	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM33d12	-
+-	E308	IVQLNESIDIKCIRPNNN	E35	6	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM39d11
+-	E570	IVHLNHSVKIVCTRPGNN	E35	7	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP85	-	-	-	-	-	-	-
+-	E571	IVHLKEAVEINCTRPNNN	E35	8	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	-	-	-	-
+-	E754	IVQLNKSVEITCTRPNNN	E35	9	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010040	-	-	-	-	-	-	-	-
+-	E755	IVQLNESVIINCTRPNNN	E35	10&31	2	Feb-07	-	-	-	-	-	700010470	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010058	-	-	-	-	-	-	-	-	-
+-	E756	LVQLNTSVVIKCMRPGNN	E35	11	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010077	-	-	-	-	-	-	-	-	-	-
+-	E1396	LAIERYLRNQQPLGLWGC	E70	19	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP228	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E1678	LAIERYLKDQQFLGMWGC	E70	20	1	Jan-08	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	703010010	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E1679	LAIERYLQDQQLLGIWGC	E70	21	1	Jan-08	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	703010054	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E2147	LAVESYLKDQQLLGIWGC	E70	27	1	Oct-08	-	-	-	-	-	-	-	-	-	192018CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E2148	LAVERYLHDQQLLGIWGC	E70	28	1	Oct-08	-	-	-	-	-	-	-	-	270015CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E2149	LAVERYLRDQQLLGLWGC	E70	29	1	Oct-08	-	-	-	-	-	-	-	R18553FCON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	E2557	LAIERYLEDQQLLGIWGC	E70	35	1	Mar-09	-	703010256	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+
+257	E137	DQQLLGIWGCSGKLICTT	E71	1&2&3&5&6&9&12&13&14&16&17&18&21&22&23&24&28&30&31&32&35&36	22	Oct-05	700010423	703010256	-	-	700010607	700010470	R66201FCON	-	270015CON	-	-	-	704010042	703010159	703010131	703010054	-	-	CAP210	CAP63	CAP69	-	MM45d22	MM43d21	MM42d22	-	-	700010040	-	-	CON_B	CON_C	CON_A	-	MM33d12	MM39d11
+-	E409	DQQLLGIWGCSGKHICTT	E71	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-
+-	E622	DQQLLGIWGCSGKLICPT	E71	7&10&26	3	Dec-06	-	-	-	-	-	-	-	-	-	-	191084CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010058	-	CAP85	-	-	-	-	-	-	-
+-	E623	DQQLLGMWGCSGKLICTT	E71	8	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	-	-	-	-
+-	E837	DQQLLGIWGCSGRVICTT	E71	11	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010077	-	-	-	-	-	-	-	-	-	-
+-	F318	KIRTWNSLVKHHIWASKK	F3	22&23	2	Jan-08	-	-	-	-	-	-	-	-	-	-	-	-	-	703010159	703010131	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	F353	RIRTWNSLVKHHMYVSRK	F3	24	1	Aug-08	-	-	-	-	-	-	-	-	-	-	-	-	704010042	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	F369	RIRTWNSLVKHHMYISRK	F3	26	1	Oct-08	-	-	-	-	-	-	-	-	-	-	191084CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	F370	RIRTWNSLVKYHMYVSKK	F3	27	1	Oct-08	-	-	-	-	-	-	-	-	-	192018CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	F371	RIRTWKSLVKHHMYVSRR	F3	28	1	Oct-08	-	-	-	-	-	-	-	-	270015CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	G489	YPIVQNAQGQMVHQSLSP	G17	11&34	2	Dec-05	-	-	-	-	-	-	-	-	-	-	191084CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-	-	-	-	-	-	-	-	-
+-	G490	YPIVQNLQGQMVHQPLTP	G17	14	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM39d11	-	-	-	-	-	-	-	-
+-	G586	YPIVQNIQGQMVHQPLSP	G17	15	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP85	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	G647	YPIVQNIQGQMVHQAISP	G17	17	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010040	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N299a	SVPGWNAIRERMRRTEPR	N2	20	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM42d22	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N299b	WNAIRERMRRTEPRAEPA	N2	20	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM42d22	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N300a	RVPGWDTIREKMRRAEPA	N2	21	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM43d21	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N300b	TIREKMRRAEPAAEGVGA	N2	21	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM43d21	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N301a	SVVGWPAVRERMRRARAE	N2	22	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM45d22	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	N358	SIVGWPAVRERIRRTAPA	N2	24	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP69	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+
+455	P23	LEEMNLPGRWKPKMIGGI	P12	1&5&9&12&31	5	Oct-05	-	-	-	-	-	700010470	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM42d22	-	-	700010040	-	-	CON_B	-	-	-	MM33d12	-
+73	P24	LEEINLPGKWKPKMIGGI	P12	2&4&7&17&19&28	6	Oct-05	-	-	-	-	-	-	-	-	270015CON	-	-	-	-	-	-	-	-	CAP228	-	CAP63	-	-	-	-	-	-	-	-	CAP85	-	-	CON_C	-	CON_D	-	-
+-	P247	LEDINLPGKWKPKMIGGI	P12	3&8&24&25&29&34	6	Dec-05	-	-	705010198	-	-	-	-	R18553FCON	-	-	-	705010078	704010042	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	CON_A	-	-	-
+-	P248	LEDMNLPGKWKPKMIGGI	P12	6&10	2	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010058	-	-	-	-	-	-	-	-	MM39d11
+-	P526	LEDISLPGKWKPKMIGGI	P12	11	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010077	-	-	-	-	-	-	-	-	-	-
+-	P661	LEDMNLPGRWKPKMIGGI	P12	13	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM43d21	-	-	-	-	-	-	-	-	-	-	-	-
+-	P662	LEEMNLPGKWKPKMIGGI	P12	14&20	2	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	703010010	-	-	-	-	-	MM45d22	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P791	LEDIDLPGKWKPKMIGGI	P12	15&30	2	Jul-07	-	-	-	-	-	-	R66201FCON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP45	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P792	LEEIDLPGKWKPKMIGGI	P12	16	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP69	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P793	LEEIKLPGNWKPKMIGGI	P12	18&27	2	Jul-07	-	-	-	-	-	-	-	-	-	192018CON	-	-	-	-	-	-	-	-	CAP210	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P985	LEELSLPGKWKPKMIGGI	P12	21&35	2	Jan-08	-	703010256	-	-	-	-	-	-	-	-	-	-	-	-	-	703010054	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P986	LEDINLPGKWKPRMIGGI	P12	22&23&26	3	Jan-08	-	-	-	-	-	-	-	-	-	-	191084CON	-	-	703010159	703010131	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P1377	LEEMSLPGRWKPKMIGGI	P12	32	1	Mar-09	-	-	-	-	700010607	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P1378	LEEMNLTGKWKPKMIGGI	P12	33	1	Mar-09	-	-	-	705010162	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P1379	LEEMDLPGRWKPKMIGGI	P12	36	1	Mar-09	700010423	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+
+456	P25	RWKPKMIGGIGGFIKVRQ	P13	1&5&9&13&31&32	6	Oct-05	-	-	-	-	700010607	700010470	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM43d21	-	-	-	700010040	-	-	CON_B	-	-	-	MM33d12	-
+74	P26	KWKPKMIGGIGGFIKVRQ	P13	2&4&7&8&10&11&14&15&16&17&19&20&21&24&25&28&29&33&34&35	20	Oct-05	-	703010256	705010198	705010162	-	-	-	R18553FCON	270015CON	-	-	705010078	704010042	-	-	703010054	703010010	CAP228	-	CAP63	CAP69	CAP45	MM45d22	-	-	700010077	700010058	-	CAP85	CAP239	-	CON_C	-	CON_D	-	-
+-	P737	AEVISAETGQETAYFILK	P101	12	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM42d22	-	-	-	-	-	-	-	-	-	-	-
+-	P934	AEVIPAETGQETGYFILK	P101	18	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP210	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P1123	AEVIPTETGQETAYYILK	P101	25&35	2	Aug-08	-	703010256	-	-	-	-	-	-	-	-	-	705010078	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	P738	LKLAGRWPVKMLHTDNGS	P103	12	1	Jun-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM42d22	-	-	-	-	-	-	-	-	-	-	-
+
+677	R21	LTLDCNEDCGTSGTQGVG	R11	1&5&6&9&14	5	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM45d22	-	-	-	-	700010040	-	-	CON_B	-	-	-	MM33d12	MM39d11
+341	R22	LHIGCSESGGTSGTQQSQ	R11	2	1	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_C	-	-	-	-
+-	R63a	LHLDCREDCGTSGTQQSQ	R11	3	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-
+-	R63b	DCGTSGTQQSQGVETGVG	R11	3	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-
+-	R64	LNLNCSEDCGTSGTQGVG	R11	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-
+-	R93a	LHIDCNESGGTSGTQQPQ	R11	7	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP85	-	-	-	-	-	-	-
+-	R93b	SGGTSGTQQPQGTADGVG	R11	7	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP85	-	-	-	-	-	-	-
+-	R94a	LHIDCSESSGTSGTQPSQ	R11	8	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	-	-	-	-
+-	R94b	SSGTSGTQPSQGTTEGVG	R11	8	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	-	-	-	-
+-	R116	LTLGSNEDCGTSESQGVG	R11	10	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010058	-	-	-	-	-	-	-	-	-
+-	U235	IIAIIVWIIVYIEYRKLV	U3	33	1	Mar-09	-	-	-	705010162	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	U236	IIAIVVWILAYIEYKRWL	U3	35	1	Mar-09	-	703010256	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	U237	ILAIVVWSIVLIEYRKIL	U3	36	1	Mar-09	700010423	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+
+714	U7	IVFIEYRKILRQRKIDRL	U4	1&5&13	3	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM43d21	-	-	-	-	-	-	CON_B	-	-	-	MM33d12	-
+381	U8	IVYIEYRKLLRQRKIDWL	U4	2&21	2	Oct-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	703010054	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_C	-	-	-	-
+-	U31	IVGIEYKKLLKQRKIDRL	U4	3&29	2	Dec-05	-	-	-	-	-	-	-	R18553FCON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-
+-	U32	IVFIECRRLKRQRKIDWL	U4	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-
+-	U33	IVLIEYRKILKQRKIDRL	U4	6	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM39d11
+-	U58	ITYLEYRKVVKQREIDRL	U4	7	1	Dec-06	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP85	-	-	-	-	-	-	-
+-	U59	IAYIEYRKLLRQRKIDWL	U4	8&25&34	3	Dec-06	-	-	705010198	-	-	-	-	-	-	-	-	705010078	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP239	-	-	-	-	-	-
+-	U76	IVAIEYRKILRQRKIDRL	U4	9	1	Feb-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	700010040	-	-	-	-	-	-	-	-
+-	V26	DLKHEAVRHFPRPWLHGL	V4	3&30	2	Dec-05	-	-	-	-	-	-	R66201FCON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_A	-	-	-
+-	V27	ELKSEAVRHFPRIWLHSL	V4	4	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CON_D	-	-
+-	V28	ELKNEAVKHFPRPWLHGL	V4	5	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM33d12	-
+-	V29	ELKHEAVRHFPRAWLHGL	V4	6	1	Dec-05	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM39d11
+-	V93	ELKNEAVRHFPRPWLHGL	V4	12&14&32	3	Jun-07	-	-	-	-	700010607	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	MM45d22	-	MM42d22	-	-	-	-	-	-	-	-	-	-	-
+-	V117	ELKQEAVRHFPGPWLHGL	V4	15	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP45	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	V118	ELKQEAVRHFPRIWLHSL	V4	17	1	Jul-07	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	CAP63	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	V141	DLKQEAVRHFPRPWLHSL	V4	20	1	Jan-08	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	703010010	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+-	V160	ELKHEAVRHFPRPWLHGL	V4	26	1	Oct-08	-	-	-	-	-	-	-	-	-	-	191084CON	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-

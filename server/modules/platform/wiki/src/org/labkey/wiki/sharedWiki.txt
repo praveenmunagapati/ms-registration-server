@@ -1,0 +1,6 @@
+<p>The <b>Shared</b> project is pre-configured as part of the default LabKey Server installation.
+Resources to be shared site-wide, such as assay designs, can be placed here to be made available in the other
+projects or folders you create.</p>
+
+<p>Learn more in the <b><a href="https://www.labkey.org/Documentation/wiki-page.view?name=sharedProject">Shared Project</a>
+</b> documentation.</p>

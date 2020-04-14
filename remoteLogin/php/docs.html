@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>LabKey Remote Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<style type="text/css">
+	body {
+		font-family: "Lucida Sans", Verdana, Arial;
+		font-size: 12px;
+	}
+	a, a:link, a:visited {
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+
+<h1>PHP Remote Login API</h1>
+
+<h2>Description</h2>
+<p>
+The PHP Remote Login API allows a ("local") server to start a session after 
+successfully authenticating a user against a second LabKey server, all via PHP
+methods. 
+</p>
+
+<p>
+Other utilities include checking the permissions of specific folders on the LabKey 
+server, checking the local session/login status, and clearing the session 
+data/logging a user out locally.
+</p>
+
+<h2>Files</h2>
+
+<p>
+The Remote Login API consists of the following files:
+<ul>
+<li><strong>/api/RemoteLogin.php</strong> &mdash; that contains the RemoteLogin class</li>
+<li><strong>/api/session.php</strong> &mdash; passthru file called after getting
+auth token from authenticating server; starts local session</li>
+<li><strong>/docs.html</strong> &mdash; this documentation file</li>
+<li><strong>/sampleClient/index.html</strong> &mdash; Main sample page</li>
+<li><strong>/sampleClient/authPage.html</strong> &mdash; Sample page requiring authentication</li>
+<li><strong>/sampleClient/permissions.php</strong> &mdash; Page to check permissions</li>
+<li><strong>/sampleClient/logout.php</strong> &mdash; Sample logout page</li>
+<li><strong>/sampleClient/foot.php</strong> &mdash; Footer </li>
+<li><strong>/sampleClient/head.php</strong> &mdash; Header </li>
+</ul>
+
+<h2>Set Up</h2>
+<p>
+To use the Remote Login class, you need to set the URL of the authenticating 
+server (REMOTE_BASE_URL) and the location of the API path on the local server 
+(LOCAL_API_PATH) as well as the base URL of your local server (LOCAL_BASE_PATH). 
+The lines in RemoteLogin.php that need set look like this: 
+</p>
+<pre>
+const REMOTE_BASE_URL = 'https://www.example.com/Login';
+const LOCAL_API_PATH = '/api/';
+const LOCAL_BASE_PATH = '/';
+</pre>
+
+<h2>Sample Client</h2>
+<p>
+The sample client found in the sampleClient/ directory needs the constants 
+(mentioned above in Set Up) set to work correctly.
+</p>
+
+<h2>Linking to Authenticated URLs</h2>
+<p>
+When linking to pages that require authentication (require user to be logged in), 
+you can use the buildAuthUrl() method to construct the links in a way that will 
+pass the URL through if the user is logged in to the authenticating server, or 
+else will ask the user to login/sign up before proceeding to the URL.
+</p>
+
+<pre>
+require_once('./RemoteLogin.php');
+$rl = new RemoteLogin();
+$downloadUrl = $rl->buildAuthUrl(RemoteLogin::LOCAL_BASE_PATH . 'download.php');
+echo '&lt;a href="' . $downloadUrl . '"&gt;Download&lt;/a&gt;';
+</pre>
+
+
+
+<h2>Checking Permissions</h2>
+<p>
+To check the permissions of a folder on the authenticating server, use the
+getPermissions() method, passing along the folder to check. The method
+will return the bitwise value that you can then check for specific permissions.
+</p>
+
+<pre>
+require_once('./RemoteLogin.php');
+$rl = new RemoteLogin();
+$bits = $rl->getPermissions('/library/test/');
+
+$read = ($bits & RemoteLogin::PERMISSION_READ ? TRUE : FALSE);
+$insert = ($bits & RemoteLogin::PERMISSION_INSERT ? TRUE : FALSE);
+$update = ($bits & RemoteLogin::PERMISSION_UPDATE ? TRUE : FALSE);
+$admin = ($bits & RemoteLogin::PERMISSION_ADMIN ? TRUE : FALSE);
+</pre>
+
+<p>
+Since each call to the getPermissions() method checks the session token against 
+the authenticating server, it's better to prepare for an exception that may 
+result if the token is outdated or invalid. This example catches that type of 
+exception and redirects back to the page after the user is re-authenticated.
+</p>
+<pre>
+require_once('./RemoteLogin.php');
+$rl = new RemoteLogin();
+try {
+  $bits = $rl->getPermissions('/library/test/');
+} catch (Exception_RL $e) {
+  if ($e->getCode() == Exception_RL::BAD_TOKEN) {
+    $rl->redirect($rl->buildAuthUrl(RemoteLogin::LOCAL_BASE_PATH . 'thispage.php'));
+  } else {
+    throw $e;
+  }
+}
+</pre>
+
+<p>
+Note that the permissions for each checked folder are cached in the session
+data for the duration of the session. If the permissions change after
+the first check for a specified folder, the user will have to clear the session 
+(restart the browser or clear cookies), before the change will be seen.
+</p>
+<p>
+Session data can be accessed directly via the $_SESSION superglobal.
+</p>
+
+<h2>Checking Login Status</h2>
+<p>
+To see if the user is logged in with a session to the local server (does not
+re-verify with the authenticating server), use checkSession()
+<pre>
+require_once('./RemoteLogin.php');
+$rl = new RemoteLogin();
+echo $rl->checkSession() ? 'Logged in' : 'Logged Out';
+</pre>
+
+<h2>Clear Session/Log Out</h2>
+<p>
+To clear the session data and effectively log the user out of the local server, 
+use the endSession() method. Note that this has no effect on the user's login 
+status on the authenticating server.
+</p>
+<pre>
+require_once('./RemoteLogin.php');
+$rl = new RemoteLogin();
+$rl->endSession();
+</pre>
+
+</body>
+</html>

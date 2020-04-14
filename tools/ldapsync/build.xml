@@ -1,0 +1,78 @@
+<project name="ldapsync" basedir="." default="build">
+
+    <property name="server.dir" value="../../server"/>
+
+    <!-- Grab product.version set by TeamCity if it is there -->
+    <condition property="product.version" value="${teamcity.product.version}" else="DevBuild" >
+        <isset property="teamcity.product.version"/>
+    </condition>
+
+    <property name="clientapi.jar.dir" value="${basedir}/../../build/client-api/java/jar"/>
+    <property name="clientapi.lib.dir" value="${basedir}/../../remoteapi/java/lib"/>
+    <property name="log4j.jar" value="${basedir}/../../external/lib/server/log4j-1.2.16.jar"/>
+    <property name="source.dir" value="${basedir}/src"/>
+    <property name="build.dir" value="${basedir}/../../build/tools/ldapsync"/>
+    <property name="build.classes.dir" value="${build.dir}/classes"/>
+    <property name="build.jar.dir" value="${build.dir}/jar"/>
+    <property name="build.jar.name" value="ldapsync.jar"/>
+    <property name="dist.dir" value="${basedir}/../../dist/tools/ldapsync"/>
+    <property name="exploded.dir" value="${build.dir}/exploded"/>
+    <property name="labkey.version" value="${product.version}" />
+    <property name="exploded.ver.dir" value="${exploded.dir}/ldapsync${labkey.version}"/>
+    <property name="doc.dir" value="${exploded.ver.dir}/doc"/>
+    <property name="zip.name" value="ldapsync.zip"/>
+    <property name="readme.file" value="README.html"/>
+
+    <path id="component.class.path">
+        <fileset dir="${clientapi.jar.dir}" includes="*.jar"/>
+        <fileset dir="${clientapi.lib.dir}" includes="*.jar"/>
+        <file file="${log4j.jar}"/>
+    </path>
+
+    <target name="clientapijar">
+        <ant dir="../../remoteapi/java" antfile="build.xml" target="jar"/> 
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac srcdir="${source.dir}" destdir="${build.classes.dir}"
+               classpathref="component.class.path"
+               target="1.7"
+               source="1.7"
+               debug="true"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${build.jar.dir}"/>
+        <jar destfile="${build.jar.dir}/${build.jar.name}" basedir="${build.classes.dir}" >
+            <manifest>
+                <attribute  name="Main-Class" value="org.labkey.tools.ldapsync.LDAPSync" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="dist" depends="compile,jar">
+        <delete file="${dist.dir}/${zip.name}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${exploded.dir}"/>
+        <mkdir dir="${exploded.ver.dir}"/>
+        <copy file="${basedir}/ldapsync.sh" todir="${exploded.ver.dir}"/>
+        <copy file="${build.jar.dir}/${build.jar.name}" tofile="${exploded.ver.dir}/${build.jar.name}"/>
+        <copy file="${source.dir}/log4j.xml" todir="${exploded.ver.dir}" />
+        <copy todir="${exploded.ver.dir}/lib/">
+            <fileset dir="${clientapi.jar.dir}" includes="*.jar"/>
+            <fileset dir="${clientapi.lib.dir}" includes="*.jar"/>
+            <fileset file="${log4j.jar}" />
+        </copy>
+        <copy file="${readme.file}" tofile="${exploded.ver.dir}/${readme.file}"/>
+        <zip basedir="${exploded.dir}" destfile="${dist.dir}/${zip.name}"/>
+    </target>
+
+    <target name="build" depends="dist"/>
+    <target name="rebuild" depends="clean,build"/>
+</project>

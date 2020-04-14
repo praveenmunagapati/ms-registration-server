@@ -1,0 +1,127 @@
+/* Report Filter Panel */
+.normalwrap-gridcell {
+    white-space: normal !important;
+    word-wrap: break-word;
+}
+
+.rpf .x4-grid-with-row-lines .x4-grid-table {
+    border-top: 1px solid transparent;
+}
+
+.rpf .x4-grid-row .x4-grid-cell
+{
+    border-bottom: none;
+}
+
+.rpf .x4-grid-row .x4-grid-cell,
+.rpf .x4-grid-body,
+.rpf .x4-column-header {
+    border-color: transparent;
+}
+
+.rpf .x4-grid-body .x4-grid-table-focused-first
+{
+    border: none !important;
+}
+
+.rpf .x4-grid-body .x4-grid-table-over-first
+{
+    border-top-color: transparent;
+}
+
+.rpf .x4-grid-row.x4-grid-row-over,
+.rpf .x4-column-header-over {
+    background-color: #F6F6F6;
+    background-image: none;
+}
+
+.rpf .x4-grid-row .x4-grid-cell-special {
+    background: transparent;
+}
+
+.rpf .x4-grid-row-selected .x4-grid-cell,
+.rpf .x4-grid-row-selected .x4-grid-rowwrap-div {
+    background-color: transparent !important;
+}
+
+.rpf .x4-grid-row-selected .x4-grid-td .x4-grid-cell-inner,
+.rpf .x4-grid-row-selected .x4-grid-td .x4-tree-icon,
+.rpf .x4-grid-row-selected .x4-grid-td a,
+.rpf .x4-grid-row-selected .x4-grid-td td {
+    color: black;
+}
+
+.rpf .x4-column-header,
+.rpf .x4-grid-header-ct {
+    background-color: transparent;
+    background-image: none;
+    border: none !important;
+}
+
+.rpf .x4-grid-header-row th
+{
+    border-color: transparent;
+}
+
+/* Grid */
+.rpf .x4-grid-group-hd
+{
+    padding: 0;
+    border-style: none;
+}
+
+.rpf table
+{
+    margin: 0; padding: 0;
+}
+
+.rpf .x4-grid-row-checker, .x4-column-header-checkbox .x4-column-header-text
+{
+    float: right;
+}
+
+/* Group Headers */
+.rpf .x4-grid-group-hd-collapsible .x4-grid-group-title
+{
+    background: none;
+    padding: 0 0 0 3px;
+    color: inherit;
+}
+
+.rpf .category-label
+{
+    font-size: 14px;
+    padding-left: 9px;
+}
+
+/* Used by ReportFilterPanel to make the category label include a checkbox */
+.rpf div.category-header
+{
+    margin: 2px;
+    height: 13px;
+    width: 13px;
+    background-image: url(../gxt/images/default/form/checkbox.gif);
+    line-height: 13px;
+}
+
+/* Added/Removed for checkbox on group headers */
+.rpf .category-checked
+{
+    background-position: 0 -13px;
+}
+
+/* Paging toolbar */
+.rpf .paging-toolbar {
+    background: transparent;
+ }
+
+/* Wrapping container selectors for dataset faceted filtering (dataregion/panel/Facet.js) */
+.dataset-facet-filter-ct {
+    float: left;
+    width: 275px;
+}
+
+.dataset-facet-filter-region-ct {
+    float: right;
+    width: calc(100% - 275px);
+}

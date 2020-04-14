@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<p>The ldapsync program is designed to sync groups exported from an Mac OSX LDAP server and a LabKey server.
+It does this by reading ldif files produced by the LDAP server and mirroring groups and their membership on to the
+LabKey server. This program will likely require modification for use with other LDAP servers, though OpenLDAP servers
+are likely to be similar.
+
+<h2>Preparing</h2>
+The program requires two files
+<ul>
+    <li>groups.ldif -- file produced by the slapcat program exporting selected groups</li>
+    <li>users.ldif -- file with list of users that may appear in those groups</li>
+</ul>
+The files can have any name. Depending on configuration these can be produced by something like the following:<br>
+<code>
+      slapcat -s "cn=users,dc=test,dc=labkey,dc=org" > users.ldif     <br>
+     slapcat -s "cn=groups,dc=test,dc=labkey,dc=org" > groups.ldif
+</code>
+<h2>Command Line</h2>
+A typical command line will be:<br><br>
+    <code>
+        java -Ddomain=test.labkey.org -Duser=admin@labkey.com -Dpassword=password -Dserver=http://localhost:8080/labkey -classpath "lib/*:ldapsync.jar"  org.labkey.tools.ldapsync.LDAPSync users1.ldif groups1.ldif
+    </code><br><br>
+On windows the : in the classpath would be a semicolon.
+As there are so many parameters this should probably be placed in a shell script file, preceded by the "preparing" steps.
+<h3>Command Line Parameters</h3>
+<ul>
+    <li>-Ddomain=domaindns -- domaindns is the LDAP domain that the users are coming from. (e.g. this is primate.wisc.edu for email addresses from that domain) This should generally match the domain in the LDAP domain option found under the authentication link of the LabKey Server amdin console.
+    <li>-Duser=userEmail -- full email of the user the script will run as. This user MUST be a site admin on the LabKey Server
+    <li>-Dpassword=password -- password of the above user
+    <li>-Dserver=serverURL -- serverURL is the URL to the root of the labkey server. Note that this should be a fully specified URL for the root of a LabKey Server, typically http://server.domain.edu:8080/labkey
+    <li>-Dsuffix=" groupSuffix" -- suffix that will be added on to any group name on labkey server to note that it was synced from LDAP. Default is " (LDAP)". Must not be blank and must include leading space if desired.</li>
+    <li>-DcleanGroups="true" -- Set to true to remove LDAP groups that no longer exist. Default is true. If false, ldap groups that no longer exist on the LDAP server will remain on untouched on the Labkey server.</li>
+</ul>
+<h2>Notes and limitations</h2>
+<ul>
+    <li>Groups added to the LabKey server will have the extension " (LDAP)" by default. this can be changed with a command line parameter</li>
+    <li>Only users with email addresses (the LDAP mail: property) from the target domain will be imported. This is because LabKey server only maps a particular domain extension onto the LDAP server.</li>
+    <li>Only groups with valid members will be imported</li>
+    <li>Users are added to LabKey server user list only if they are in a group</li>
+   <li>Users are never deleted from LabKey server, though they will be removed from all groups if they are not in the users file</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+Please install up-to-date pipeline tools
+http://tools.proteomecenter.org/wiki/index.php?title=Software:TPP#Getting_the_software
+Place up-to-date binaries in external/linux/<bin> to have them deployed by ant

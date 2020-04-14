@@ -1,0 +1,119 @@
+dn: cn=groups,dc=primate,dc=wisc,dc=edu
+cn: groups
+objectClass: container
+structuralObjectClass: container
+entryUUID: 1522010c-192f-102d-8d03-f7e2080f6139
+creatorsName: uid=root,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20080917180623Z
+entryCSN: 20080917180623Z#000002#00#000000
+modifiersName: uid=root,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20080917180623Z
+
+dn: cn=admin,cn=groups,dc=primate,dc=wisc,dc=edu
+cn: admin
+apple-group-realname: Open Directory Administrators
+gidNumber: 80
+memberUid: root
+memberUid: diradmin
+memberUid: twlynch
+memberUid: aiping2
+memberUid: nvakharia
+memberUid: mailadmin
+apple-generateduid: 678E7831-32D3-4AD0-8251-49C66E2D0AE9
+apple-group-memberguid: 7C1DEA16-10ED-4101-B5CE-BA44108F78D7
+apple-group-memberguid: F289ADCF-6376-4588-8F8D-629FD4B1C4F2
+apple-group-memberguid: A176B3D5-24F0-4512-AA54-7E3BC945FED2
+apple-group-memberguid: 42E701B9-3089-4F8E-B965-C76242935582
+objectClass: posixGroup
+objectClass: apple-group
+objectClass: extensibleObject
+structuralObjectClass: posixGroup
+entryUUID: 152ece28-192f-102d-8d22-f7e2080f6139
+creatorsName: uid=root,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20080917180623Z
+entryCSN: 20090824183027Z#000006#00#000000
+modifiersName: uid=diradmin,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20090824183027Z
+
+dn: cn=staff,cn=groups,dc=primate,dc=wisc,dc=edu
+cn: staff
+apple-group-realname: Open Directory Users
+gidNumber: 20
+memberUid: root
+apple-generateduid: 6E10E4CE-9D39-41B0-B794-3D7EA47054FB
+apple-group-memberguid: 7C1DEA16-10ED-4101-B5CE-BA44108F78D7
+objectClass: posixGroup
+objectClass: apple-group
+objectClass: extensibleObject
+structuralObjectClass: posixGroup
+entryUUID: 15306d78-192f-102d-8d23-f7e2080f6139
+creatorsName: uid=root,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20080917180623Z
+entryCSN: 20080917180623Z#000022#00#000000
+modifiersName: uid=root,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20080917180623Z
+
+
+dn: cn=sys,cn=groups,dc=primate,dc=wisc,dc=edu
+cn: sys
+objectClass: posixGroup
+objectClass: apple-group
+objectClass: extensibleObject
+objectClass: top
+entryUUID: cbb95de2-e55a-1027-9c7f-9863ff211198
+creatorsName: uid=wprc,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20040127212329Z
+memberUid: root
+memberUid: bin
+memberUid: sys
+memberUid: adm
+apple-generateduid: 0D28C148-510F-11D8-8CCD-00039375ABA2
+gidNumber: 3
+entryCSN: 2004012721:23:29Z#0x0014#0#0000
+modifiersName: uid=wprc,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20040127212329Z
+structuralObjectClass: posixGroup
+
+
+dn: cn=virologyservices,cn=groups,dc=primate,dc=wisc,dc=edu
+objectClass: posixGroup
+objectClass: apple-group
+objectClass: extensibleObject
+objectClass: top
+entryUUID: 31335788-9d23-1028-927b-9d198ff41f95
+creatorsName: uid=wprc,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20040917182901Z
+apple-generateduid: 732D4022-08D7-11D9-AAA6-000D932C8E0E
+gidNumber: 1026
+apple-group-realname: virology services
+cn: virologyservices
+memberUid: thomasf
+memberUid: gmay
+memberUid: nmaness
+structuralObjectClass: posixGroup
+apple-ownerguid: F289ADCF-6376-4588-8F8D-629FD4B1C4F2
+entryCSN: 20090527193155Z#000001#00#000000
+modifiersName: uid=diradmin,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20090527193155Z
+
+dn: cn=animalcare,cn=groups,dc=primate,dc=wisc,dc=edu
+objectClass: posixGroup
+objectClass: apple-group
+objectClass: extensibleObject
+objectClass: top
+entryUUID: c6dbbf18-ad8c-1028-89a9-94fb9f4c46d8
+creatorsName: uid=wprc,cn=users,dc=primate,dc=wisc,dc=edu
+createTimestamp: 20041008154508Z
+apple-generateduid: 0876744E-1941-11D9-997E-000D939BD486
+gidNumber: 1027
+apple-group-realname: animalcare
+cn: animalcare
+memberUid: ctabeira
+memberUid: jbrooks
+memberUid: aschara
+memberUid: carissab
+structuralObjectClass: posixGroup
+entryCSN: 20090831154458Z#000002#00#000000
+modifiersName: uid=diradmin,cn=users,dc=primate,dc=wisc,dc=edu
+modifyTimestamp: 20090831154458Z
+

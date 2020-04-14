@@ -1,0 +1,9 @@
+.labkey-exclusion-td-label {
+    font-weight: bold;
+    width: 23%;
+    padding: 3px !important;
+}
+
+.labkey-exclusion-td-cell {
+    padding: 3px !important;
+}

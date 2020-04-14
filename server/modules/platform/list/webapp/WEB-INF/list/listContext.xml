@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="listPipelineRegistry" class="org.labkey.api.pipeline.TaskPipelineRegistrar">
+        <property name="factoryImpls">
+            <list>
+                <bean class="org.labkey.list.pipeline.ListReloadTask$Factory"/>
+            </list>
+        </property>
+        <property name="pipelines">
+            <list>
+                <bean class="org.labkey.api.pipeline.file.FileAnalysisTaskPipelineSettings">
+                    <constructor-arg value="listReloadTask"/>
+                    <property name="description" value="Reload lists using data file"/>
+                    <property name="protocolObjectId" value="list.listReload"/>
+                    <property name="protocolName" value="List Reload"/>
+                    <property name="protocolFactoryName" value="listReload"/>
+                    <property name="defaultDisplayState" value="hidden"/>
+                    <property name="allowForTriggerConfiguration" value="true"/>
+                    <property name="activeModuleRequired" value="false"/>
+                    <property name="initialInputExts">
+                        <list>
+                            <ref bean="tsvFileType"/>
+                            <ref bean="xlsxFileType"/>
+                            <ref bean="xlsFileType"/>
+                        </list>
+                    </property>
+                    <property name="taskProgressionSpec">
+                        <list>
+                            <bean id="listReloadTask" class="org.labkey.api.pipeline.TaskId">
+                                <constructor-arg><value type="java.lang.Class">org.labkey.list.pipeline.ListReloadTask</value></constructor-arg>
+                            </bean>
+                        </list>
+                    </property>
+                    <property name="helpText" value="The selected Pipeline task can only be initiated on Excel and .tsv files.
+                        It will not create new lists, but can reload existing lists' data and infer non-key column changes." />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="tsvFileType" class="org.labkey.api.util.FileType">
+        <constructor-arg value=".tsv"/>
+    </bean>
+    <bean id="xlsxFileType" class="org.labkey.api.util.FileType">
+        <constructor-arg value=".xlsx"/>
+    </bean>
+    <bean id="xlsFileType" class="org.labkey.api.util.FileType">
+        <constructor-arg value=".xls"/>
+    </bean>
+
+</beans>

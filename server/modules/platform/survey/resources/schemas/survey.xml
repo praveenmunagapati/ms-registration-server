@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ * Copyright (c) 2012-2017 LabKey Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+ -->
+<tables xsi:schemaLocation="http://labkey.org/data/xml ..\..\..\..\schemas\tableInfo.xsd" xmlns="http://labkey.org/data/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table tableName="SurveyDesigns" tableDbType="TABLE">
+      <description>Contains a row for each survey design.</description>
+      <columns>
+        <column columnName="RowId"/>
+        <column columnName="Container"/>
+        <column columnName="Label"/>
+        <column columnName="Description"/>
+        <column columnName="CreatedBy">
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>Users</fkTable>
+          </fk>
+        </column>
+        <column columnName="Created"/>
+        <column columnName="ModifiedBy">
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>Users</fkTable>
+          </fk>
+        </column>
+        <column columnName="Modified"/>
+        <column columnName="QueryName"/>
+        <column columnName="SchemaName"/>
+        <column columnName="Metadata"/>
+      </columns>
+    </table>
+    <table tableName="Surveys" tableDbType="TABLE">
+      <description>Contains a row for each user survey instance.</description>
+      <columns>
+        <column columnName="RowId"/>
+        <column columnName="Container"/>
+        <column columnName="EntityId">
+          <columnTitle>Entity Id</columnTitle>
+          <inputType>text</inputType>
+          <inputLength>36</inputLength>
+          <isReadOnly>true</isReadOnly>
+          <isHidden>true</isHidden>
+          <fk>
+            <fkTable>object</fkTable>
+            <fkColumnName>ObjectURI</fkColumnName>
+            <fkDbSchema>exp</fkDbSchema>
+          </fk>
+        </column>
+        <column columnName="Label"/>
+        <column columnName="CreatedBy">
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>Users</fkTable>
+          </fk>
+        </column>
+        <column columnName="Created"/>
+        <column columnName="ModifiedBy">
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>Users</fkTable>
+          </fk>
+        </column>
+        <column columnName="Modified"/>
+        <column columnName="SubmittedBy">
+          <fk>
+            <fkColumnName>UserId</fkColumnName>
+            <fkDbSchema>core</fkDbSchema>
+            <fkTable>Users</fkTable>
+          </fk>
+        </column>
+        <column columnName="Submitted"/>
+        <column columnName="Status"/>
+        <column columnName="SurveyDesignId">
+          <fk>
+            <fkTable>SurveyDesign</fkTable>
+            <fkColumnName>RowId</fkColumnName>
+            <fkDbSchema>survey</fkDbSchema>
+          </fk>
+        </column>
+        <column columnName="ResponsesPk">
+        </column>
+      </columns>
+    </table>
+</tables>
